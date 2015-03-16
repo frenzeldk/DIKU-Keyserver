@@ -1,0 +1,22 @@
+Ønsker: identificer studerende ved aflevering vha gpg-nøgle
+Ønsker: grube med gpg-nøgle og ku-mail knyttet sammen (da der stoles på at den studerende har adgang til sin email)
+Autentificering sker igennem unikke links til ku-mail (for at lægge gpg-nøgle op).
+2 muligheder: copy/paste gpg-nøgle eller generer gpg-nøglepar direkte i browseren.
+DIKU leverer ssl-certifikat.
+Hvorfor ikke bruge eksisterende?
+	Public index j/n
+	modtager ukrypteret nøgle og bruger den til at verificere indholdet - bagefter checkes hashet pubkey mod databasen.
+
+database: (\underline{ku-nummerplade},hash(pubkey))
+
+krav: 
+registrering gennem webformular og/eller kommandelinje
+	skal kunne genregistrering
+	anmodning kodkendes igennem ku-email
+	skal kunne vælge om den offentlige nøgle offentliggøres
+		private by default
+	private API: få offentlig nøgle og returner brugernavn (kun adgang til DIKU-ansatte)
+Arbejdsbelastning: 10 timer per person per uger
+Sprog
+Backend: golang + sql
+frontend: html5 + js
