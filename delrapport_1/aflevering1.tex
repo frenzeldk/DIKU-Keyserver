@@ -23,11 +23,34 @@
 \usepackage{amsfonts,amsmath,amssymb}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{gauss}
+\usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{microtype}
 \usepackage{listings} %code parsing
 \lstset{language=bash} %java code
 \newcommand{\code}[1]{\texttt{#1}}
+
+\newlist{SubItemList}{itemize}{1}
+\setlist[SubItemList]{label={$-$}}
+
+\let\OldItem\item
+\newcommand{\SubItemStart}[1]{%
+    \let\item\SubItemEnd
+    \begin{SubItemList}[resume]%
+        \OldItem #1%
+}
+\newcommand{\SubItemMiddle}[1]{%
+    \OldItem #1%
+}
+\newcommand{\SubItemEnd}[1]{%
+    \end{SubItemList}%
+    \let\item\OldItem
+    \item #1%
+}
+\newcommand*{\SubItem}[1]{%
+    \let\SubItem\SubItemMiddle%
+    \SubItemStart{#1}%
+}%
 
 \newcommand{\BAR}{%
   \hspace{-\arraycolsep}%
@@ -95,18 +118,63 @@ We can use the KU login in order to establish this mapping and this mapping can 
 \item The frontend must work on the newest editions of all mainstream browsers (IE, FF, Chrome, Safari).
 \item The backend software must be able to run on any Unix-based system.
 \end{itemize}
-\subsubsection{Delivarables and Deadlines}
+\subsubsection{Delivarables and Deadlines}\label{sec:deadlines}
 \begin{itemize}
 \item The whole project must be done by June 3$^{rd}$, 2015.
 \end{itemize}
 \subsection{Initial Software Project Management Plan}
 \subsubsection{Work Breakdown}
-\subsubsection{Roles & Responsibilities}
+The following tasks have been identified. The list is subject to change.
+\begin{itemize}
+\item Set up VPS to start Go-server and make database and create database schema upon startup.
+\SubItem Install Go compiler
+\SubItem Install SQLite or postgresql
+\SubItem Create startup script for server to run appropriate programs.
+\item Use golang to connect to database. 
+\item Determine exact method for teacher's to fetch data from DB
+\item Front-end view containing a form for first-time upload of OpenPGP key.
+\item Front-end view which enables updating/replacement of key.
+\item Mail server to send links for students to upload OpenPGP key.
+\end{itemize}
+\subsubsection{Roles \& Responsibilities}
+This group consists of Mads Gram, Sven Frenzel, and Thorkil Værge. The roles and responsibilities have not yet been delegated. So instead, we choose to describe our individual skill set.
+\begin{itemize}
+\item Mads Gram: Can code Javascript for front-end, some knowledge of MVC architecture, SQL and general db knowledge
+\item Sven Frenzel: Linux server administration, basic network administration.
+\item Thorkil Værge: Some experience in project management of website development, SQL experience from DB course, some front-end experience with HTML and CSS. Theoretical knowledge of hashes and cryptography and practical knowledge of internet security.
+\end{itemize}
 \subsubsection{Project Schedule}
+We have chosen to divide the project schedule into phases. But the whole list should be viewed as a sort of iterative process and something that will overlap a lot. An overview of the schedule is presented in the following list. Some of these tasks could also be given a deadline under Section \ref{sec:deadlines}.
+\begin{itemize}
+\item Defining the project -- the introductory phase where we iteratively align our expectations for the project with the customers expectations.
+\item Learning Go -- this can be done through some very basic Go tutorials but will probably mainly be achieved by reading up on how a Go server is built and connects to a server.
+\item Obtaining additional required skill set. Some front-end development in HTML5 or Javascript. 
+\item Setting up server with required programs, including e.g. Go compiler and SQL server.
+\item Programming the server and its SQL interaction in Go.
+\item Programming front-end
+\item Setting up email server to talk to Go on our VPS
+\item Presenting result to customer for feedback
+\item Testing the programmed logic.
+\end{itemize}
 \subsubsection{Budget and Resources}
+\begin{itemize}
+\item VPS or dedicated server
+\item access to a mail server
+\item Domain or subdomain to host the PGP registration website
+\item SSL certificate to defeat man-in-the-middle attack where an attacker sends a fake public PGP key to the server.
+\item time resources: As of yet unknown but we expect that large parts of the programming can be solved at intencive work weekends
+\end{itemize}
 \subsubsection{Description of Risks}
+There is a risk that learning Go will be to complex a task for us to master in time. To mitigate this risk, a deadline for some basic server functionality, using Go, should be made. We set a deadline for May 10$^{th}$ for getting the VPS to connect to the database through Go.
 \subsection{Initial software
 architecture}
+See Figure \ref{fig:ISA}
+\begin{figure}
+\centering
+\includegraphics[width=1.1\textwidth]{Pictures/pksu_isa_centered.png}
+\caption{Initial software architecture of the project. Our project includes coding the database, web server, and front-end.}
+\label{fig:ISA}
+\end{figure}
 \subsection{Project Agreement definition}
 \subsection{(e)}
 \section{Systemdefintion}
