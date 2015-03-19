@@ -70,94 +70,6 @@ Another option, which is the subject of this project, is to use asymmetric key e
 
 The students at the University of Copenhagen all have a unique username in the form of a ``KU Username''. If this username is mapped to a public key and the student holds the equivalent private key, then the authentication of an electronic hand-in has the same degree of trusted authenticity as that of the key pair. \\\\
 
-We can use the KU login in order to establish this mapping and this mapping can be further authenticated by the above-mentioned peer-to-peer key signing although this is not necessary for the system to work. But as a way to establish this mapping, the KU login pair (KU Username and KU password) is used as a trusted source of linking an identity to a public key. The role, if any, of peer-to-peer signing or key signing by teachers has not yet been established.
-\subsubsection{Scenarios}
-\begin{itemize}
-\item A student has just started on the course ``Maskinarkitektur'' (Processor Design). He learns that he has to hand in the assignment by signing it with an OpenPGP key. He must then generate his own 
-\end{itemize}
-\subsubsection{Functional Requirements}
-\subsubsection{Nunfunctional Requirements}
-\subsubsection{Target Environment}
-\subsubsection{Delivarables and Deadlines}
-\subsection{Initial Software Project Management Plan}
-\subsection{Initial software
-architecture}
-\subsection{Project Agreement definition}
-\subsection{(e)}
-\section{Systemdefintion}
-\end{document}
-\documentclass[11pt,a4paper]{article}
-
-\setlength{\textwidth}{165mm}
-\setlength{\textheight}{240mm}
-\setlength{\parindent}{0mm} % S{\aa} meget rykkes ind efter afsnit
-\setlength{\parskip}{\parsep}
-\setlength{\headheight}{0mm}
-\setlength{\headsep}{0mm}
-\setlength{\hoffset}{-2.5mm}
-\setlength{\voffset}{0mm}
-\setlength{\footskip}{15mm}
-\setlength{\oddsidemargin}{0mm}
-\setlength{\topmargin}{0mm}
-\setlength{\evensidemargin}{0mm}
-
-\usepackage{courier}
-\usepackage{amsmath}
-\usepackage[a4paper, hmargin={2.8cm, 2.8cm}, vmargin={2.5cm, 2.5cm}]{geometry}
-\usepackage{eso-pic} % \AddToShipoutPicture
-\usepackage{graphicx} % \includegraphics
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{amsfonts,amsmath,amssymb}
-\usepackage[colorinlistoftodos]{todonotes}
-\usepackage{gauss}
-\usepackage{hyperref}
-\usepackage{microtype}
-\usepackage{listings} %code parsing
-\lstset{language=bash} %java code
-\newcommand{\code}[1]{\texttt{#1}}
-
-\newcommand{\BAR}{%
-  \hspace{-\arraycolsep}%
-  \strut\vrule % the `\vrule` is as high and deep as a strut
-  \hspace{-\arraycolsep}%
-}
-
-\author{\Large{Sven Frenzel \href{mailto:sven@frenzel.dk}{(sven@frenzel.dk)} - 130793 - cdn769 - Hold Passov}\\
-\Large{Mads Gram \href{mailto:mgmadsgram@gmail.com}{(mgmadsgram@gmail.com)}  - 081293 - wtc324 - Hold Passov}\\
-\Large{Thorkil Værge \href{mailto:thorkilk@gmail.com}{(thorkilk@gmail.com)} - 150287 - wng750 - Hold Passov}}
-
-\title{
-\vspace{3cm}
-\Large{First partial assignment - PKSU}
-}
-
-\begin{document}
-
-%% Change `ku-farve` to `nat-farve` to use SCIENCE's old colors or
-%% `natbio-farve` to use SCIENCE's new colors and logo.
-\AddToShipoutPicture*{\put(0,0){\includegraphics*[viewport=0 0 700 600]{include/natbio-farve}}}
-\AddToShipoutPicture*{\put(0,602){\includegraphics*[viewport=0 600 700 1600]{include/natbio-farve}}}
-
-%% Change `ku-en` to `nat-en` to use the `Faculty of Science` header
-\AddToShipoutPicture*{\put(0,0){\includegraphics*{include/nat-en}}}
-
-\clearpage\maketitle
-\thispagestyle{empty}
-
-\newpage
-
-\section{Projektdefintion}
-\subsection{Problem statement}
-\subsubsection{Problem Domain}
-At the University, many courses require the students to hand in assignments. In this modern era, this is done by electronic hand-ins over the World Web Web on the interconnected global network. It is essential to ensure that there can be no doubt of the identity of the student handing in the assignment because the teachers grade the students based on these electronic hand-ins. \\\\
-
-This problem can be solved by a classic login system, where the user has a unique username and picks a password as a secret piece of information to avoid malicious parties to get access to user privileges. This system has already been implemented by the Norwegian company its Learning through the World Wide Web platform ``Absalon''.\\\\
-
-Another option, which is the subject of this project, is to use asymmetric key encryption. In this system the user, i.e. the student, generates a key pair on his own computer. This keypair can be used for authentication and can also be used in other situations. The authenticity of the key pair can be further validated by peer-to-peer authentication through the signing of other peoples' keys.\\\\
-
-The students at the University of Copenhagen all have a unique username in the form of a ``KU Username''. If this username is mapped to a public key and the student holds the equivalent private key, then the authentication of an electronic hand-in has the same degree of trusted authenticity as that of the key pair. \\\\
-
 We can use the KU login in order to establish this mapping and this mapping can be further authenticated by the above-mentioned peer-to-peer key signing although this latter authentication is not necessary for the system to work. As a way to establish this mapping, the KU login pair (KU Username and KU password) is used as a trusted source of linking an identity to a public key. The role, if any, of peer-to-peer signing or key signing by teachers has not yet been established.
 \subsubsection{Scenarios}
 \begin{itemize}
@@ -188,6 +100,11 @@ We can use the KU login in order to establish this mapping and this mapping can 
 \item The whole project must be done by June 3$^{rd}$, 2015.
 \end{itemize}
 \subsection{Initial Software Project Management Plan}
+\subsubsection{Work Breakdown}
+\subsubsection{Roles & Responsibilities}
+\subsubsection{Project Schedule}
+\subsubsection{Budget and Resources}
+\subsubsection{Description of Risks}
 \subsection{Initial software
 architecture}
 \subsection{Project Agreement definition}
