@@ -1,3 +1,5 @@
+The meeting was held to align the expectations of the client and the developers in regards to the systems capabilities and design.
+
 Oleks undersøger interface hvilke tilgangsmuligheder, der ønskes til databasen.
 
 Kun lukket API, intet offentligt look-up. Der gemmes pupkey og abc123 (ku-brugernavn).
