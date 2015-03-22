@@ -150,28 +150,32 @@ This group consists of Mads Gram, Sven Frenzel, and Thorkil Værge. The roles an
 \item Thorkil Værge: Some experience in project management of website development, SQL experience from DB course, some front-end experience with HTML and CSS. Theoretical knowledge of hashes and cryptography and practical knowledge of internet security.
 \end{itemize}
 \subsubsection{Project Schedule}
-We have chosen to divide the project schedule into phases. But the whole list should be viewed as a sort of iterative process and something that will overlap a lot. An overview of the schedule is presented in the following list. Some of these tasks could also be given a deadline under Section \ref{sec:deadlines}.
+We have chosen to divide the project schedule into phases. In the spirit of agile development, the following list should be viewed as an iterative process and something that will overlap a lot. Some of these tasks could also be given a deadline under Section \ref{sec:deadlines}.
 \begin{itemize}
-\item Defining the project -- the introductory phase where we iteratively align our expectations for the project with the customers expectations.
-\item Learning Go -- this can be done through some very basic Go tutorials but will probably mainly be achieved by reading up on how a Go server is built and connects to a server.
-\item Obtaining additional required skill set. Some front-end development in HTML5 or Javascript. 
-\item Setting up server with required programs, including e.g. Go compiler and SQL server.
+\item Defining the project -- the introductory phase where we iteratively align our expectations for the project with the customer's expectations.
+\item Learning Go -- this can be done through some very basic Go tutorials but will probably mainly be achieved by reading up on how a Go server is built and connects to a server as well as implementing this setup.
+\item Obtaining additional required skill set: some front-end development in HTML5 or Javascript. 
+\item Setting up the server with required programs, including e.g. Go compiler and SQL server.
 \item Programming the server and its SQL interaction in Go.
-\item Programming front-end
-\item Setting up email server to talk to Go on our VPS
-\item Presenting result to customer for feedback
+\item Programming the front-end.
+\item Setting up email server to talk to Go on our VPS.
+\item Presenting results to customer for feedback.
 \item Testing the programmed logic.
 \end{itemize}
 \subsubsection{Budget and Resources}
+The following resources are required for the project and will be provided by the customer.
 \begin{itemize}
-\item VPS or dedicated server (DIKU supplies)
-\item access to a mail server (Oleks researches)
-\item Domain or subdomain to host the PGP registration website
+\item VPS or dedicated server.
+\item access to a mail server (Oleks researches).
+\item Subdomain on customer's server to host the PGP registration website.
 \item SSL certificate to defeat man-in-the-middle attack where an attacker sends a fake public PGP key to the server.
-\item time resources: As of yet unknown but we expect that large parts of the programming can be solved at intencive work weekends
+\item time resources: As of yet unknown but we expect that large parts of the programming can be solved at intensive work weekends.
 \end{itemize}
 \subsubsection{Description of Risks}
-There is a risk that learning Go will be to complex a task for us to master in time. To mitigate this risk, a deadline for some basic server functionality, using Go, should be made. We set a deadline for May 10$^{th}$ for getting the VPS to connect to the database through Go.
+\begin{itemize}
+\item There is a risk that learning Go will be too complex a task for us to master in time. To mitigate this risk, a deadline for some basic server functionality, using Go, should be made. We set a deadline for May 1$^{st}$ for getting the VPS to connect to the database through Go. This task requires basic Go knowledge and will test our basic Go abilities.
+\item During the security audit, serious vulnerabilities could necessitate major restructuring of the code base.
+\end{itemize}
 \subsection{Initial software
 architecture}
 See Figure \ref{fig:ISA}
