@@ -98,14 +98,19 @@ We can use the KU login in order to establish this mapping and this mapping can 
 \begin{itemize}
 \item A student has just started on the course ``Maskinarkitektur'' (Processor Design). He learns that he has to hand in the assignment by signing it with an OpenPGP key. He must then generate his own key pair using a designated program like ``GPG4Win'' or through a webservice developed as a part of this project and hosted by KU. After the key pair has been generated, the student uploads his public key to a server and the server then stores the KU Username and the public key. 
 \item When the student hands in his assignment, he signs it with his newly generated private key. And the signature is then uploaded along with the assignment. A teacher is grading the assignments that has been handed in on the course ``Maskinarkitektur''. Before he grades them, he needs to check the validity of the identity of the student. This check can either be done automatically by software that interfaces with the system developed as part of this project or manually by the teacher.
+\item All teachers have their OpenPGP-keys on the service and sign all feedback.
 \end{itemize}
 \subsubsection{Functional Requirements}
 \begin{itemize}
 \item The system must map a KU Username to a PGP public key.
 \item Users must be able to upload keys to a table in a database.
-\item The upload and initial authentication happens through the KU email system.
+% skriv om!
+\item The upload and initial authentication happens through the KU email system. (gælder også for replacement)
 \item Lookups in this must be possible for university staff involved in teaching.
+%skal skrives om!
+\item must not be able for outsiders
 \item If a user loses his private key, a method for replacing the public key must exits.
+\item A guide for creating key pairs needs to be on the front-end (possibly as a shell script.) These guides should include how to extract a RSA-key (SSH-key) from the created OpenPGP-key.
 \end{itemize}
 \subsubsection{Nunfunctional Requirements}
 \begin{itemize}
@@ -121,6 +126,7 @@ We can use the KU login in order to establish this mapping and this mapping can 
 \subsubsection{Delivarables and Deadlines}\label{sec:deadlines}
 \begin{itemize}
 \item The whole project must be done by June 3$^{rd}$, 2015.
+%der kan godt være del-produkter.
 \end{itemize}
 \subsection{Initial Software Project Management Plan}
 \subsubsection{Work Breakdown}
@@ -171,7 +177,7 @@ architecture}
 See Figure \ref{fig:ISA}
 \begin{figure}
 \centering
-\includegraphics[width=1.1\textwidth]{Pictures/pksu_isa_centered.png}
+\includegraphics[width=1.1\textwidth]{pictures/pksu_isa_centered.png}
 \caption{Initial software architecture of the project. Our project includes coding the database, web server, and front-end.}
 \label{fig:ISA}
 \end{figure}
