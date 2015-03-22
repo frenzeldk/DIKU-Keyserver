@@ -1,0 +1,20 @@
+Oleks undersøger interface hvilke tilgangsmuligheder, der ønskes til databasen.
+
+Kun lukket API, intet offentligt look-up. Der gemmes pupkey og abc123 (ku-brugernavn).
+key-server i stil med MIT-keyserver er nice-to-have. Man bliver kun listet her, hvis man eksplicit ønsker dette.
+
+
+Den studerende uploader en fil til afleveringssystemet (uden anden information). Afleveringssystemet anmoder om par af PubKey & KU-ID og undersøger om filen er signeret af denne nøgle. Hvis ikke, så anmodes næste par indtil det korrekte par er fundet. Dette returneres til underviser.
+
+//Kommentarer til ISA-diagram
+
+Fjern Admin-login fra (der er sshd-adgang til serveren anyways.)
+
+Front-end til client, er response og ikke request
+User guide /shell script ved "Create key"
+
+Beta klar til start/midt maj.
+
+Oleks gives a license (MIT-like)
+
+Oleks anmoder om at der sendes en dagsorden 24 timer før fremtidige møder
