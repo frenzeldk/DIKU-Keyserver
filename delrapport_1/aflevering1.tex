@@ -206,6 +206,14 @@ The purpose of the Project Agreement Definition (PAD) is to outline the Project 
 \end{itemize}
 \subsubsection{Criteria for Demonstrations of Functional Requirement}
 All aspects of the basic functionality must be tested thoroughly. This includes tests of uploading of public keys, replacement of private keys, administrator access to the private keys and more.
+
+\subsubsection{Test suite:}
+
+We will develop a test suite along with the system. This will be used internally to ensure that the logic is sound and that all functions run correctly. Furthermore it will also serve as a way to monitor the progress of the system.\\
+Since multiple developers will be working on the code base, it is a genuine concern that changing the code can course problems throughout the code base. In that case, the test suite will check that such problems are not overlooked since the test suite will highlight the problems.\\
+In the end, the test suite will be extended and be used as a validation of the system. The test suite will serve as the primary validation of the functional requirements. \\\\
+In our specific case, some preliminary test will focus on correct execution of the individual cases. Then as the project evolves and becomes more interwoven, tests will be written also check the more complex functionality.
+
 \subsubsection{Criteria for Demonstrations of Non-functional Requirements}
 All aspects of the website should be tested and look uniform on all four standard web browsers.
 Security-wise, the customer has expressed certain requirements. It must not be possible for non-approved persons to access the list of KU usernames since the university has not published this list and this then would consititute a loss of privacy for the students. It is however acceptable that the usernames are stored in plaintext on the server.
