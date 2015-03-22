@@ -82,7 +82,9 @@
 
 \newpage
 
-\section{Projektdefintion}
+\section{Project Definition}
+\subsection{Overview of the Customer and the Project}
+The Ph.D student Oleks Shturmov at Computer Science at the University of Copenhagen has presented us with the project of mapping KU usernames to public OpenPGP keys and creating the guides for the students and writing the server backend and frontend to accomplish this. This system should be used by the students, the teaching assistants, and the teachers at the university to ensure the authenticity of the identity of the end-user, i.e., the student.
 \subsection{Problem statement}
 \subsubsection{Problem Domain}
 At the University, many courses require the students to hand in assignments. In this modern era, this is done by electronic hand-ins over the World Web Web on the interconnected global network. It is essential to ensure that there can be no doubt of the identity of the student handing in the assignment because the teachers grade the students based on these electronic hand-ins. \\\\
@@ -94,6 +96,7 @@ Another option, which is the subject of this project, is to use asymmetric key e
 The students at the University of Copenhagen all have a unique username in the form of a ``KU Username''. If this username is mapped to a public key and the student holds the equivalent private key, then the authentication of an electronic hand-in has the same degree of trusted authenticity as that of the key pair. \\\\
 
 We can use the KU login in order to establish this mapping and this mapping can be further authenticated by the above-mentioned peer-to-peer key signing although this latter authentication is not necessary for the system to work. I.e., support for peer-to-peer signing in this project is nice-to-have, not need-to-have. As a way to establish this mapping, the KU login is used as a trusted source of linking an identity to a public key. The role, if any, of peer-to-peer signing or key signing by teachers has not yet been established.
+
 \subsubsection{Scenarios}
 \begin{itemize}
 \item A student has just started on the course ``Maskinarkitektur'' (Processor Design). He learns that he has to hand in the assignment by signing it with an OpenPGP key. He must then generate his own key pair using a designated program like ``GPG4Win'' or through a webservice developed as a part of this project and hosted by KU. After the key pair has been generated, the student uploads his public key to a server and the server then stores the KU Username and the public key. 
