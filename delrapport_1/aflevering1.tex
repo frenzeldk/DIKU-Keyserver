@@ -99,7 +99,7 @@ We can use the KU login in order to establish this mapping and this mapping can 
 
 \subsubsection{Scenarios}
 \begin{itemize}
-\item A student has just started on the course ``Maskinarkitektur'' (Processor Design). He learns that he has to hand in the assignment by signing it with an OpenPGP key. He must then generate his own key pair using a designated program like ``GPG4Win'' or through a webservice developed as a part of this project and hosted by KU. After the key pair has been generated, the student uploads his public key to a server and the server then stores the KU Username and the public key. 
+\item A student has just started on the course ``Maskinarkitektur'' (Processor Design). He learns that he has to hand in the assignment by signing it with an OpenPGP key. He must then generate his own key pair using a designated program like ``GPG4Win'' or through a webservice developed as a part of this project and hosted by KU. After the key pair has been generated, the student uploads his public key to a server and the server then stores the KU Username and the public key.
 \item When the student hands in his assignment, he signs it with his newly generated private key. And the signature is then uploaded along with the assignment. A teacher is grading the assignments that has been handed in on the course ``Maskinarkitektur''. Before he grades them, he needs to check the validity of the identity of the student. This check can either be done automatically by software that interfaces with the system developed as part of this project or manually by the teacher.
 \item All teachers have their OpenPGP-keys on the service and sign all feedback. These public keys must be available for the students.
 \end{itemize}
@@ -108,7 +108,7 @@ We can use the KU login in order to establish this mapping and this mapping can 
 \item The system must map a KU Username to a OpenPGP public key.
 \item Users must be able to upload their own public key to the service.
 \item If a user loses his private key, a method for replacing the public key must exist.
-\item The initial registration of a key, and the replacement of a key, is authenticated through the KU email system. 
+\item The initial registration of a key, and the replacement of a key, is authenticated through the KU email system.
 \item Lookups in this table must be possible for the relevant university staff. An API will be defined and implemented for this.
 \item The KU usernames must not be accessible for outsiders.
 \item A guide for creating key pairs needs to be available on the website, possibly as shell script. This guide should explain how to derive an SSH key from an OpenPGP key.
@@ -138,7 +138,7 @@ The following tasks have been identified. The list is subject to change.
 \SubItem Install Go compiler
 \SubItem Install SQLite or postgresql
 \SubItem Create startup script for server to run appropriate programs.
-\item Use golang to connect to database 
+\item Use golang to connect to database
 \item Determine exact method for teachers to fetch data from DB API
 \item Front-end view containing a form for first-time upload of OpenPGP key
 \item Front-end view which enables replacement of key
@@ -157,7 +157,7 @@ We have chosen to divide the project schedule into phases. In the spirit of agil
 \begin{itemize}
 \item Defining the project -- the introductory phase where we iteratively align our expectations for the project with the customer's expectations.
 \item Learning Go -- this can be done through some very basic Go tutorials but will probably mainly be achieved by reading up on how a Go server is built and connects to a server as well as implementing this setup.
-\item Obtaining additional required skill set: some front-end development in HTML5 or Javascript. 
+\item Obtaining additional required skill set: some front-end development in HTML5 or Javascript.
 \item Setting up the server with required programs, including e.g. Go compiler and SQL server.
 \item Programming the server and its SQL interaction in Go.
 \item Programming the front-end.
@@ -204,7 +204,32 @@ The purpose of the Project Agreement Definition (PAD) is to outline the Project 
 All aspects of the basic functionality must be tested thoroughly. This includes tests of uploading of public keys, replacement of private keys, administrator access to the private keys and more.
 \subsubsection{Criteria for Demonstrations of Non-functional Requirements}
 All aspects of the website should be tested and look uniform on all four standard web browsers.
-Security-wise, the customer has expressed certain requirements. It must not be possible for non-approved persons to access the list of KU usernames since the university has not published this list and this then would consititute a loss of privacy for the students. It is however acceptable that the usernames are stored in plaintext on the server. 
+Security-wise, the customer has expressed certain requirements. It must not be possible for non-approved persons to access the list of KU usernames since the university has not published this list and this then would consititute a loss of privacy for the students. It is however acceptable that the usernames are stored in plaintext on the server.
 \subsection{(e)}
 \section{System definition}
+
+
+
+\section{Exercises from weekly Assignments}
+
+\subsection{OOSE 1-6:}
+Specify which of these statements are functional requirements and which are
+nonfunctional requirements\\\\
+- “The TicketDistributor must enable a traveler to buy weekly passes.”\\
+This first requirement is a \textbf{functional} requirement, since it is an essential function of the system.\\\\
+- “The TicketDistributor must be written in Java.”\\
+This is a \textbf{non functional} requirement.\\\\
+- “The TicketDistributor must be easy to use.”\\
+This is a \textbf{nonfunctional} requirement, an reason for this is that it can't be objectively answered. It is not possible too be simply evaluated as easy or hard to use.\\\\
+- “The TicketDistributor must always be available.”\\
+This is a \textbf{functional} requirement. \\\\
+- “The TicketDistributor must provide a phone number to call when it fails.” \\
+This is a \textbf{functional} requirement, since it describes a concrete function of the system.\\
+
+
+\subsection{OOSE 1-8:}
+In the following description, explain when the term account is used as an application domain concept and when as a solution domain concept.\\\\
+In this specific example from the given text, we see the Application Domain is the issue of users not always being online. Which limits the customer to access to their account.\\
+In this specific example from the given text, we see the Solution Domain, as the proposal of giving the user the data from the last connected session.\\
+
 \end{document}
