@@ -64,7 +64,7 @@
 
 \title{
 \vspace{3cm}
-\Large{First partial assignment - PKSU}
+\Large{First Partial Assignment - ProjDat}
 }
 
 \begin{document}
@@ -93,61 +93,60 @@ Another option, which is the subject of this project, is to use asymmetric key e
 
 The students at the University of Copenhagen all have a unique username in the form of a ``KU Username''. If this username is mapped to a public key and the student holds the equivalent private key, then the authentication of an electronic hand-in has the same degree of trusted authenticity as that of the key pair. \\\\
 
-We can use the KU login in order to establish this mapping and this mapping can be further authenticated by the above-mentioned peer-to-peer key signing although this latter authentication is not necessary for the system to work. As a way to establish this mapping, the KU login pair (KU Username and KU password) is used as a trusted source of linking an identity to a public key. The role, if any, of peer-to-peer signing or key signing by teachers has not yet been established.
+We can use the KU login in order to establish this mapping and this mapping can be further authenticated by the above-mentioned peer-to-peer key signing although this latter authentication is not necessary for the system to work. I.e., support for peer-to-peer signing in this project is nice-to-have, not need-to-have. As a way to establish this mapping, the KU login is used as a trusted source of linking an identity to a public key. The role, if any, of peer-to-peer signing or key signing by teachers has not yet been established.
 \subsubsection{Scenarios}
 \begin{itemize}
 \item A student has just started on the course ``Maskinarkitektur'' (Processor Design). He learns that he has to hand in the assignment by signing it with an OpenPGP key. He must then generate his own key pair using a designated program like ``GPG4Win'' or through a webservice developed as a part of this project and hosted by KU. After the key pair has been generated, the student uploads his public key to a server and the server then stores the KU Username and the public key. 
 \item When the student hands in his assignment, he signs it with his newly generated private key. And the signature is then uploaded along with the assignment. A teacher is grading the assignments that has been handed in on the course ``Maskinarkitektur''. Before he grades them, he needs to check the validity of the identity of the student. This check can either be done automatically by software that interfaces with the system developed as part of this project or manually by the teacher.
-\item All teachers have their OpenPGP-keys on the service and sign all feedback.
+\item All teachers have their OpenPGP-keys on the service and sign all feedback. These public keys must be available for the students.
 \end{itemize}
 \subsubsection{Functional Requirements}
 \begin{itemize}
-\item The system must map a KU Username to a PGP public key.
-\item Users must be able to upload keys to a table in a database.
-% skriv om!
-\item The upload and initial authentication happens through the KU email system. (gælder også for replacement)
-\item Lookups in this must be possible for university staff involved in teaching.
-%skal skrives om!
-\item must not be able for outsiders
-\item If a user loses his private key, a method for replacing the public key must exits.
-\item A guide for creating key pairs needs to be on the front-end (possibly as a shell script.) These guides should include how to extract a RSA-key (SSH-key) from the created OpenPGP-key.
+\item The system must map a KU Username to a OpenPGP public key.
+\item Users must be able to upload their own public key to the service.
+\item If a user loses his private key, a method for replacing the public key must exist.
+\item The initial registration of a key, and the replacement of a key, is authenticated through the KU email system. 
+\item Lookups in this table must be possible for the relevant university staff. An API will be defined and implemented for this.
+\item The KU usernames must not be accessible for outsiders.
+\item A guide for creating key pairs needs to be available on the website, possibly as shell script. This guide should explain how to derive an SSH key from an OpenPGP key.
 \end{itemize}
 \subsubsection{Nunfunctional Requirements}
 \begin{itemize}
 \item The backend should be written in golang.
-\item The frontend should be Javascript and/or HTML5 (that which is safest and most easy to use -- not yet fully determined).
-\item The system should be browser independent. 
+\item The frontend should be Javascript and/or HTML5, which ever is safest and most easy to use.
+\item The system should be browser independent.
 \end{itemize}
 \subsubsection{Target Environment}
 \begin{itemize}
-\item The frontend must work on the newest editions of all mainstream browsers (IE, FF, Chrome, Safari).
-\item The backend software must be able to run on any Unix-based system.
+\item The frontend must work on the newest editions of all mainstream browsers -- Internet Explorer, Firefox, Chrome, Safari.
+\item The backend software must be able to run on the most popular Unix-like systems.
 \end{itemize}
 \subsubsection{Delivarables and Deadlines}\label{sec:deadlines}
 \begin{itemize}
+\item A preliminary version must be ready for testing and security auditing by mid May.
 \item The whole project must be done by June 3$^{rd}$, 2015.
-%der kan godt være del-produkter.
-\item Beta ready at start/mid may.
 \end{itemize}
 \subsection{Initial Software Project Management Plan}
 \subsubsection{Work Breakdown}
 The following tasks have been identified. The list is subject to change.
 \begin{itemize}
-\item Set up VPS to start Go-server and make database and create database schema upon startup.
+\item Acquire VPS
+\item Initial set-up of VPS
 \SubItem Install Go compiler
 \SubItem Install SQLite or postgresql
 \SubItem Create startup script for server to run appropriate programs.
-\item Use golang to connect to database. 
-\item Determine exact method for teacher's to fetch data from DB
-\item Front-end view containing a form for first-time upload of OpenPGP key.
-\item Front-end view which enables updating/replacement of key.
-\item Mail server to send links for students to upload OpenPGP key.
+\item Use golang to connect to database 
+\item Determine exact method for teachers to fetch data from DB API
+\item Front-end view containing a form for first-time upload of OpenPGP key
+\item Front-end view which enables replacement of key
+\item Mail server to send links for students to upload OpenPGP key
+\SubItem System that creates signed single-use links for key upload
 \end{itemize}
 \subsubsection{Roles \& Responsibilities}
 This group consists of Mads Gram, Sven Frenzel, and Thorkil Værge. The roles and responsibilities have not yet been delegated. So instead, we choose to describe our individual skill set.
 \begin{itemize}
-\item Mads Gram: Can code Javascript for front-end, some knowledge of MVC architecture, SQL and general db knowledge
-\item Sven Frenzel: Linux server administration, basic network administration.
+\item Mads Gram: Can code Javascript for front-end, some knowledge of MVC architecture, SQL and general DB knowledge
+\item Sven Frenzel: Linux server administration, basic network administration. Has experience with HTML and CSS and is a proficient bash scripter.
 \item Thorkil Værge: Some experience in project management of website development, SQL experience from DB course, some front-end experience with HTML and CSS. Theoretical knowledge of hashes and cryptography and practical knowledge of internet security.
 \end{itemize}
 \subsubsection{Project Schedule}
