@@ -293,7 +293,34 @@ Even moar random text \\
 
 \section{Appendix}
 \subsection{Minutes from March 16th 2015}
+\begin{itemize}
+\item Ønsker: identificer studerende ved aflevering vha gpg-nøgle
+\item Ønsker: grube med gpg-nøgle og ku-mail knyttet sammen (da der stoles på at den studerende har adgang til sin email)
+\item Autentificering sker igennem unikke links til ku-mail (for at lægge gpg-nøgle op).
+\SubItem 2 muligheder: copy/paste gpg-nøgle eller generer gpg-nøglepar direkte i browseren.
+\item DIKU leverer ssl-certifikat.
+\item Hvorfor ikke bruge eksisterende?
+\item Public index j/n?
+\item modtager ukrypteret nøgle og bruger den til at verificere indholdet - bagefter checkes hashet pubkey mod databasen.
+\item Arbejdsbelastning: 10 timer per person per uger
+\item database: (\underline{ku-nummerplade},hash(pubkey))
+\end{itemize}
+\subsubsection{Krav:}
+\begin{itemize}
+\item registrering gennem webformular og/eller kommandelinje
+\item skal kunne genregistrering
+\item anmodning kodkendes igennem ku-email
+\item kunne vælge om den offentlige nøgle offentliggøres
+\SubItem private by default
+\item private API: få offentlig nøgle og returner brugernavn (kun adgang til DIKU-ansatte)
+\item Sprog
+\SubItem Backend: golang + sql
+\SubItem frontend: html5 + js
+\end{itemize}
 
+næste møde:
+2015-03-22 kl 11-16
+\end{itemize}
 
 \subsection{Minutes from March 22nd 2015}
 \end{document}
