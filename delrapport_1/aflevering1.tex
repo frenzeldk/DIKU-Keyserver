@@ -113,16 +113,13 @@ We can use the KU login in order to establish this mapping and this mapping can 
 
 \subsubsection{Solution Domain}
 
-% Might be redundant, and needs a proof read!
+To solve the aforementioned scenarios we have drafted a solution, which employs a key-server that will act as an authority. It will contain OpenPGP-keys for all users of the system. To validate the users it will use their KU e-mail, which is created by other parts of KU, and thereby validated. A mapping of these two components will be created as core database of the system.\\
 
-To solve the aforementioned scenarios we have drafted a solution, which employs a key-server that will act as an authority. It will contain OpenPGP-keys for all users of the system. To validate the users it will use their KU Email, which is created by other parts of KU, and thereby validated. By having these two components a mapping between them will be made. This will be the database element of the system.\\
+As part of the system, a web-server will be established, which will facilitate the replacement of OpenPGP-keys in the case of loss of a users private key. This web-server also serves as point-of-contact for the initial creation of users. The aforementioned validation will be facilitated by an integrated e-mail server. \\
 
-There will also be a webserver part of the system, which will enable replacement of OpenPGP-keys, if the users should loss their private key. The same webserver will also facilitate the initial creation of users. A mail server will be an integrated part of the system, and will be used in both when replacing and creating accounts.\\
+Upon creation of a user, a unique link, containing all necessary info, will be generated and served to the users KU e-mail. When this link is accessed by the user, they are offered to upload their own OpenPGP-keys, generated in dedicated software like "PGP4Win" or to create a new OpenPGP-key in the browser by using a HTML5/JavaScript based OpenPGP-key generator.\\
 
-Upon creation a unique link will be sent to predetermined addresses that will be a part of a course. When the user opens this link in their browser. They will either have the possibility to upload a premade PGP-key or they will be guided to create a key with help of either software like “GPG4Win” or by using a HTML5/JS generator. \\
-
-If users end up loosing their key, they will be able to replace them by requesting a reset from the website. This will come in form of an email to their KU mail, in this email a unique link to initiate the replacement process.\\
-
+The replacement of the key will be processed in the same way, as the initial upload of a key, with the one exception, that the user manually has to request, that a new upload link will be sent to their KU e-mail.
 
 % :I
 
@@ -209,14 +206,14 @@ The following resources are required for the project and will be provided by the
 \subsection{Initial software architecture}
 See Figure \ref{fig:ISA} \\\\
 
-\begin{figure}[p]
+\begin{figure}[h!]
 \centering
 %\includegraphics[width=1.1\textwidth]{pictures/pksu_isa_centered}
 \includegraphics[width=1.1\textwidth]{pictures/pksu_isa_centered}
 \caption{Initial software architecture of the project. Our project includes coding the database, web server, and front-end.}
 \label{fig:ISA}
 \end{figure}
-\newpage
+
 \subsection{Project Agreement Definition}
 The purpose of the Project Agreement Definition (PAD) is to outline the Project Agreement (PA) which is a contract that we, the developers, and the customer agree upon. A contract defining the duration, cost, deliverables, and minimum requirements for the project should be defined. The sections below are drafts of the contents of the PA which is yet to be fully defined and has \textbf{not} been approved of the customer. The next meeting should have the PA on the agenda.
 \subsubsection{List of Deliverable Documents}\label{sec:deliverables}
