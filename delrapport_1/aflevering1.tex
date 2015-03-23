@@ -103,12 +103,29 @@ The students at the University of Copenhagen all have a unique username in the f
 
 We can use the KU login in order to establish this mapping and this mapping can be further authenticated by the above-mentioned peer-to-peer key signing although this latter authentication is not necessary for the system to work. I.e., support for peer-to-peer signing in this project is nice-to-have, not need-to-have. As a way to establish this mapping, the KU login is used as a trusted source of linking an identity to a public key. The role, if any, of peer-to-peer signing or key signing by teachers has not yet been established.
 
+
 \subsubsection{Scenarios}
 \begin{itemize}
 \item A student has just started on the course ``Maskinarkitektur'' (Processor Design). He learns that he has to hand in the assignment by signing it with an OpenPGP key. He must then generate his own key pair using a designated program like ``GPG4Win'' or through a webservice developed as a part of this project and hosted by KU. After the key pair has been generated, the student uploads his public key to a server and the server then stores the KU Username and the public key.
 \item When the student hands in his assignment, he signs it with his newly generated private key. And the signature is then uploaded along with the assignment. A teacher is grading the assignments that has been handed in on the course ``Maskinarkitektur''. Before he grades them, he needs to check the validity of the identity of the student. This check can either be done automatically by software that interfaces with the system developed as part of this project or manually by the teacher.
 \item All teachers have their OpenPGP-keys on the service and sign all feedback. These public keys must be available for the students.
 \end{itemize}
+
+\subsubsection{Solution Domain}
+
+% Might be redundant, and needs a proof read!
+
+To solve the aforementioned scenarios we have drafted a solution, which employs a key-server that will act as an authority. It will contain OpenPGP-keys for all users of the system. To validate the users it will use their KU Email, which is created by other parts of KU, and thereby validated. By having these two components a mapping between them will be made. This will be the database element of the system.\\
+
+There will also be a webserver part of the system, which will enable replacement of OpenPGP-keys, if the users should loss their private key. The same webserver will also facilitate the initial creation of users. A mail server will be an integrated part of the system, and will be used in both when replacing and creating accounts.\\
+
+Upon creation a unique link will be sent to predetermined addresses that will be a part of a course. When the user opens this link in their browser. They will either have the possibility to upload a premade PGP-key or they will be guided to create a key with help of either software like “GPG4Win” or by using a HTML5/JS generator. \\
+
+If users end up loosing their key, they will be able to replace them by requesting a reset from the website. This will come in form of an email to their KU mail, in this email a unique link to initiate the replacement process.\\
+
+
+% :I
+
 \subsubsection{Functional Requirements}
 \begin{itemize}
 \item The system must map a KU Username to a OpenPGP public key.
@@ -336,7 +353,7 @@ Even moar random text \\
 \SubItem frontend: html5 + js
 \end{itemize}
 
-næste møde: 
+næste møde:
 2015-03-22 kl 11-16
 
 \subsection{Minutes from March 22nd 2015}
