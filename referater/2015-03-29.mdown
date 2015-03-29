@@ -1,0 +1,28 @@
+# Referat 2015-03-29, Oleks vil ikke have fancy ting, bare minimalisme.
+
+
+##Oleks beskriver mere specifikt hvilke services han vil bruge.
+
+Hans valg er som følger:
+
+Han vil helst have vi bruger nginx, dog er apache okay.
+
+![alt text](2015-03-29/server_specific_software.png "Oleks valg af web-service")
+
+###Database?
+  + Er enligt bare en key-value store!
+
+
+Der udover gjorde Oleks det klart at denne service skal være så __minimal__ som muligt. Så han vil __ikke__ have vi bruger nogle af de go frameworks der findes. Siden at denne service bare skal tage sig af mapping.
+
+
+Oleks har kigget på OpenPGP key generation i browser, og vi blev enige om at det er fint. OpenPGP Key bliver genereret i browser og bliver derefter gemt lokalt til senere brug.
+
+
+Der blev fremlagt nogle gode hjemmesider der kan hjælpe med processen.
+
+[Go's egen tutorial til at lave web apps](https://golang.org/doc/articles/wiki/)
+
+[Go + Bootstrap](http://www.codejury.com/go-web-server-with-bootstrap/)
+
+https://gist.github.com/hgfischer/7965620
