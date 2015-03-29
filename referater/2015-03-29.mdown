@@ -26,3 +26,5 @@ Oleks har kigget på OpenPGP key generation i browser, og vi blev enige om at de
 [Go + Bootstrap](http://www.codejury.com/go-web-server-with-bootstrap/)
 
 https://gist.github.com/hgfischer/7965620
+
+[Writing a Go ("golang") Web App with nginx, FastCGI, MySQL, JSON](http://mwholt.blogspot.dk/2013/05/writing-go-golang-web-app-with-nginx.html)
