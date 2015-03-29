@@ -21,10 +21,46 @@ Oleks har kigget på OpenPGP key generation i browser, og vi blev enige om at de
 
 ## Resources for go web services
 
+[](https://tour.golang.org/)
+
 [Go's egen tutorial til at lave web apps](https://golang.org/doc/articles/wiki/)
 
 [Go + Bootstrap](http://www.codejury.com/go-web-server-with-bootstrap/)
 
+[golang HTML templates]( http://golang.org/pkg/html/template/)
+
 https://gist.github.com/hgfischer/7965620
 
 [Writing a Go ("golang") Web App with nginx, FastCGI, MySQL, JSON](http://mwholt.blogspot.dk/2013/05/writing-go-golang-web-app-with-nginx.html)
+
+[HMAC signatrues to avoid Database writes](https://neosmart.net/blog/2015/using-hmac-signatures-to-avoid-database-writes/)
+
+
+
+Oleks mail:
+1. En god sted at starte at lære golang er https://tour.golang.org/
+ikke mindst fordi det minder om en platform man kunne ønske til
+førsteårsstuderende i det nærmere fremtid, hvor de så også kan
+aflevere det kode de sidder og sandboxer.
+
+2. nginx med golang vha. FastCGI
+http://mwholt.blogspot.dk/2013/05/writing-go-golang-web-app-with-nginx.html
+
+3. golang html templates: http://golang.org/pkg/html/template/
+
+4. bootstrap og golang
+http://www.codejury.com/go-web-server-with-bootstrap/ så vi får noget
+fin HTML+CSS+JS.
+
+5. Linket fra sidst:
+https://neosmart.net/blog/2015/using-hmac-signatures-to-avoid-database-writes/
+understøttet af http://golang.org/pkg/crypto/hmac/
+
+Husk at vi forsøger at have så lille et angrebsflade som muligt, så
+undgå DB read+write når man kan for så at undgå at åbne op for
+muligheder for injections unødvendigt. Det er det punkt 5 handler om.
+Naturligvis gælder de almene råd om at sanitere al bruger input
+fortsat.
+
+--
+Oleks
