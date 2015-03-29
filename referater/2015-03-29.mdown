@@ -19,6 +19,20 @@ Der udover gjorde Oleks det klart at denne service skal være så __minimal__ so
 Oleks har kigget på OpenPGP key generation i browser, og vi blev enige om at det er fint. OpenPGP Key bliver genereret i browser og bliver derefter gemt lokalt til senere brug.
 
 
+
+####dikukeys.dk/signup?KU-ID-enc&exptime&Hash#
+
+
+HMAC(Server-nøgle, KU-ID, exptime) = Hash
+
+Enc(server-nøgle-o, KU-ID) = KU-ID-enc
+
+KU-ID-enc, skabes ved brug af symetrisk
+
+Denne server nøgle bliver udskiftet hver 12 time. Der skal være too forskellige nøgler.
+
+
+
 ## Resources for go web services
 
 [](https://tour.golang.org/)
@@ -34,6 +48,7 @@ https://gist.github.com/hgfischer/7965620
 [Writing a Go ("golang") Web App with nginx, FastCGI, MySQL, JSON](http://mwholt.blogspot.dk/2013/05/writing-go-golang-web-app-with-nginx.html)
 
 [HMAC signatrues to avoid Database writes](https://neosmart.net/blog/2015/using-hmac-signatures-to-avoid-database-writes/)
+
 
 
 
