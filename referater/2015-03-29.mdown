@@ -52,7 +52,7 @@ https://gist.github.com/hgfischer/7965620
 
 
 
-Oleks mail:
+### Oleks mail:
 1. En god sted at starte at lære golang er https://tour.golang.org/
 ikke mindst fordi det minder om en platform man kunne ønske til
 førsteårsstuderende i det nærmere fremtid, hvor de så også kan
