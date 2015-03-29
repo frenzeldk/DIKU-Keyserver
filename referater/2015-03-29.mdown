@@ -19,7 +19,7 @@ Der udover gjorde Oleks det klart at denne service skal være så __minimal__ so
 Oleks har kigget på OpenPGP key generation i browser, og vi blev enige om at det er fint. OpenPGP Key bliver genereret i browser og bliver derefter gemt lokalt til senere brug.
 
 
-Der blev fremlagt nogle gode hjemmesider der kan hjælpe med processen.
+## Resources for go web services
 
 [Go's egen tutorial til at lave web apps](https://golang.org/doc/articles/wiki/)
 
