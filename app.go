@@ -7,28 +7,52 @@ import (
 	"net"
 	"net/http"
 	"net/http/fcgi"
-	"strings"
+	"strconv"
+	//	"strings"
 	"time"
 )
 
 type FastCGIServer struct{}
 
 func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
-	resp.Write([]byte("<form>KU-ID:<br><input type='text' name='ku_id'><br><input type='submit' value='Send'></form>"))
+
 	//kuid is the KU ID of the student
-	kuid := req.FormValue("ku_id")
+	kuid := req.FormValue("kuid")
+	//ctime is the time of creation of the link (as unix time)
+	ctime := req.FormValue("ctime")
+	//hash is the padded sha3-512 hash of kuid & ctime)
+	coffee_hash := req.FormValue("hash")
+
 	//rcpt is the e-mail address associated with kuid
-	rcpt := strings.Join([]string{kuid, "alumni.ku.dk"}, "@")
-	//body is the plaintext body of the email.
-	body := `Dette er epostens krop.
-	         linjeskifte laves ved at have regulære linjeskift.`
-	//only send an email if rcpt has a value. This needs to be changed to regex for a valid e-email adress (user@domain.tld)
-	if rcpt != "@alumni.ku.dk" {
-		mail.Send(rcpt, body)
+	//rcpt := strings.Join([]string{kuid, "alumni.ku.dk"}, "@")
+	rcpt := kuid
+
+	if kuid == "" {
+		resp.Write([]byte("<form>KU-ID:<br><input type='text' name='kuid'><br><input type='submit' value='Send'></form>"))
+	} else if coffee_hash == "" {
+		ctime = strconv.FormatInt(time.Now().Unix(), 10)
+		coffee_hash = string(hash.GetHash(kuid, ctime)[:])
+
+		//body is the plaintext body of the email.
+		body := `Dette er epostens krop.
+                 linjeskifte laves ved at have regulære linjeskift.
+	             linket er: http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
+		//only send an email if rcpt has a value. This needs to be changed to regex for a valid e-email adress (user@domain.tld)
+		if rcpt != "@alumni.ku.dk" {
+			mail.Send(rcpt, body)
+		}
+		resp.Write([]byte("<p>Registration e-mail sent!</p>"))
+	} else if string(hash.GetHash(kuid, ctime)[:]) == coffee_hash {
+		resp.Write([]byte("<form>public key:<br><input type='text' name='pubkey'><br><input type='submit' value='Send'></form>"))
+		pubkey := req.FormValue("pubkey")
+		fmt.Println(pubkey)
+	} else {
+		resp.Write([]byte("<p>Not a valid link!</p>"))
 	}
-	fmt.Println("A mail has been sent to:", rcpt)
-	fmt.Println(time.Now())
-	fmt.Println("Deres Hash var", hash.GetHash(rcpt))
+
+	//fmt.Println("A mail has been sent to:", rcpt)
+	//fmt.Println(time.Now().Unix())
+	//fmt.Println("Deres Hash var", hash.GetHash(rcpt))
 }
 
 func main() {
