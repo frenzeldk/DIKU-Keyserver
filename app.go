@@ -7,8 +7,8 @@ import (
 	"net"
 	"net/http"
 	"net/http/fcgi"
+	"strings"
 	"time"
-	//  "strings"
 )
 
 type FastCGIServer struct{}
@@ -23,7 +23,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	body := `Dette er epostens krop.
 	         linjeskifte laves ved at have regulære linjeskift.`
 	//only send an email if rcpt has a value. This needs to be changed to regex for a valid e-email adress (user@domain.tld)
-	if rcpt != "" {
+	if rcpt != "@alumni.ku.dk" {
 		mail.Send(rcpt, body)
 	}
 	fmt.Println("A mail has been sent to:", rcpt)
