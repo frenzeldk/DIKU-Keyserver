@@ -1,0 +1,13 @@
+Dette er blot en idé til logikken:
+kuid, hash & ctime er link?flag. ctime står for creation time, da det er lige så fint at gemme creation time og så have server-side logik for at tjekke om det er mindre en 12 timer gammelt. Dette tager ikke hensyn til at nøglen skifter hver 12. time.
+
+if kuid=""
+  serve form
+else
+  if hash=""
+    send email & serve e-mail sent
+  else
+    if hash.GetHash(kuid + ctime + secret) = hash AND ctime > time.Now().Unix()-43200
+      serve pgp-form
+    else
+      serve link-not-valid
