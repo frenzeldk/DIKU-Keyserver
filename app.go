@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/hex"
 	"fmt"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/hash"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/mail"
@@ -23,6 +24,8 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	//hash is the padded sha3-512 hash of kuid & ctime)
 	coffee_hash := req.FormValue("hash")
 
+	pubkey := req.FormValue("pubkey")
+
 	//rcpt is the e-mail address associated with kuid
 	//rcpt := strings.Join([]string{kuid, "alumni.ku.dk"}, "@")
 	rcpt := kuid
@@ -31,7 +34,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		resp.Write([]byte("<form>KU-ID:<br><input type='text' name='kuid'><br><input type='submit' value='Send'></form>"))
 	} else if coffee_hash == "" {
 		ctime = strconv.FormatInt(time.Now().Unix(), 10)
-		coffee_hash = string(hash.GetHash(kuid, ctime)[:])
+		coffee_hash = hex.EncodeToString(hash.GetHash(kuid, ctime)[:])
 
 		//body is the plaintext body of the email.
 		body := `Dette er epostens krop.
@@ -42,10 +45,8 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 			mail.Send(rcpt, body)
 		}
 		resp.Write([]byte("<p>Registration e-mail sent!</p>"))
-	} else if string(hash.GetHash(kuid, ctime)[:]) == coffee_hash {
+	} else if hex.EncodeToString(hash.GetHash(kuid, ctime)[:]) == coffee_hash {
 		resp.Write([]byte("<form>public key:<br><input type='text' name='pubkey'><br><input type='submit' value='Send'></form>"))
-		pubkey := req.FormValue("pubkey")
-		fmt.Println(pubkey)
 	} else {
 		resp.Write([]byte("<p>Not a valid link!</p>"))
 	}
@@ -53,6 +54,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	//fmt.Println("A mail has been sent to:", rcpt)
 	//fmt.Println(time.Now().Unix())
 	//fmt.Println("Deres Hash var", hash.GetHash(rcpt))
+	fmt.Println(pubkey)
 }
 
 func main() {
