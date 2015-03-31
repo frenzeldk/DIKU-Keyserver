@@ -2,9 +2,10 @@ package main
 
 import (
 	"encoding/hex"
-	"fmt"
+	//"fmt"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/hash"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/mail"
+	"html/template"
 	"net"
 	"net/http"
 	"net/http/fcgi"
