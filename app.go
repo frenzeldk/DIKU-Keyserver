@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/hex"
-	"fmt"
+	//"fmt"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/hash"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/mail"
 	"html/template"
@@ -60,13 +60,16 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		KUID string
 		PUBKEY string
 	}
-	cuser := User{"cdn769", "secretpubkey1234"}
+	if kuid != "" { if pubkey != "" {
+	cuser := User{kuid, pubkey}
 	tmpl, err := template.New("test").Parse("{{.KUID}} has submitted the public key {{.PUBKEY}}")
 	if err != nil {panic(err)}
 	err = tmpl.Execute(os.Stdout, cuser)
-	if err != nil { panic(err)}
+	if err != nil { panic(err)}	
+	}}
+	
 	//fmt.Println(out)
-	fmt.Println(pubkey)
+	//fmt.Println(pubkey)
 }
 
 func main() {
