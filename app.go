@@ -54,7 +54,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	//fmt.Println("A mail has been sent to:", rcpt)
 	//fmt.Println(time.Now().Unix())
 	//fmt.Println("Deres Hash var", hash.GetHash(rcpt))
-	type User struct {
+	/* type User struct {
 		KUID string
 		PUBKEY string
 	}
@@ -63,8 +63,10 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	if err != nil {panic(err)}
 	err = tmpl.Execute(out, cuser)
 	if err != nil { panic(err)}
-	fmt.Println(out)
+	fmt.Println(out) */
 	//fmt.Println(pubkey)
+	t, err := template.New("foo").Parse(`{{define "T"}}Hello, {{.}}!{{end}}`)
+	err = t.ExecuteTemplate(out, "T", "<script>alert('you have been pwned')</script>")
 }
 
 func main() {
