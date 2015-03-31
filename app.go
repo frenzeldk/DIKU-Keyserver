@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/hex"
-	//"fmt"
+	"fmt"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/hash"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/mail"
 	"html/template"
@@ -11,7 +11,7 @@ import (
 	"net/http/fcgi"
 	"os"
 	"strconv"
-	//	"strings"
+	//"strings"
 	"time"
 )
 
@@ -56,19 +56,17 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	//fmt.Println("A mail has been sent to:", rcpt)
 	//fmt.Println(time.Now().Unix())
 	//fmt.Println("Deres Hash var", hash.GetHash(rcpt))
-	/* type User struct {
+	type User struct {
 		KUID string
 		PUBKEY string
 	}
 	cuser := User(kuid, pubkey)
 	tmpl, err := template.New("test").Parse("{{.KUID}} has submitted the public key {{.PUBKEY}}")
 	if err != nil {panic(err)}
-	err = tmpl.Execute(out, cuser)
+	err = tmpl.Execute(os.Stdout, cuser)
 	if err != nil { panic(err)}
-	fmt.Println(out) */
-	//fmt.Println(pubkey)
-	t, err := template.New("foo").Parse(`{{define "T"}}Hello, {{.}}!{{end}}`)
-	err = t.ExecuteTemplate(os.Stdout, "T", "<script>alert('you have been pwned')</script>")
+	//fmt.Println(out)
+	fmt.Println(pubkey)
 }
 
 func main() {
