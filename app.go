@@ -60,7 +60,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		KUID string
 		PUBKEY string
 	}
-	cuser := User("cdn769", "secretpubkey1234")
+	cuser := User{"cdn769", "secretpubkey1234"}
 	tmpl, err := template.New("test").Parse("{{.KUID}} has submitted the public key {{.PUBKEY}}")
 	if err != nil {panic(err)}
 	err = tmpl.Execute(os.Stdout, cuser)
