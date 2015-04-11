@@ -149,18 +149,83 @@ Non-functional requirements are system requirements which do not describe the ac
 \subsection{Use case model}
 
 \subsection{Specific use case models}
-\begin{tabular}{ll}
+
+\subsubsection{Use case: Upload key}
+\begin{tabular}{l p{0.8\textwidth}}
     \toprule
     \textit{Use case name} & Upload key \\
     \midrule
+    \textit{Participating} & Students \\ 
+    \textit{actors} & \\
+    \midrule
+    \textit{Flow of events} & 
+    \vspace{-6.7mm} \begin{enumerate}
+        \item Student follows link to dikukeys in invitation email OR student goes to dikukeys directly.
+        \item Student enter their KU Username into a form.
+        \item Server sends activation email to student's KU-email address.
+        \item Student follows link in activation email.
+        \item Student posts their public key into a form or generates a key pair in the browser
+        \item Server sends email which confirms that a key has been uploaded.
+    \end{enumerate}
+    \\
+    \midrule
+    \textit{Entry condition} & User has an active KU-ID. \\
+                             & User is not registered in the system. \\
+    \midrule
+    \textit{Exit conditions} & User is registered in the system with a public key. \\
+    \bottomrule
+\end{tabular}
+
+\subsubsection{Use case: Replace key}
+\begin{tabular}{l p{0.8\textwidth}}
+    \toprule
+    \textit{Use case name} & Replace key \\
+    \midrule
+    \textit{Participating} & Students \\ 
+    \textit{actors} & \\
+    \midrule
+    \textit{Flow of events} & 
+    \vspace{-6.7mm} \begin{enumerate}
+        \item Student goes to dikukeys.
+        \item Student enter their KU Username into a form.
+        \item Server sends replacement email to student's KU-email address.
+        \item Student follows link in replacement email.
+        \item Student posts their new public key into a form or generates a new key pair in the browser
+        \item Server sends email which confirms that the new key has been uploaded.
+    \end{enumerate}
+    \\
+    \midrule
+    \textit{Entry condition} & Student is already registered user in the system. \\
+    \midrule
+    \textit{Exit conditions} & The new key has been registered in the system. \\
+    \bottomrule
+\end{tabular}
+
+\subsubsection{Use case: Invite group of students}
+\begin{tabular}{l p{0.8\textwidth}}
+    \toprule
+    \textit{Use case name} & Invite group of students\\
+    \midrule
     \textit{Participating} & Course director \\ 
-    \textit{actors}& Students \\
+    \textit{actors} & System administrator \\
     \midrule
-    \textit{Flof of events} &  \\
+    \textit{Flow of events} & 
+    \vspace{-6.7mm} \begin{enumerate}
+        \item Course director sends list of students and information about course to system administrator.
+        \item System administator submits list of students course-information to the server via ssh.
+        \item Server checks if students already are in the system. Depending on the answer one of the following two happens:
+        \item
+        \begin{enumerate}
+            \item If the student is \textbf{not} already registered, the server sends invitation email to the KU-email address of the student.
+            \item If the student is already registered, the server sends an email to the student informing them that the system will be used in the course.
+        \end{enumerate}
+    \end{enumerate}
+    \\
     \midrule
-    \textit{Entry condition} &  \\
+    \textit{Entry condition} & User is course director \\
+                             & User has a list of students \\
     \midrule
-    \textit{Exit conditions} &  \\
+    \textit{Exit conditions} & All students from the list have either received an invitation to the system or have been informed that the system will be used in the course. \\
     \bottomrule
 \end{tabular}
 
