@@ -33,7 +33,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	rcpt := kuid
 
 	if kuid == "" {
-		resp.Write([]byte("<form>KU-ID:<br><input type='text' name='kuid'><br><input type='submit' value='Send'></form>"))
+		resp.Write([]byte("<form>KU-ID:<br><input type='text' name='kuid'>@alumni.ku.dk<br><input type='submit' value='Send'></form>"))
 	} else if coffee_hash == "" {
 		ctime = strconv.FormatInt(time.Now().Unix(), 10)
 		coffee_hash = hex.EncodeToString(hash.GetHash(kuid, ctime)[:])
