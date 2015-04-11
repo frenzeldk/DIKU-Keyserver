@@ -57,17 +57,22 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	//fmt.Println(time.Now().Unix())
 	//fmt.Println("Deres Hash var", hash.GetHash(rcpt))
 	type User struct {
-		KUID string
+		KUID   string
 		PUBKEY string
 	}
-	if kuid != "" { if pubkey != "" {
-	cuser := User{kuid, pubkey}
-	tmpl, err := template.New("test").Parse("{{.KUID}} has submitted the public key {{.PUBKEY}}")
-	if err != nil {panic(err)}
-	err = tmpl.Execute(os.Stdout, cuser)
-	if err != nil { panic(err)}	
-	}}
-	
+	if kuid != "" {
+		if pubkey != "" {
+			cuser := User{kuid, pubkey}
+			tmpl, err := template.New("test").Parse("{{.KUID}} has submitted the public key {{.PUBKEY}}")
+			if err != nil {
+				panic(err)
+			}
+			err = tmpl.Execute(os.Stdout, cuser)
+			if err != nil {
+				panic(err)
+			}
+		}
+	}
 	//fmt.Println(out)
 	//fmt.Println(pubkey)
 }
