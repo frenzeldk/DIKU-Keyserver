@@ -2,3 +2,4 @@
 *.out
 *.fdb_latexmk
 *.log
+*.toc
