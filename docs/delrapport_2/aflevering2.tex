@@ -32,7 +32,7 @@
 %\usepackage{gauss} % Gauss Matrix
 \usepackage{float} % This will allow precise picture placement, use [H].
 \usepackage{enumitem}
-\usepackage{hyperref}
+\usepackage{hyperref} % Url's
 \usepackage{microtype}
 \usepackage{booktabs} % This package provide some additional commands to enhance the quality of tables in LaTeX.
 \usepackage{listings} % code parsing.
@@ -143,24 +143,29 @@ Non-functional requirements are system requirements which do not describe the ac
 \item The system must be compliant with all standards and regulations imposed by the Government of Denmark and the University of Copenhagen. These regulations concern privacy and restriction of access to the KU usernames that are part of the system. Specifically the KU usernames in the system must not be accessible to non-privileged users\footnote{This will be relevant system administrators, lectors, and TAs.}.
 \item The customer has decreed that the software be licensed under a MIT-like license which will be provided by the customer.
 \item The system should be able to decode the different .csv-formats (comma, semicolon, tab) for student lists.
-\item The front-end must be responsive in its layout. This is achieved by using bootstrap\footnote{http://getbootstrap.com/}.
+\item The front-end must be responsive in its layout. This is achieved by using bootstrap\footnote{\href{http://getbootstrap.com/}{http://getbootstrap.com/}}.
 \end{itemize}
 
 \subsection{Use case model}
+
+Figure \ref{fig:use_case_diagram_high_level} represents a high-level model, with a emphasis on defining actions for actors.
+
+% Think about moving text and diagram under the specific use case, rather than here!
+In figure \ref{fig:use_case_diagram_example} we have modeled the more specific use case for uploading a key.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_high}
-\caption{High level use case diagram.}
+\caption{High-level use case diagram.}
 \label{fig:use_case_diagram_high_level}
 \end{figure}
 
 
-In the figure
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_example}
-\caption{High level use case diagram.}
+\caption{Specific example of use case for upload key.}
 \label{fig:use_case_diagram_example}
 \end{figure}
 
