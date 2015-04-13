@@ -97,17 +97,17 @@
 
 \newpage
 
-\chapter{Literature Review}
+\chapter{Literature Review}\label{ch:Literature_Review}
 
 \section{Gould \& Lewis -- Designing for Usability}
 
 \section{Parnas \& Clements -- A Rational Design Process}
 
-\chapter{Project Report}
+\chapter{Project Report}\label{ch:Project_Report}
 
-\section{Abstract}
+\section{Abstract}\label{sec:Abstract}
 
-\section{Purpose and Framework for the project}
+\section{Purpose and Framework for the project}\label{sec:Purpose_Framework}
 This definition is based on the FACTOR criteria which serves the purpose of providing the structure for a systems definition.
 \begin{itemize}
 \item \textbf{F}unctionality: The purpose of the system is to allow specific students and employees at the University of Copenhagen to map their username to a public PGP key and store these records in a database maintained by the customer. The system must also allow the same users to replace their public key in case they lose the corresponding private key. The mappings should be readable by specific users with privileged access through some login mechanism.
@@ -119,9 +119,9 @@ This definition is based on the FACTOR criteria which serves the purpose of prov
 \end{itemize}
 
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
-\section{Specification of Requirements for the IT Solution}
+\section{Specification of Requirements for the IT Solution}\label{sec:Requirements}
 \subsection{Functional and Non-Functional Requirements}
-\subsubsection{Functional Requirements}
+\subsubsection{Functional Requirements}\label{subsubsec:Functional_Req}
 The functional requirements describe features which are essential to the success of the project and describe actual functionality for the end-user or system administrator. The following are deemed functional requirements:
 \begin{itemize}
 \item The system must map a KU Username to an OpenPGP public key.
@@ -134,7 +134,7 @@ The functional requirements describe features which are essential to the success
 \item A way for an administrator to send email invitations to join the system to a list of students.
 \end{itemize}
 
-\subsubsection{Non-functional Requirements}
+\subsubsection{Non-functional Requirements}\label{subsubsec:Non_Functional_Req}
 Non-functional requirements are system requirements which do not describe the actual functionality but instead describe either non-essential systems, internal architecture, or design.
 \begin{itemize}
 \item The back-end should be written in golang.
@@ -146,7 +146,7 @@ Non-functional requirements are system requirements which do not describe the ac
 \item The front-end must be responsive in its layout. This is achieved by using bootstrap\footnote{\href{http://getbootstrap.com/}{http://getbootstrap.com/}}.
 \end{itemize}
 
-\subsection{Use case model}
+\subsection{Use case model}\label{subsec:Use_case_model}
 
 Figure \ref{fig:use_case_diagram_high_level} represents a high-level model, with a emphasis on defining actions for actors.
 
@@ -169,7 +169,7 @@ In figure \ref{fig:use_case_diagram_example} we have modeled the more specific u
 \label{fig:use_case_diagram_example}
 \end{figure}
 
-\subsection{Specific use case models}
+\subsection{Specific use case models}\label{subsec:Specific_Use_case_model}
 
 \subsubsection{Use case: Upload key}
 \begin{tabular}{l p{0.8\textwidth}}
@@ -250,9 +250,9 @@ In figure \ref{fig:use_case_diagram_example} we have modeled the more specific u
     \bottomrule
 \end{tabular}
 
-\section{Systemdesign sammenfatning}
+\section{Systemdesign sammenfatning}\label{sec:Systemdesign_sammenfatning}
 
-\section{Program- og systemtest}
+\section{Program- and systemtests}\label{sec:Program_systemtests}
 
 \section{Brugergrænseflade og interaktionsdesign}
 
@@ -275,14 +275,14 @@ The students at the University of Copenhagen all have a unique username in the f
 We can use the KU login in order to establish this mapping and this mapping can be further authenticated by the above-mentioned peer-to-peer key signing although this latter authentication is not necessary for the system to work. In other words: support for peer-to-peer signing in this project is nice-to-have, not need-to-have. As a way to establish this mapping, the KU login is used as a trusted source of linking an identity to a public key. The role, if any, of peer-to-peer signing or key signing by teachers has not yet been established.
 
 
-\subsubsection{Scenarios}
+\subsubsection{Scenarios}\label{Scenarios}
 \begin{itemize}
 \item A student has just started on the course ``Maskinarkitektur'' (Processor Design). He learns that he has to hand in the assignment by signing it with an OpenPGP key. He must then generate his own key pair using a designated program like ``GPG4Win'' or through a webservice developed as a part of this project and hosted by KU. After the key pair has been generated, the student uploads his public key to a server and the server then stores the KU Username and the public key.
 \item When the student hands in his assignment, he signs it with his newly generated private key. And the signature is then uploaded along with the assignment. A teacher is grading the assignments that have been handed in on the course ``Maskinarkitektur''. Before he grades them, he needs to check the validity of the identity of the student. This check can either be done automatically by software that interfaces with the system developed as part of this project or manually by the teacher.
 \item A teacher signs feedback with an OpenPGP-key. The student then looks up the OpenPGP public key of the teacher and validates the signature.
 \end{itemize}
 
-\subsubsection{Solution Domain}
+\subsubsection{Solution Domain}\label{Solution Domain}
 
 To solve the aforementioned scenarios, we have drafted a solution which employs a key-server that will act as an authority. It will contain OpenPGP-keys for all users of the system. To validate the users it will use their KU email, which is created by other parts of KU, and thereby validated. A mapping of these two components will be created as core database of the system.
 
@@ -294,7 +294,7 @@ The replacement of the key will be processed in the same way, as the initial upl
 
 % :I
 
-\subsubsection{Functional Requirements}
+\subsubsection{Functional Requirements}\label{Functional_Requirements}
 \begin{itemize}
 \item The system must map a KU Username to a OpenPGP public key.
 \item Users must be able to upload their own public key to the service.
@@ -390,7 +390,6 @@ The user can land on two different pages depending on what they are after. One p
 
 \begin{figure}[h!]
 \centering
-%\includegraphics[width=1.1\textwidth]{pictures/pksu_isa_centered}
 \includegraphics[width=1.1\textwidth]{pictures/pksu_isa_centered}
 \caption{Initial software architecture of the project. Our project includes coding the database, web server, and front-end.}
 \label{fig:ISA}
