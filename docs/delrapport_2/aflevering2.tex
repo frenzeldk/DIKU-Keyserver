@@ -21,8 +21,7 @@
 
 
 
-\usepackage{courier}
-\usepackage{amsmath}
+\usepackage{courier} % The font we use.
 \usepackage[a4paper, hmargin={2.8cm, 2.8cm}, vmargin={2.5cm, 2.5cm}]{geometry}
 \usepackage{eso-pic} % \AddToShipoutPicture
 \usepackage{graphicx} % \includegraphics
@@ -30,13 +29,14 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsfonts,amsmath,amssymb}
 \usepackage[colorinlistoftodos]{todonotes}
-\usepackage{gauss}
+%\usepackage{gauss} % Gauss Matrix
+\usepackage{float} % This will allow precise picture placement, use [H].
 \usepackage{enumitem}
-\usepackage{hyperref}
+\usepackage{hyperref} % Url's
 \usepackage{microtype}
-\usepackage{booktabs}
-\usepackage{listings} %code parsing
-\lstset{language=bash} %java code
+\usepackage{booktabs} % This package provide some additional commands to enhance the quality of tables in LaTeX.
+\usepackage{listings} % code parsing.
+\lstset{language=bash} % Set bash syntax.
 \newcommand{\code}[1]{\texttt{#1}}
 
 \newlist{SubItemList}{itemize}{1}
@@ -74,7 +74,7 @@
 
 \title{
 \vspace{3cm}
-\Large{First Partial Assignment - ProjDat}
+\Large{Second Partial Assignment - ProjDat}
 }
 
 \begin{document}
@@ -97,31 +97,31 @@
 
 \newpage
 
-\chapter{Literature Review}
+\chapter{Literature Review}\label{ch:Literature_Review}
 
 \section{Gould \& Lewis -- Designing for Usability}
 
 \section{Parnas \& Clements -- A Rational Design Process}
 
-\chapter{Project Report}
+\chapter{Project Report}\label{ch:Project_Report}
 
-\section{Abstract}
+\section{Abstract}\label{sec:Abstract}
 
-\section{Purpose and Framework for the project}
-This definition is based on the FACTOR criteria which serves the purpose of providing the structure for a systems definition. 
+\section{Purpose and Framework for the project}\label{sec:Purpose_Framework}
+This definition is based on the FACTOR criteria which serves the purpose of providing the structure for a systems definition.
 \begin{itemize}
-\item \textbf{F}unctionality: The purpose of the system is to allow specific students and employees at the University of Copenhagen to map their username to a public PGP key and store these records in a database maintained by the customer. The system must also allow the same users to replace their public key in case they lose the corresponding private key. The mappings should be readable by specific users with privileged access through some login mechanism. 
-\item \textbf{A}pplication domain: The system will be used by students to upload their OpenPGP key and by teaching assistants to match hand-ins that have been signed by a student's OpenPGP key. It is used when TAs receive hand-ins by the students and before the grading commences. 
+\item \textbf{F}unctionality: The purpose of the system is to allow specific students and employees at the University of Copenhagen to map their username to a public PGP key and store these records in a database maintained by the customer. The system must also allow the same users to replace their public key in case they lose the corresponding private key. The mappings should be readable by specific users with privileged access through some login mechanism.
+\item \textbf{A}pplication domain: The system will be used by students to upload their OpenPGP key and by teaching assistants to match hand-ins that have been signed by a student's OpenPGP key. It is used when TAs receive hand-ins by the students and before the grading commences.
 \item \textbf{C}onditions: Most students are not likely to have experience with OpenPGP so it should be as simple as possible to upload a key and the system must be forgiving, meaning that if a student loses his private PGP key, they must be able to upload a new public key. Instructions to guide the students through the various tasks of creating and uploadning a key must be available. The system must allow other software to access the mappings.
-\item \textbf{T}echnology: Servers with a UNIX-like OS will run the system, and modern browsers will be used for the front-end. The system will be written in golang to the widest extent possible but will also utilize SQL, HTML, CSS as different languages, and also use existing software in the form of nginx for the webserver. 
+\item \textbf{T}echnology: Servers with a UNIX-like OS will run the system, and modern browsers will be used for the front-end. The system will be written in golang to the widest extent possible but will also utilize SQL, HTML, CSS as different languages, and also use existing software in the form of nginx for the webserver.
 \item \textbf{O}bjects: The primary objects in the problem domain are students, TAs, and their uniquely identifying keys, in this case OpenPGP-keys.
 \item \textbf{R}esponsibility: The system's main responsiblity is to maintain a table with a mapping from KU Usernames to corresponding OpenPGP public keys. It must also allow other privileged software to read from this table.
 \end{itemize}
 
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
-\section{Specification of Requirements for the IT Solution}
+\section{Specification of Requirements for the IT Solution}\label{sec:Requirements}
 \subsection{Functional and Non-Functional Requirements}
-\subsubsection{Functional Requirements}
+\subsubsection{Functional Requirements}\label{subsubsec:Functional_Req}
 The functional requirements describe features which are essential to the success of the project and describe actual functionality for the end-user or system administrator. The following are deemed functional requirements:
 \begin{itemize}
 \item The system must map a KU Username to an OpenPGP public key.
@@ -134,7 +134,7 @@ The functional requirements describe features which are essential to the success
 \item A way for an administrator to send email invitations to join the system to a list of students.
 \end{itemize}
 
-\subsubsection{Non-functional Requirements}
+\subsubsection{Non-functional Requirements}\label{subsubsec:Non_Functional_Req}
 Non-functional requirements are system requirements which do not describe the actual functionality but instead describe either non-essential systems, internal architecture, or design.
 \begin{itemize}
 \item The back-end should be written in golang.
@@ -143,30 +143,116 @@ Non-functional requirements are system requirements which do not describe the ac
 \item The system must be compliant with all standards and regulations imposed by the Government of Denmark and the University of Copenhagen. These regulations concern privacy and restriction of access to the KU usernames that are part of the system. Specifically the KU usernames in the system must not be accessible to non-privileged users\footnote{This will be relevant system administrators, lectors, and TAs.}.
 \item The customer has decreed that the software be licensed under a MIT-like license which will be provided by the customer.
 \item The system should be able to decode the different .csv-formats (comma, semicolon, tab) for student lists.
-\item The front-end must be responsive in its layout. This is achieved by using bootstrap\footnote{http://getbootstrap.com/}.
+\item The front-end must be responsive in its layout. This is achieved by using bootstrap\footnote{\href{http://getbootstrap.com/}{http://getbootstrap.com/}}.
 \end{itemize}
 
-\subsection{Use case model}
+\subsection{Use case model}\label{subsec:Use_case_model}
 
-\subsection{Specific use case models}
-\begin{tabular}{ll}
+Figure \ref{fig:use_case_diagram_high_level} represents a high-level model, with a emphasis on defining actions for actors.
+
+% Think about moving text and diagram under the specific use case, rather than here!
+In figure \ref{fig:use_case_diagram_example} we have modeled the more specific use case for uploading a key.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_high}
+\caption{High-level use case diagram.}
+\label{fig:use_case_diagram_high_level}
+\end{figure}
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_example}
+\caption{Specific example of use case for upload key.}
+\label{fig:use_case_diagram_example}
+\end{figure}
+
+\subsection{Specific use case models}\label{subsec:Specific_Use_case_model}
+
+\subsubsection{Use case: Upload key}
+\begin{tabular}{l p{0.8\textwidth}}
     \toprule
     \textit{Use case name} & Upload key \\
     \midrule
-    \textit{Participating} & Course director \\ 
-    \textit{actors}& Students \\
+    \textit{Participating} & Students \\
+    \textit{actors} & \\
     \midrule
-    \textit{Flof of events} &  \\
+    \textit{Flow of events} &
+    \vspace{-6.7mm} \begin{enumerate}
+        \item Student follows link to dikukeys in invitation email OR student goes to dikukeys directly.
+        \item Student enter their KU Username into a form.
+        \item Server sends activation email to student's KU-email address.
+        \item Student follows link in activation email.
+        \item Student posts their public key into a form or generates a key pair in the browser
+        \item Server sends email which confirms that a key has been uploaded.
+    \end{enumerate}
+    \\
     \midrule
-    \textit{Entry condition} &  \\
+    \textit{Entry condition} & User has an active KU-ID. \\
+                             & User is not registered in the system. \\
     \midrule
-    \textit{Exit conditions} &  \\
+    \textit{Exit conditions} & User is registered in the system with a public key. \\
     \bottomrule
 \end{tabular}
 
-\section{Systemdesign sammenfatning}
+\subsubsection{Use case: Replace key}
+\begin{tabular}{l p{0.8\textwidth}}
+    \toprule
+    \textit{Use case name} & Replace key \\
+    \midrule
+    \textit{Participating} & Students \\
+    \textit{actors} & \\
+    \midrule
+    \textit{Flow of events} &
+    \vspace{-6.7mm} \begin{enumerate}
+        \item Student goes to dikukeys.
+        \item Student enter their KU Username into a form.
+        \item Server sends replacement email to student's KU-email address.
+        \item Student follows link in replacement email.
+        \item Student posts their new public key into a form or generates a new key pair in the browser
+        \item Server sends email which confirms that the new key has been uploaded.
+    \end{enumerate}
+    \\
+    \midrule
+    \textit{Entry condition} & Student is already registered user in the system. \\
+    \midrule
+    \textit{Exit conditions} & The new key has been registered in the system. \\
+    \bottomrule
+\end{tabular}
 
-\section{Program- og systemtest}
+\subsubsection{Use case: Invite group of students}
+\begin{tabular}{l p{0.8\textwidth}}
+    \toprule
+    \textit{Use case name} & Invite group of students\\
+    \midrule
+    \textit{Participating} & Course director \\
+    \textit{actors} & System administrator \\
+    \midrule
+    \textit{Flow of events} &
+    \vspace{-6.7mm} \begin{enumerate}
+        \item Course director sends list of students and information about course to system administrator.
+        \item System administator submits list of students course-information to the server via ssh.
+        \item Server checks if students already are in the system. Depending on the answer one of the following two happens:
+        \item
+        \begin{enumerate}
+            \item If the student is \textbf{not} already registered, the server sends invitation email to the KU-email address of the student.
+            \item If the student is already registered, the server sends an email to the student informing them that the system will be used in the course.
+        \end{enumerate}
+    \end{enumerate}
+    \\
+    \midrule
+    \textit{Entry condition} & User is course director \\
+                             & User has a list of students \\
+    \midrule
+    \textit{Exit conditions} & All students from the list have either received an invitation to the system or have been informed that the system will be used in the course. \\
+    \bottomrule
+\end{tabular}
+
+\section{Systemdesign sammenfatning}\label{sec:Systemdesign_sammenfatning}
+
+\section{Program- and systemtests}\label{sec:Program_systemtests}
 
 \section{Brugergrænseflade og interaktionsdesign}
 
@@ -189,14 +275,14 @@ The students at the University of Copenhagen all have a unique username in the f
 We can use the KU login in order to establish this mapping and this mapping can be further authenticated by the above-mentioned peer-to-peer key signing although this latter authentication is not necessary for the system to work. In other words: support for peer-to-peer signing in this project is nice-to-have, not need-to-have. As a way to establish this mapping, the KU login is used as a trusted source of linking an identity to a public key. The role, if any, of peer-to-peer signing or key signing by teachers has not yet been established.
 
 
-\subsubsection{Scenarios}
+\subsubsection{Scenarios}\label{Scenarios}
 \begin{itemize}
 \item A student has just started on the course ``Maskinarkitektur'' (Processor Design). He learns that he has to hand in the assignment by signing it with an OpenPGP key. He must then generate his own key pair using a designated program like ``GPG4Win'' or through a webservice developed as a part of this project and hosted by KU. After the key pair has been generated, the student uploads his public key to a server and the server then stores the KU Username and the public key.
 \item When the student hands in his assignment, he signs it with his newly generated private key. And the signature is then uploaded along with the assignment. A teacher is grading the assignments that have been handed in on the course ``Maskinarkitektur''. Before he grades them, he needs to check the validity of the identity of the student. This check can either be done automatically by software that interfaces with the system developed as part of this project or manually by the teacher.
 \item A teacher signs feedback with an OpenPGP-key. The student then looks up the OpenPGP public key of the teacher and validates the signature.
 \end{itemize}
 
-\subsubsection{Solution Domain}
+\subsubsection{Solution Domain}\label{Solution Domain}
 
 To solve the aforementioned scenarios, we have drafted a solution which employs a key-server that will act as an authority. It will contain OpenPGP-keys for all users of the system. To validate the users it will use their KU email, which is created by other parts of KU, and thereby validated. A mapping of these two components will be created as core database of the system.
 
@@ -208,7 +294,7 @@ The replacement of the key will be processed in the same way, as the initial upl
 
 % :I
 
-\subsubsection{Functional Requirements}
+\subsubsection{Functional Requirements}\label{Functional_Requirements}
 \begin{itemize}
 \item The system must map a KU Username to a OpenPGP public key.
 \item Users must be able to upload their own public key to the service.
@@ -304,7 +390,6 @@ The user can land on two different pages depending on what they are after. One p
 
 \begin{figure}[h!]
 \centering
-%\includegraphics[width=1.1\textwidth]{pictures/pksu_isa_centered}
 \includegraphics[width=1.1\textwidth]{pictures/pksu_isa_centered}
 \caption{Initial software architecture of the project. Our project includes coding the database, web server, and front-end.}
 \label{fig:ISA}
