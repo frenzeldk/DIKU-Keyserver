@@ -3,9 +3,10 @@ package main
 import (
 	"encoding/hex"
 	//"fmt"
-	"github.com/Orkeren/DIKU-Keyserver/golibs/hash"
-	"github.com/Orkeren/DIKU-Keyserver/golibs/mail"
+	"github.com/Orkeren/DIKU-Keyserver/golibs/hash" // This is our hash function
+	"github.com/Orkeren/DIKU-Keyserver/golibs/mail" // This is our mail function, it does hello
 	"html/template"
+	"io/ioutil"
 	"net"
 	"net/http"
 	"net/http/fcgi"
@@ -16,6 +17,10 @@ import (
 )
 
 type FastCGIServer struct{}
+type Page struct {
+	Title string
+	Body  []byte
+}
 
 func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
@@ -33,7 +38,11 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	rcpt := kuid
 
 	if kuid == "" {
-		resp.Write([]byte("<form>KU-ID:<br><input type='text' name='kuid'>@alumni.ku.dk<br><input type='submit' value='Send'></form>"))
+		titel := req.URL.Path[len("/"):]
+		p := loadPage(titel)
+		t, _ := template.ParseFiles("html_templates/create_link.html")
+		t.Execute(resp, p)
+		//resp.Write([]byte("<form>KU-ID:<br><input type='text' name='kuid'>@alumni.ku.dk<br><input type='submit' value='Send'></form>"))
 	} else if coffee_hash == "" {
 		ctime = strconv.FormatInt(time.Now().Unix(), 10)
 		coffee_hash = hex.EncodeToString(hash.GetHash(kuid, ctime)[:])
@@ -75,6 +84,12 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	}
 	//fmt.Println(out)
 	//fmt.Println(pubkey)
+}
+
+func loadPage(title string) *Page {
+	filename := title + ".txt"
+	body, _ := ioutil.ReadFile(filename)
+	return &Page{Title: title, Body: body}
 }
 
 func main() {
