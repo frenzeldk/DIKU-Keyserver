@@ -40,7 +40,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	if kuid == "" {
 		titel := req.URL.Path[len("/"):]
 		p := loadPage(titel)
-		t, _ := template.ParseFiles("html_templates/create_link.html")
+		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/create_link.html")
 		t.Execute(resp, p)
 		//resp.Write([]byte("<form>KU-ID:<br><input type='text' name='kuid'>@alumni.ku.dk<br><input type='submit' value='Send'></form>"))
 	} else if coffee_hash == "" {
