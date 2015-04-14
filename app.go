@@ -23,7 +23,8 @@ type Page struct {
 }
 
 func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
-
+	titel := req.URL.Path[len("/"):]
+	p := loadPage(titel)
 	//kuid is the KU ID of the student
 	kuid := req.FormValue("kuid")
 	//ctime is the time of creation of the link (as unix time)
@@ -38,8 +39,6 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	rcpt := kuid
 
 	if kuid == "" {
-		titel := req.URL.Path[len("/"):]
-		p := loadPage(titel)
 		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/create_link.html")
 		t.Execute(resp, p)
 		//resp.Write([]byte("<form>KU-ID:<br><input type='text' name='kuid'>@alumni.ku.dk<br><input type='submit' value='Send'></form>"))
@@ -55,9 +54,13 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		if rcpt != "@alumni.ku.dk" {
 			mail.Send(rcpt, body)
 		}
-		resp.Write([]byte("<p>Registration e-mail sent!</p>"))
+		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/reg_mail_sent.html")
+		t.Execute(resp, p)
+		//resp.Write([]byte("<p>Registration e-mail sent!</p>"))
 	} else if hex.EncodeToString(hash.GetHash(kuid, ctime)[:]) == coffee_hash {
-		resp.Write([]byte("<form>public key:<br><input type='text' name='pubkey'><br><input type='submit' value='Send'></form>"))
+		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/public_key.html")
+		t.Execute(resp, p)
+		//resp.Write([]byte("<form>public key:<br><input type='text' name='pubkey'><br><input type='submit' value='Send'></form>"))
 	} else {
 		resp.Write([]byte("<p>Not a valid link!</p>"))
 	}
