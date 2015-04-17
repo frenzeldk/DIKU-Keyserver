@@ -24,7 +24,7 @@ type Page struct {
 
 func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	titel := req.URL.Path[len("/"):]
-	p := loadPage(titel)
+	p, _ := loadPage(titel)
 	//kuid is the KU ID of the student
 	kuid := req.FormValue("kuid")
 	//ctime is the time of creation of the link (as unix time)
@@ -89,10 +89,13 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	//fmt.Println(pubkey)
 }
 
-func loadPage(title string) *Page {
+func loadPage(title string) (*Page, error) {
 	filename := title + ".txt"
-	body, _ := ioutil.ReadFile(filename)
-	return &Page{Title: title, Body: body}
+	body, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return nil, err
+	}
+	return &Page{Title: title, Body: body}, nil
 }
 
 func main() {
