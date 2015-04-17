@@ -250,12 +250,22 @@ In figure \ref{fig:use_case_diagram_example} we have modeled the more specific u
     \bottomrule
 \end{tabular}
 \subsection{Class diagram of solution domain}\label{subsec:class_diagram}
-
+A class diagram, where five different classes has been identified, has been made. The classes which are contained constitute different parts of software as well as the server on which the system is hosted. The classes have been identified according to the BCE model. The BCE analysis is especially relevant for the sequence diagram since it shows which classes can interact with the user. Only the boundary (B) classes can do that. And only interactions with the entity classes can change the state of the system through a user input.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.2\textwidth]{pictures/class_diagram}
-    \caption{Class diagram of solution diagram.}
+    \caption{Class diagram of solution domain. The dikuserver solution consists of the classes which normally consitutes a web solution: the http handler (web server), the logic which creates the HTML code, the database which can permanently record user input, and a webserver which is an alternative way of communicating with the user and whose purpose it is to validate the identity of the user.}
     \label{fig:class_diagram}
+\end{figure}
+\subsection*{}
+
+\subsection{Sequence Diagrams of use case}\label{subsec:Sequence_diagram_Use_case_model}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram}
+    \caption{The sequence diagram for the uploading of a public key to database. Only the boundary classes interact with the user and only the entity class (the database) can permanently change the state  of the system.}
+    \label{fig:sequence_diagram}
 \end{figure}
 
 \section{Systemdesign sammenfatning}\label{sec:Systemdesign_sammenfatning}
