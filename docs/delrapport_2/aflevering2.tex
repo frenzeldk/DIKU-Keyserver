@@ -99,9 +99,34 @@
 
 \chapter{Literature Review}\label{ch:Literature_Review}
 
-\section{Gould \& Lewis -- Designing for Usability}
+\section{Gould \& Lewis -- Designing for Usability: key principles and what
+designers think}
+\subsection{Resume}
+\subsection{Analysis and Perspective}
+\subsection{Perspectivation to work on dikukeys}
 
-\section{Parnas \& Clements -- A Rational Design Process}
+\section{Parnas \& Clements -- A Rational Design Process: How and why to
+fake it}
+\subsection{Resume}
+The article explains that a perfectly rational design process would be preferable so that a computer program or service could be derived rationally in the same sense that theorems are derived from axioms in mathematics. But for several reasons, this process cannot be followed perfectly: customers do not know their exact requirements before some of the functionality is presented, during the programming new discoveries are made which invalidate previous beliefs so we must backtrack, the complexity is too overwhelming to include all elements before programming and testing is initiated, and unpredictable external changes may occur.
+
+Nonetheless, there are still many reasons for attempting to follow a rational design process. Some of the reasons which are mention in the article are: simply attempting makes us come closer to the rational design process and reduces backtracking and standardization of the design process makes it easier for employees to join an ongoing project. 
+
+The rational design process is defined by the work products:
+\begin{itemize}
+\item A requirements document: a place to record the desired behavior of the program.
+\item A module structure: A division of the program and work programming into logical subentities. Preferably made as a tree structure.
+\item Module interfaces: Formalized description of how the modules interact, an interface specification. Like an API for each module.
+\item Uses hierarchy: A binary matrix which lists all the dependencies of the individual modules.
+\item Internal module structure: Documentation of design decisions for each module defined in module structure. 
+\item The actual program: The source code of the program for delivery. Should not contain redundant code described in the documentation mentioned above.
+\end{itemize}
+If any changes during the design phase, programming phase, or after delivery invalidate a design document, then all the documentation must be ``faked'' to look as if the change had been the original design. This design documentation is similar to a mathematical proof where the logical design and not the temporal development is the guiding force. Repetitions should be avoided in the documentation by asking: ``what questions should this specific document answer'', before it is written. 
+\subsection{Analysis and Perspective}
+If this design process is followed then the documentation will follow the logical structure outlined above. Decisions made whilst coding or testing can feed into changes in the requirements document so the design process becomes iterative. This document thus encompasses many important elements of the Agile Manifesto\cite{beck} written 15 years later. For some of the group members, a temporal process in the documentation instead of a logical guiding force seems more intuitive but this article makes a very convincing case why the logical structure is preferable both during the programming phase and especially during the maintenance phase.
+\subsection{Perspectivation to work on dikukeys}
+Due to the very rigid and comprehensive structure of these partial assignments, not all recommendations in this article can be followed: Many of the sections we are asked to write forces us to repeat ourselves which should be avoided according to this article. The repetition for instance occurred in the ``FACTOR analysis'' of partial assignment number 1. To follow the recommendation in this , the repetitions should be avoided in the final report. A positive effect of the many, sometimes redundant, questions we are asked to answer, is that we become familiar with many different concepts and work methods which we would not have been taught if we had followed the recipe outlined in this article. After reading this article, we were motivated to follow this design process rigorously but it is not certain that the requirements set forth by the teachers will allow us to do that in the final report. 
+
 
 \chapter{Project Report}\label{ch:Project_Report}
 
@@ -150,12 +175,23 @@ Non-functional requirements are system requirements which do not describe the ac
 
 Figure \ref{fig:use_case_diagram_high_level} represents a high-level model, with a emphasis on defining actions for actors.
 
+% Think about moving text and diagram under the specific use case, rather than here!
+In figure \ref{fig:use_case_diagram_example} we have modeled the more specific use case for uploading a key.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_high}
-    \caption{High-level use case diagram.}
-    \label{fig:use_case_diagram_high_level}
+\centering
+\includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_high}
+\caption{High-level use case diagram.}
+\label{fig:use_case_diagram_high_level}
+\end{figure}
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_example}
+\caption{Specific example of use case for upload key.}
+\label{fig:use_case_diagram_example}
 \end{figure}
 
 \subsection{Specific use case models}\label{subsec:Specific_Use_case_model}
@@ -185,16 +221,6 @@ Figure \ref{fig:use_case_diagram_high_level} represents a high-level model, with
     \textit{Exit conditions} & User is registered in the system with a public key. \\
     \bottomrule
 \end{tabular}
-
-In figure \ref{fig:use_case_diagram_example} we have modeled the more specific use case for uploading a key.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_example}
-    \caption{Specific example of use case for upload key.}
-    \label{fig:use_case_diagram_example}
-\end{figure}
-
 
 \subsubsection{Use case: Replace key}
 \begin{tabular}{l p{0.8\textwidth}}
@@ -248,24 +274,6 @@ In figure \ref{fig:use_case_diagram_example} we have modeled the more specific u
     \textit{Exit conditions} & All students from the list have either received an invitation to the system or have been informed that the system will be used in the course. \\
     \bottomrule
 \end{tabular}
-\subsection{Class diagram of solution domain}\label{subsec:class_diagram}
-A class diagram, where five different classes has been identified, has been made. The classes which are contained constitute different parts of software as well as the server on which the system is hosted. The classes have been identified according to the BCE model. The BCE analysis is especially relevant for the sequence diagram since it shows which classes can interact with the user. Only the boundary (B) classes can do that. And only interactions with the entity classes can change the state of the system through a user input.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.2\textwidth]{pictures/class_diagram}
-    \caption{Class diagram of solution domain. The dikuserver solution consists of the classes which normally consitutes a web solution: the http handler (web server), the logic which creates the HTML code, the database which can permanently record user input, and a webserver which is an alternative way of communicating with the user and whose purpose it is to validate the identity of the user.}
-    \label{fig:class_diagram}
-\end{figure}
-\subsection*{}
-
-\subsection{Sequence Diagrams of use case}\label{subsec:Sequence_diagram_Use_case_model}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_upload}
-    \caption{The sequence diagram for the uploading of a public key to database. Only the boundary classes interact with the user and only the entity class (the database) can permanently change the state  of the system.}
-    \label{fig:sequence_diagram}
-\end{figure}
 
 \section{Systemdesign sammenfatning}\label{sec:Systemdesign_sammenfatning}
 
@@ -277,7 +285,7 @@ A class diagram, where five different classes has been identified, has been made
 
 \section{Project Definition}
 \subsection{Overview of the Customer and the Project}
-% vores overview kræver knowledge om nøgler - vi skal skrive "vores system skal sikre at filerne kommer fra person abc123"
+% vores overview kræver knowledge om nøgler - vi skal skrive ``vores system skal sikre at filerne kommer fra person abc123''
 The Ph.D student Oleksandr Shturmov at the Department of Computer Science, University of Copenhagen, has presented us with the project of mapping KU usernames to public OpenPGP keys and creating the guides for the students and writing the server backend and frontend to accomplish this. This system should be used by the students, the teaching assistants, and the teachers at the university to ensure the authenticity of the identity of the end-user, that is, the student.
 \subsection{Problem statement}
 \subsubsection{Problem Domain}
@@ -299,13 +307,13 @@ We can use the KU login in order to establish this mapping and this mapping can 
 \item A teacher signs feedback with an OpenPGP-key. The student then looks up the OpenPGP public key of the teacher and validates the signature.
 \end{itemize}
 
-\subsubsection{Solution Domain}\label{Solution_Domain}
+\subsubsection{Solution Domain}\label{Solution Domain}
 
 To solve the aforementioned scenarios, we have drafted a solution which employs a key-server that will act as an authority. It will contain OpenPGP-keys for all users of the system. To validate the users it will use their KU email, which is created by other parts of KU, and thereby validated. A mapping of these two components will be created as core database of the system.
 
 As part of the system, a web-server will be established. It will facilitate the replacement of OpenPGP-keys in the case of loss of a users private key. This web-server also serves as point-of-contact for the initial creation of users. The aforementioned validation will be facilitated by an integrated email server.
 
-Upon creation of a user, a unique link, containing all necessary info, will be generated and served to the users KU email. When this link is accessed by the user, they are offered to upload their own OpenPGP-keys, generated in dedicated software like "PGP4Win" or to create a new OpenPGP-key directly in the browser.
+Upon creation of a user, a unique link, containing all necessary info, will be generated and served to the users KU email. When this link is accessed by the user, they are offered to upload their own OpenPGP-keys, generated in dedicated software like ``PGP4Win'' or to create a new OpenPGP-key directly in the browser.
 
 The replacement of the key will be processed in the same way, as the initial upload of a key, with the one exception, that the user manually has to request, that a new upload link will be sent to their KU email.
 
@@ -565,7 +573,7 @@ The meeting was held to align the expectations of the client and the developers 
 \item ISA-diagram
 \SubItem Fjern Admin-login fra (der er sshd-adgang til serveren anyways.)
 \SubItem Front-end til client, er response og ikke request
-\SubItem User guide /shell script ved "Create key"
+\SubItem User guide /shell script ved ``Create key''
 \item Oleks anmoder om at der sendes en dagsorden 24 timer før fremtidige møder
 \item Thorkil foreslår at møder optages auditivt.
 \end{itemize}
@@ -575,6 +583,10 @@ Næste møde er 29/30 marts 2015.
 \begin{thebibliography}{1}
 
 \bibitem{matthiassen} L. Mathiassen, A. Munk-Madsen, P.A. Nielsen, and J. Stage. {\em Object-Oriented Analysis \& Design} 2000: Marko Publishing House.
+
+\bibitem{beck} Kent Beck et al. 2001 Agile Manifesto. [ONLINE] Available at: http://agilemanifesto.org/principles.html. [Accessed 19 April 15].
+
+\bibitem{gould} Gould \& Lewis. (1985), Designing for usability: key principles and what designers think. Commun. ACM 28, 3 (March 1985), 300-311.
 
 %\bibitem{impj}  The Japan Reader {\em Imperial Japan 1800-1945} 1973:
 %Random House, N.Y.
