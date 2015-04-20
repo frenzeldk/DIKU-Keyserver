@@ -110,7 +110,7 @@ fake it}
 \subsection{Resume}
 The article explains that a perfectly rational design process would be preferable so that a computer program or service could be derived rationally in the same sense that theorems are derived from axioms in mathematics. But for several reasons, this process cannot be followed perfectly: customers do not know their exact requirements before some of the functionality is presented, during the programming new discoveries are made which invalidate previous beliefs so we must backtrack, the complexity is too overwhelming to include all elements before programming and testing is initiated, and unpredictable external changes may occur.
 
-Nonetheless, there are still many reasons for attempting to follow a rational design process. Some of the reasons which are mention in the article are: simply attempting makes us come closer to the rational design process and reduces backtracking and standardization of the design process makes it easier for employees to join an ongoing project. 
+Nonetheless, there are still many reasons for attempting to follow a rational design process. Some of the reasons which are mention in the article are: simply attempting makes us come closer to the rational design process and reduces backtracking and standardization of the design process makes it easier for employees to join an ongoing project.
 
 The rational design process is defined by the work products:
 \begin{itemize}
@@ -118,14 +118,14 @@ The rational design process is defined by the work products:
 \item A module structure: A division of the program and work programming into logical subentities. Preferably made as a tree structure.
 \item Module interfaces: Formalized description of how the modules interact, an interface specification. Like an API for each module.
 \item Uses hierarchy: A binary matrix which lists all the dependencies of the individual modules.
-\item Internal module structure: Documentation of design decisions for each module defined in module structure. 
+\item Internal module structure: Documentation of design decisions for each module defined in module structure.
 \item The actual program: The source code of the program for delivery. Should not contain redundant code described in the documentation mentioned above.
 \end{itemize}
-If any changes during the design phase, programming phase, or after delivery invalidate a design document, then all the documentation must be ``faked'' to look as if the change had been the original design. This design documentation is similar to a mathematical proof where the logical design and not the temporal development is the guiding force. Repetitions should be avoided in the documentation by asking: ``what questions should this specific document answer'', before it is written. 
+If any changes during the design phase, programming phase, or after delivery invalidate a design document, then all the documentation must be ``faked'' to look as if the change had been the original design. This design documentation is similar to a mathematical proof where the logical design and not the temporal development is the guiding force. Repetitions should be avoided in the documentation by asking: ``what questions should this specific document answer'', before it is written.
 \subsection{Analysis and Perspective}
 If this design process is followed then the documentation will follow the logical structure outlined above. Decisions made whilst coding or testing can feed into changes in the requirements document so the design process becomes iterative. This document thus encompasses many important elements of the Agile Manifesto\cite{beck} written 15 years later. For some of the group members, a temporal process in the documentation instead of a logical guiding force seems more intuitive but this article makes a very convincing case why the logical structure is preferable both during the programming phase and especially during the maintenance phase.
 \subsection{Perspectivation to work on dikukeys}
-Due to the very rigid and comprehensive structure of these partial assignments, not all recommendations in this article can be followed: Many of the sections we are asked to write forces us to repeat ourselves which should be avoided according to this article. The repetition for instance occurred in the ``FACTOR analysis'' of partial assignment number 1. To follow the recommendation in this , the repetitions should be avoided in the final report. A positive effect of the many, sometimes redundant, questions we are asked to answer, is that we become familiar with many different concepts and work methods which we would not have been taught if we had followed the recipe outlined in this article. After reading this article, we were motivated to follow this design process rigorously but it is not certain that the requirements set forth by the teachers will allow us to do that in the final report. 
+Due to the very rigid and comprehensive structure of these partial assignments, not all recommendations in this article can be followed: Many of the sections we are asked to write forces us to repeat ourselves which should be avoided according to this article. The repetition for instance occurred in the ``FACTOR analysis'' of partial assignment number 1. To follow the recommendation in this , the repetitions should be avoided in the final report. A positive effect of the many, sometimes redundant, questions we are asked to answer, is that we become familiar with many different concepts and work methods which we would not have been taught if we had followed the recipe outlined in this article. After reading this article, we were motivated to follow this design process rigorously but it is not certain that the requirements set forth by the teachers will allow us to do that in the final report.
 
 
 \chapter{Project Report}\label{ch:Project_Report}
@@ -186,14 +186,6 @@ In figure \ref{fig:use_case_diagram_example} we have modeled the more specific u
 \end{figure}
 
 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_example}
-\caption{Specific example of use case for upload key.}
-\label{fig:use_case_diagram_example}
-\end{figure}
-
 \subsection{Specific use case models}\label{subsec:Specific_Use_case_model}
 
 \subsubsection{Use case: Upload key}
@@ -221,6 +213,15 @@ In figure \ref{fig:use_case_diagram_example} we have modeled the more specific u
     \textit{Exit conditions} & User is registered in the system with a public key. \\
     \bottomrule
 \end{tabular}
+
+-In figure \ref{fig:use_case_diagram_example} we have modeled the more specific use case for uploading a key.
+-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_example}
+    \caption{Specific example of use case for upload key.}
+    \label{fig:use_case_diagram_example}
+\end{figure}
 
 \subsubsection{Use case: Replace key}
 \begin{tabular}{l p{0.8\textwidth}}
@@ -274,6 +275,33 @@ In figure \ref{fig:use_case_diagram_example} we have modeled the more specific u
     \textit{Exit conditions} & All students from the list have either received an invitation to the system or have been informed that the system will be used in the course. \\
     \bottomrule
 \end{tabular}
+
+\subsection{Class diagram of solution domain}\label{subsec:class_diagram}
+A class diagram, where five different classes has been identified, has been made. The classes which are contained constitute different parts of software as well as the server on which the system is hosted. The classes have been identified according to the BCE model. The BCE analysis is especially relevant for the sequence diagram since it shows which classes can interact with the user. Only the boundary (B) classes can do that. And only interactions with the entity classes can change the state of the system through a user input.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.2\textwidth]{pictures/class_diagram}
+    \caption{Class diagram of solution domain. The dikuserver solution consists of the classes which normally consitutes a web solution: the http handler (web server), the logic which creates the HTML code, the database which can permanently record user input, and a webserver which is an alternative way of communicating with the user and whose purpose it is to validate the identity of the user.}     -    \label{fig:class_diagram}
+\end{figure}
+\subsection*{}
+
+\subsection{Sequence Diagrams of use case}\label{subsec:Sequence_diagram_Use_case_model}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_upload}
+    \caption{The sequence diagram for the uploading of a public key to database. Only the boundary classes interact with the user and only the entity class (the database) can permanently change the state  of the system.}
+    \label{fig:sequence_diagram}
+\end{figure}
+
+In figure \ref{fig:use_case_diagram_example} we have modeled the more specific use case for uploading a key.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_replace}
+     \caption{Specific example of use case for upload key.}
+    \label{fig:use_case_diagram_example}
+\end{figure}
 
 \section{Systemdesign sammenfatning}\label{sec:Systemdesign_sammenfatning}
 
