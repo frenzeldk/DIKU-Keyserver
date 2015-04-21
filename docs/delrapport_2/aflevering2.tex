@@ -104,61 +104,67 @@ designers think}
 \subsection{Resume}
 This article from 1985 can be divided into two different parts: Actual recommendations for systems design and a survey to estimate how often this process is followed. The principles for good software design are outlined as follows:
 \begin{itemize}
-\item Early focus on users: designers must understand who the users will be, and this understanding is preferably obtained by actual interaction between the developer and end user.
-\item Empirical measurement: Early in the process intended users should use simulations and prototypes to carry out real work and their performance should influence the system through
-\item Interactive design: Problems during for example testing should influence design decisions. 
+\item Early focus on users: designers must understand who the users will be, and this understanding is preferably obtained through actual interaction between the developer and end user.
+\item Empirical measurements: Also known as user testing. Early in the process intended users should use simulations and prototypes to carry out real work and their performance should influence the system through $\rightarrow$
+\item Iterative design: Problems during for example testing and user testing should influence design decisions which logically, in the design process, are done ``before'' testing. Iterative design breaks down the strict connection betwen time and logic.
 \end{itemize}
-The survey finds that most programmers do not mention these three points and when they do, they often misunderstand or misrepresent the actual meaning of the points. They may think that they are following the recommendations but they are not. Several reasons that the recommendations are not followed is listed among these are that the programmers sometimes do not take responsibility for the entire project but only for the modules that are assigned to them. The article also emphasises the limitations of reason and stresses the need for empirical data in design decisions. This is illustrated by some good but counterintutive design decisions from the design of a voice mail system from IBM called ADS.
+The survey finds that most programmers do not mention these three points and when they do, they often misunderstand or misrepresent the actual meaning of the points. They may think that they are following the recommendations but they are not. Several reasons that the recommendations are not followed is listed and among these are that the programmers sometimes do not take responsibility for the entire project but only for the modules that are assigned to them. The article also emphasises the limitations of reason and stresses the need for empirical data in design decisions. This is illustrated by some good but counterintuitive interface design decisions from the design of a voice mail system from IBM called ``ADS''.
 
-Behavioral goals should be developed for the end user and these goals should be testable. A goal could for example be that 80 \% of the users should be able to solve some task within a given amount of time without help or other instructions than what is given through the interaction with the system. Modularization is also recommended.
+Behavioral goals should be developed for the end user and these goals should be testable. A goal could for example be that 80 \% of the users should be able to solve some task within a given amount of time without help or other instructions than what is given through the interaction with the system. In the design process, modularization of the program is also recommended.
 \subsection{Analysis and Perspective}
 This article differs from other litterature that we have read in that it focuses on the limitations of reason and the need for empirical observations when making design decisions. It stresses that the optimal design choice can in some situations not be deducted but must be found through interaction with end users. On page 306 the article makes a very bold prediction that ease of use will become important when selling computer devices. The fulfillment of that prophecy has, among others, been achived by Apple with their iPod and iPhone.
-\subsection{Perspectivation to work on dikukeys}
+
+Due to this article's strong focus on how to make good decisions for the user interface, it reads as much like a guide in human–computer interaction (HCI) as a guide in systems design.
+\subsection{Perspectivation to Work on dikukeys}
 This article focuses a lot on interaction with the end user. Actual user testing has not been done during the work on dikukeys and it is probably not possible to do before a minimally working website is done. It is something that was not even on our list of planned tasks but that is something we should definitely include in the system. A user test can still influence the design process even though it is performed late since we follow an iterative process (AGILE). 
 
-\section{Parnas \& Clements -- A Rational Design Process: How and why to
-fake it}
+The reading of this article likely means that we will test a prototype on users sooner than we would otherwise have.
+
+\section{Parnas \& Clements -- A Rational Design Process: How and Why to
+Fake it}
 \subsection{Resume}
 The article explains that a perfectly rational design process would be preferable so that a computer program or service could be derived rationally in the same sense that theorems are derived from axioms in mathematics. But for several reasons, this process cannot be followed perfectly: customers do not know their exact requirements before some of the functionality is presented, during the programming new discoveries are made which invalidate previous beliefs so we must backtrack, the complexity is too overwhelming to include all elements before programming and testing is initiated, and unpredictable external changes may occur.
 
-Nonetheless, there are still many reasons for attempting to follow a rational design process. Some of the reasons which are mentioned in the article are: simply attempting makes us come closer to the rational design process and reduces backtracking and standardization of the design process makes it easier for employees to join an ongoing project.
+Nonetheless, there are still many reasons for attempting to follow a rational design process. Some of the reasons which are mentioned in the article are: simply attempting, makes us come closer to the rational design process and reduces backtracking; standardization of the design process makes it easier for employees to join an ongoing project.
 
-The rational design process is defined by the work products:
+The rational design process which should be followed is defined by the work products:
 \begin{itemize}
 \item A requirements document: a place to record the desired behavior of the program.
-\item A module structure: A division of the program and work programming into logical subentities. Preferably made as a tree structure.
+\item A module structure: A division of the program and work programming into logical subentities. For large systems, it is preferably made as a tree structure.
 \item Module interfaces: Formalized description of how the modules interact, an interface specification. Like an API for each module.
-\item Uses hierarchy: A binary matrix which lists all the dependencies of the individual modules.
-\item Internal module structure: Documentation of design decisions for each module defined in module structure.
-\item The actual program: The source code of the program for delivery. Should not contain redundant code described in the documentation mentioned above.
+\item Uses hierarchy: A binary matrix which lists all the dependencies of the individual modules. Especially useful during post-release maintenance.
+\item Internal module structure: Documentation of design decisions for each module that has been defined in module structure. 
+\item The actual program: The source code of the program for delivery. Should not contain redundant comments which have already been described in the documentation mentioned above.
 \end{itemize}
-If any changes during the design phase, programming phase, or after delivery invalidate a design document, then all the documentation must be ``faked'' to look as if the change had been the original design. This design documentation is similar to a mathematical proof where the logical design and not the temporal development is the guiding force. Repetitions should be avoided in the documentation by asking: ``what questions should this specific document answer'', before it is written.
+If any changes during the design phase, programming phase, or post-delivery phase invalidate a design document, then all the documentation should be ``faked'' to look as if the change had been the original design. This design documentation is similar to a mathematical proof where the logical design and not the temporal development is the guiding force. Repetitions should be avoided in the documentation by asking: ``what questions should this specific document answer'', before it is written.
 \subsection{Analysis and Perspective}
-If this design process is followed then the documentation will follow the logical structure outlined above. Decisions made whilst coding or testing can feed into changes in the requirements document so the design process becomes iterative. This document thus encompasses many important elements of the Agile Manifesto\cite{beck} written 15 years later. For some of the group members, a temporal process in the documentation instead of a logical guiding force seems more intuitive but this article makes a very convincing case why the logical structure is preferable both during the programming phase and especially during the maintenance phase.
-\subsection{Perspectivation to work on dikukeys}
-Due to the very rigid and comprehensive structure of these partial assignments, not all recommendations in this article can be followed: Many of the sections we are asked to write forces us to repeat ourselves which should be avoided according to this article. The repetition for instance occurred in the ``FACTOR analysis'' of partial assignment number 1. To follow the recommendation in this , the repetitions should be avoided in the final report. A positive effect of the many, sometimes redundant, questions we are asked to answer, is that we become familiar with many different concepts and work methods which we would not have been taught if we had followed the recipe outlined in this article. After reading this article, we were motivated to follow this design process rigorously but it is not certain that the requirements set forth by the teachers will allow us to do that in the final report.
+If this design process is followed then the documentation will follow the logical structure outlined above. Decisions made whilst coding or testing can feed into changes in the requirements document so the design process becomes iterative. This document thus encompasses many important elements of the Agile Manifesto\cite{beck} written 15 years later. For some of the group members of dikukeys, a temporal process in the documentation instead of a logical guiding force seems more intuitive but this article makes a very convincing case why the logical structure is preferable both during the programming phase and especially during the maintenance phase.
+\subsection{Perspectivation to Work on dikukeys}
+Due to the very rigid and comprehensive structure of these partial assignments, not all recommendations in this article can be followed: Many of the sections we are asked to write forces us to repeat ourselves which should be avoided according to this article. The repetition for instance occurred in the ``FACTOR analysis'' of partial assignment number 1. To follow the recommendation in this article, the repetitions should be avoided in the final report. 
 
+When this has been said, a positive effect of the many, sometimes redundant, questions we are asked to answer, is that we become familiar with many different concepts and work methods which we would not have been taught if we had followed the recipe outlined in this article. After reading this article, we were motivated to follow this design process rigorously but it is not certain that the requirements set forth by the teachers will allow us to do that in the final report.
 
+We believe that this article has made a more compelling argument for the AGILE design process than any argument that we have read previously.
 \chapter{Project Report}\label{ch:Project_Report}
 
 \section{Abstract}\label{sec:Abstract}
 
-\section{Purpose and Framework for the project}\label{sec:Purpose_Framework}
+\section{Purpose and Framework for the Project}\label{sec:Purpose_Framework}
 This definition is based on the FACTOR criteria which serves the purpose of providing the structure for a systems definition.
 \begin{itemize}
 \item \textbf{F}unctionality: The purpose of the system is to allow specific students and employees at the University of Copenhagen to map their username to a public PGP key and store these records in a database maintained by the customer. The system must also allow the same users to replace their public key in case they lose the corresponding private key. The mappings should be readable by specific users with privileged access through some login mechanism.
-\item \textbf{A}pplication domain: The system will be used by students to upload their OpenPGP key and by teaching assistants to match hand-ins that have been signed by a student's OpenPGP key. It is used when TAs receive hand-ins by the students and before the grading commences.
-\item \textbf{C}onditions: Most students are not likely to have experience with OpenPGP so it should be as simple as possible to upload a key and the system must be forgiving, meaning that if a student loses his private PGP key, they must be able to upload a new public key. Instructions to guide the students through the various tasks of creating and uploadning a key must be available. The system must allow other software to access the mappings.
-\item \textbf{T}echnology: Servers with a UNIX-like OS will run the system, and modern browsers will be used for the front-end. The system will be written in golang to the widest extent possible but will also utilize SQL, HTML, CSS as different languages, and also use existing software in the form of nginx for the webserver.
+\item \textbf{A}pplication domain: The system will be used by students to upload their OpenPGP key and by teaching assistants to match hand-ins that have been signed by a student's OpenPGP key with a KU Username. It is used when TAs receive hand-ins by the students and before the grading commences.
+\item \textbf{C}onditions: Most students are not likely to have experience with OpenPGP so it should be as simple as possible to upload a key and the system must be forgiving, meaning that if a student loses his private PGP key, they must be able to upload a new public key. Instructions to guide the students through the various tasks of creating and uploading a key must be available. The system must allow other software to access the mappings.
+\item \textbf{T}echnology: Servers with a UNIX-like OS will run the system, and modern browsers will be used for the front-end. The system will be written in golang to the widest extent possible but will also utilize SQL, HTML, CSS. It will also use existing software in the form of nginx for the webserver.
 \item \textbf{O}bjects: The primary objects in the problem domain are students, TAs, and their uniquely identifying keys, in this case OpenPGP-keys.
 \item \textbf{R}esponsibility: The system's main responsiblity is to maintain a table with a mapping from KU Usernames to corresponding OpenPGP public keys. It must also allow other privileged software to read from this table.
 \end{itemize}
 
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 \section{Specification of Requirements for the IT Solution}\label{sec:Requirements}
-\subsection{Functional and Non-Functional Requirements}
+\subsection{Functional and Non-functional Requirements}
 \subsubsection{Functional Requirements}\label{subsubsec:Functional_Req}
-The functional requirements describe features which are essential to the success of the project and describe actual functionality for the end-user or system administrator. The following are deemed functional requirements:
+The functional requirements describe features which are essential to the success of the project and describe actual functionality for the end-user or system administrator.
 \begin{itemize}
 \item The system must map a KU Username to an OpenPGP public key.
 \item Users must be able to upload their own public key to the service.
@@ -167,7 +173,7 @@ The functional requirements describe features which are essential to the success
 \item The data has to be accessible to privileged software through a defined API.
 \item The KU usernames registered in this system must not be accessible for non-privileged users and software.
 \item A guide for creating key pairs needs to be available on the website, possibly as shell script. This guide should also explain how to derive an SSH key from an OpenPGP key.
-\item A way for an administrator to send email invitations to join the system to a list of students.
+\item A way for an administrator to send email invitations for joining the system to a list of students.
 \end{itemize}
 
 \subsubsection{Non-functional Requirements}\label{subsubsec:Non_Functional_Req}
@@ -176,33 +182,33 @@ Non-functional requirements are system requirements which do not describe the ac
 \item The back-end should be written in golang.
 \item The front-end should be Javascript and/or HTML5, which ever is safest and most easy to use.
 \item The system should be browser independent.
-\item The system must be compliant with all standards and regulations imposed by the Government of Denmark and the University of Copenhagen. These regulations concern privacy and restriction of access to the KU usernames that are part of the system. Specifically the KU usernames in the system must not be accessible to non-privileged users\footnote{This will be relevant system administrators, lectors, and TAs.}.
+\item The system must be compliant with all standards and regulations imposed by the Government of Denmark and the University of Copenhagen. These regulations concern privacy and restriction of access to the KU usernames that are part of the system. Specifically, the KU usernames in the system must not be accessible to non-privileged users\footnote{The priveliged users are system administrators, university professors, and TAs.}.
 \item The customer has decreed that the software be licensed under a MIT-like license which will be provided by the customer.
 \item The system should be able to decode the different .csv-formats (comma, semicolon, tab) for student lists.
-\item The front-end must be responsive in its layout. This is achieved by using bootstrap\footnote{\href{http://getbootstrap.com/}{http://getbootstrap.com/}}.
+\item The front-end must be responsive in its layout. This is achieved by using Bootstrap\footnote{Bootstrap can be found on \href{http://getbootstrap.com/}{http://getbootstrap.com/}}.
 \end{itemize}
 
-\subsection{Use case model}\label{subsec:Use_case_model}
+\subsection{Use Case Overview Model}\label{subsec:Use_case_model}
 
-Figure \ref{fig:use_case_diagram_high_level} represents a high-level model, with a emphasis on defining actions for actors.
+Figure \ref{fig:use_case_diagram_high_level} represents a high-level model which shows which actions are available for the different users: students and teachers.
 
 % Think about moving text and diagram under the specific use case, rather than here!
-In figure \ref{fig:use_case_diagram_example} we have modeled the more specific use case for uploading a key.
+In Figure \ref{fig:use_case_diagram_example} the use case for uploading a key is defined by listing which actions the student must perform to have his key stored on the dikukeys server.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_high}
-\caption{High-level use case diagram.}
+\caption{High-level use case diagram. Students can upload or replace a public key, and teachers (TAs, professors, and system administrators) can pull data from the lists.}
 \label{fig:use_case_diagram_high_level}
 \end{figure}
 
 
-\subsection{Specific use case models}\label{subsec:Specific_Use_case_model}
-
-\subsubsection{Use case: Upload key}
+\subsection{Specific Use Case Models}\label{subsec:Specific_Use_case_model}
+Here, three different use cases for the system is showed by listing the actions of the relevant actors. The use cases for uploading a key, replacing a key, and sending out an invitation for joining the system are listed.
+\subsubsection{Use Case: Upload Key}
 \begin{tabular}{l p{0.8\textwidth}}
     \toprule
-    \textit{Use case name} & Upload key \\
+    \textit{Use case name} & Upload Key \\
     \midrule
     \textit{Participating} & Students \\
     \textit{actors} & \\
@@ -210,34 +216,32 @@ In figure \ref{fig:use_case_diagram_example} we have modeled the more specific u
     \textit{Flow of events} &
     \vspace{-6.7mm} \begin{enumerate}
         \item Student follows link to dikukeys in invitation email OR student goes to dikukeys directly.
-        \item Student enter their KU Username into a form.
+        \item Student enters their KU Username into a form.
         \item Server sends activation email to student's KU-email address.
-        \item Student follows link in activation email.
-        \item Student posts their public key into a form or generates a key pair in the browser
+        \item Student follows link in key activation email.
+        \item Student posts their public key into a form or generates a key pair in the browser.
         \item Server sends email which confirms that a key has been uploaded.
     \end{enumerate}
     \\
     \midrule
-    \textit{Entry condition} & User has an active KU-ID. \\
+    \textit{Entry condition} & User has an active KU ID. \\
                              & User is not registered in the system. \\
     \midrule
     \textit{Exit conditions} & User is registered in the system with a public key. \\
     \bottomrule
 \end{tabular}
-
--In figure \ref{fig:use_case_diagram_example} we have modeled the more specific use case for uploading a key.
 -
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_example}
-    \caption{Specific example of use case for upload key.}
+    \caption{Flow diagram for uploading a key.}
     \label{fig:use_case_diagram_example}
 \end{figure}
 
-\subsubsection{Use case: Replace key}
+\subsubsection{Use Case: Replace Key}
 \begin{tabular}{l p{0.8\textwidth}}
     \toprule
-    \textit{Use case name} & Replace key \\
+    \textit{Use case name} & Replace Key \\
     \midrule
     \textit{Participating} & Students \\
     \textit{actors} & \\
@@ -245,37 +249,37 @@ In figure \ref{fig:use_case_diagram_example} we have modeled the more specific u
     \textit{Flow of events} &
     \vspace{-6.7mm} \begin{enumerate}
         \item Student goes to dikukeys.
-        \item Student enter their KU Username into a form.
-        \item Server sends replacement email to student's KU-email address.
-        \item Student follows link in replacement email.
-        \item Student posts their new public key into a form or generates a new key pair in the browser
+        \item Student enters their KU Username into a form.
+        \item Server sends key replacement email to student's KU email address.
+        \item Student follows link in key replacement email.
+        \item Student posts their new public key into a form or generates a new key pair in the browser.
         \item Server sends email which confirms that the new key has been uploaded.
     \end{enumerate}
     \\
     \midrule
-    \textit{Entry condition} & Student is already registered user in the system. \\
+    \textit{Entry condition} & Student is already a registered user in the system but with an invalid public key. \\
     \midrule
-    \textit{Exit conditions} & The new key has been registered in the system. \\
+    \textit{Exit conditions} & A new public key has been registered to the student. \\
     \bottomrule
 \end{tabular}
 
-\subsubsection{Use case: Invite group of students}
+\subsubsection{Use Case: Invite Group of Students}
 \begin{tabular}{l p{0.8\textwidth}}
     \toprule
-    \textit{Use case name} & Invite group of students\\
+    \textit{Use case name} & Invite Group of Students\\
     \midrule
     \textit{Participating} & Course director \\
     \textit{actors} & System administrator \\
     \midrule
     \textit{Flow of events} &
     \vspace{-6.7mm} \begin{enumerate}
-        \item Course director sends list of students and information about course to system administrator.
+        \item Course director sends a list of students and information about course to system administrator.
         \item System administator submits list of students course-information to the server via ssh.
         \item Server checks if students already are in the system. Depending on the answer one of the following two happens:
         \item
         \begin{enumerate}
-            \item If the student is \textbf{not} already registered, the server sends invitation email to the KU-email address of the student.
-            \item If the student is already registered, the server sends an email to the student informing them that the system will be used in the course.
+            \item If the student is \textbf{not} already registered, the server sends an invitation email to the KU email address of the student.
+            \item If the student is already registered, the server sends an email to the student informing them that the system will be used in this course.
         \end{enumerate}
     \end{enumerate}
     \\
@@ -283,25 +287,25 @@ In figure \ref{fig:use_case_diagram_example} we have modeled the more specific u
     \textit{Entry condition} & User is course director \\
                              & User has a list of students \\
     \midrule
-    \textit{Exit conditions} & All students from the list have either received an invitation to the system or have been informed that the system will be used in the course. \\
+    \textit{Exit conditions} & All students from the list have either received an invitation to the system or have been informed that the system will be used in this course. \\
     \bottomrule
 \end{tabular}
 
-\subsection{Class diagram of solution domain}\label{subsec:class_diagram}
+\subsection{Class Diagram of Solution Domain}\label{subsec:class_diagram}
 A class diagram, where five different classes have been identified, has been made. The classes which are contained constitute different parts of software as well as the server on which the system is hosted. The classes have been identified according to the BCE model. The BCE analysis is especially relevant for the sequence diagram since it shows which classes can interact with the user. Only the boundary (B) classes can do that. And only interactions with the entity classes can change the state of the system through a user input.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.2\textwidth]{pictures/class_diagram}
-    \caption{Class diagram of solution domain. The dikuserver solution consists of the classes which normally consitutes a web solution: the http handler (web server), the logic which creates the HTML code, the database which can permanently record user input, and a webserver which is an alternative way of communicating with the user and whose purpose it is to validate the identity of the user.}     -    \label{fig:class_diagram}
+    \caption{Class diagram of solution domain. The dikuserver solution consists of the classes which normally consitute a web solution: the HTTP handler (web server), the logic which creates the HTML code, the database which can permanently record user input, and an email server which is an alternative way of communicating with the user and whose purpose it is to validate the identity of the user.}     -    \label{fig:class_diagram}
 \end{figure}
 \subsection*{}
 
-\subsection{Sequence Diagrams of use case}\label{subsec:Sequence_diagram_Use_case_model}
-
+\subsection{Sequence Diagrams of Use Case}\label{subsec:Sequence_diagram_Use_case_model}
+Figure \ref{fig:sequence_diagram} shows the logical flow between the logical classes identified in the class diagram above. Only the boundary classes can interact directly with the user.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_upload}
-    \caption{The sequence diagram for the uploading of a public key to database. Only the boundary classes interact with the user and only the entity class (the database) can permanently change the state  of the system.}
+    \caption{The sequence diagram for the uploading of a public key to the database. Only the boundary classes interact with the user and only the entity class (the database) can permanently change the state of the system.}
     \label{fig:sequence_diagram}
 \end{figure}
 
@@ -310,7 +314,7 @@ In figure \ref{fig:use_case_diagram_example_two} we have modeled the more specif
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_replace}
-     \caption{Specific example of use case for upload key.}
+     \caption{The sequence diagram for the replacement of a public key on the database.}
     \label{fig:use_case_diagram_example_two}
 \end{figure}
 
@@ -642,4 +646,3 @@ Næste møde er 29/30 marts 2015.
 
 
 \end{document}
-
