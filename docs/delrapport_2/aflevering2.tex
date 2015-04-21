@@ -32,11 +32,12 @@
 %\usepackage{gauss} % Gauss Matrix
 \usepackage{float} % This will allow precise picture placement, use [H].
 \usepackage{enumitem}
-\usepackage{hyperref} % Url's
+
 \usepackage{microtype}
 \usepackage[super]{nth}
 \usepackage{booktabs} % This package provide some additional commands to enhance the quality of tables in LaTeX.
 \usepackage{listings} % code parsing.
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 \lstset{language=bash} % Set bash syntax.
 \newcommand{\code}[1]{\texttt{#1}}
 
@@ -117,7 +118,7 @@ This article differs from other litterature that we have read in that it focuses
 
 Due to this article's strong focus on how to make good decisions for the user interface, it reads as much like a guide in human–computer interaction (HCI) as a guide in systems design.
 \subsection{Perspectivation to Work on dikukeys}
-This article focuses a lot on interaction with the end user. Actual user testing has not been done during the work on dikukeys and it is probably not possible to do before a minimally working website is done. It is something that was not even on our list of planned tasks but that is something we should definitely include in the system. A user test can still influence the design process even though it is performed late since we follow an iterative process (AGILE). 
+This article focuses a lot on interaction with the end user. Actual user testing has not been done during the work on dikukeys and it is probably not possible to do before a minimally working website is done. It is something that was not even on our list of planned tasks but that is something we should definitely include in the system. A user test can still influence the design process even though it is performed late since we follow an iterative process (AGILE).
 
 The reading of this article likely means that we will test a prototype on users sooner than we would otherwise have.
 
@@ -134,14 +135,14 @@ The rational design process which should be followed is defined by the work prod
 \item A module structure: A division of the program and work programming into logical subentities. For large systems, it is preferably made as a tree structure.
 \item Module interfaces: Formalized description of how the modules interact, an interface specification. Like an API for each module.
 \item Uses hierarchy: A binary matrix which lists all the dependencies of the individual modules. Especially useful during post-release maintenance.
-\item Internal module structure: Documentation of design decisions for each module that has been defined in module structure. 
+\item Internal module structure: Documentation of design decisions for each module that has been defined in module structure.
 \item The actual program: The source code of the program for delivery. Should not contain redundant comments which have already been described in the documentation mentioned above.
 \end{itemize}
 If any changes during the design phase, programming phase, or post-delivery phase invalidate a design document, then all the documentation should be ``faked'' to look as if the change had been the original design. This design documentation is similar to a mathematical proof where the logical design and not the temporal development is the guiding force. Repetitions should be avoided in the documentation by asking: ``what questions should this specific document answer'', before it is written.
 \subsection{Analysis and Perspective}
 If this design process is followed then the documentation will follow the logical structure outlined above. Decisions made whilst coding or testing can feed into changes in the requirements document so the design process becomes iterative. This document thus encompasses many important elements of the Agile Manifesto\cite{beck} written 15 years later. For some of the group members of dikukeys, a temporal process in the documentation instead of a logical guiding force seems more intuitive but this article makes a very convincing case why the logical structure is preferable both during the programming phase and especially during the maintenance phase.
 \subsection{Perspectivation to Work on dikukeys}
-Due to the very rigid and comprehensive structure of these partial assignments, not all recommendations in this article can be followed: Many of the sections we are asked to write forces us to repeat ourselves which should be avoided according to this article. The repetition for instance occurred in the ``FACTOR analysis'' of partial assignment number 1. To follow the recommendation in this article, the repetitions should be avoided in the final report. 
+Due to the very rigid and comprehensive structure of these partial assignments, not all recommendations in this article can be followed: Many of the sections we are asked to write forces us to repeat ourselves which should be avoided according to this article. The repetition for instance occurred in the ``FACTOR analysis'' of partial assignment number 1. To follow the recommendation in this article, the repetitions should be avoided in the final report.
 
 When this has been said, a positive effect of the many, sometimes redundant, questions we are asked to answer, is that we become familiar with many different concepts and work methods which we would not have been taught if we had followed the recipe outlined in this article. After reading this article, we were motivated to follow this design process rigorously but it is not certain that the requirements set forth by the teachers will allow us to do that in the final report.
 
@@ -334,7 +335,7 @@ The company and social dynamics in the group are pleasant. We work very well whe
 \subsection{What is Bad?}
 The work process on the \nth{2} report has not been as good as the process for the \nth{1} report since the group has not met and worked together more than one whole day. The rest of the work has been done individually or in groups of two. A better report would have been made if we had dedicated one more day to this report.
 
-Thorkil Værge feels that we use too much time on reports and not enough time on programming and actual systems design. We do, however, learn something from all the different models for the system that we have to make. 
+Thorkil Værge feels that we use too much time on reports and not enough time on programming and actual systems design. We do, however, learn something from all the different models for the system that we have to make.
 
 \subsection{How can this be improved?}
 To improve our work process, we should have more days where we do nothing but work on this project. Experience shows us that these days are the most effective way to work.
@@ -588,6 +589,37 @@ To improve our work process, we should have more days where we do nothing but wo
 
 \newpage
 \section{Appendix}
+\subsection{Version Control}
+
+We have chosen to use Git as our version control solution, this we have pared with the only git repository host GitHub.
+
+As earlier agree with our instructor Kasper Passov, we have added him to our Git repository. Which will allow him access to our source code.
+
+\urldef{\appendixoneone}\url{https://github.com/Orkeren/DIKU-Keyserver/commit/5e7c7c741fbe6d2e74889e8eaff6173e8c116d46}
+\appendixoneone
+
+This is the initial commit with focus on our source code. It is divided into three parts, app, hash, and mail. App.go is the overarching module, which controls the web-application, the function of App.go is to interface with the web-server (nginx) and the other modules.
+
+hash.go is a go module which enables creation of cryptographic hashes, in this iteration of the code, we only printed it to the console.  The file mail.go is another module which the code uses, this is used to send out mails, in this iteration we used it to send out a mail to our dikumail group, to show how far we were.
+
+\url{https://github.com/Orkeren/DIKU-Keyserver/commit/690f4b0b00dc68e9b529035d7e6e6a6005072d63}
+
+Earlier we used pre-encoded HTML in our app.go, with modification and extensive use of the html/template library. We were able to use html templates rather. This allows us to make changes to the pages which are displayed, without stopping the service.
+
+\subsection{Changelog for report}
+
+Since we use Git for our entire project, a timeline of a specific file is possible, so for our report the timeline consists of a link to a history of our document, which our document has been built from. Since we all have individual GibHub accounts, it is possible to see whom committed what changes.
+
+\urldef{\appendixtwo}\url{https://github.com/Orkeren/DIKU-Keyserver/commits/master/docs/delrapport_2/aflevering2.tex}
+\appendixtwo % This is a funky hack, which is used since there is a _ in the url... (NO, you can't just escape it in the url link)
+
+\subsection{Timeline}
+\begin{itemize}
+  \item  March 16th 2015: First meeting with client, initial establishment of project. We agreed upon programming language and choice for authentication Open-PGP keys.
+  \item  March 22th 2015: Second meeting with client, here we went into specifics alike API for staff and license
+  \item March 29th 2015: Third meeting with client, we agreed upon using nginx as our webserver and some discussion about which database was started, but a final agreement was not reached. Lastly we agreed upon using the Bootstrap framework for the front end design. We setup a test server the same day, and got our first prototype ready.
+\end{itemize}
+
 \subsection{Minutes from March 16th 2015}
 \begin{itemize}
 \item Ønsker: identificer studerende ved aflevering vha gpg-nøgle
