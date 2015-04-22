@@ -1,6 +1,19 @@
 <html>
-    <form>KU-ID:<br>
-        <input type='text' name='kuid'>@alumni.ku.dk<br>
-        <input type='submit' value='Send'>
-    </form>
+  <form onsubmit="return check_if_kuid();">KU-ID:<br>
+    <input type='text'   name='kuid'>@alumni.ku.dk<br>
+    <input type='submit' value='Send'>
+  </form>
+  <script>
+    function check_if_kuid() {
+      var kuid  = document.getElementsByName('kuid')[0].value;
+      console.log(kuid);
+      var regex = /[A-Z]{3}[\d]{3}$/i;
+      var check = kuid.match(regex);
+      if (!check) {
+        alert("That is not a KUID... Rus... Please re-enter your KUID");
+        return false
+      }
+      return true
+    }
+  </script>
 </html>
