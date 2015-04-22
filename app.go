@@ -36,8 +36,8 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 	//rcpt is the e-mail address associated with kuid
 	//rcpt := strings.Join([]string{kuid, "alumni.ku.dk"}, "@")
-	rcpt := kuid
-	fmt.Println(kuid + "@alumni.ku.dk")
+	rcpt := kuid + "@alumni.ku.dk"
+	fmt.Println(rcpt)
 
 	if kuid == "" {
 		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/create_link.html")
