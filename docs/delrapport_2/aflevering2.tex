@@ -301,7 +301,7 @@ Here, three different use cases for the system is showed by listing the actions 
 A class diagram, where five different classes have been identified, has been made. The classes which are contained constitute different parts of software as well as the server on which the system is hosted. The classes have been identified according to the BCE model. The BCE analysis is especially relevant for the sequence diagram since it shows which classes can interact with the user. Only the boundary (B) classes can do that. And only interactions with the entity classes can change the state of the system through a user input.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.2\textwidth]{pictures/class_diagram}
+    \includegraphics[width=\textwidth]{pictures/class_diagram}
     \caption{Class diagram of solution domain. The dikuserver solution consists of the classes which normally consitute a web solution: the HTTP handler (web server), the logic which creates the HTML code, the database which can permanently record user input, and an email server which is an alternative way of communicating with the user and whose purpose it is to validate the identity of the user.}     -    \label{fig:class_diagram}
 \end{figure}
 \subsection*{}
@@ -310,7 +310,7 @@ A class diagram, where five different classes have been identified, has been mad
 Figure \ref{fig:sequence_diagram} shows the logical flow between the logical classes identified in the class diagram above. Only the boundary classes can interact directly with the user.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_upload}
+    \includegraphics[width=\textwidth]{pictures/sequence_diagram_upload}
     \caption{The sequence diagram for the uploading of a public key to the database. Only the boundary classes interact with the user and only the entity class (the database) can permanently change the state of the system.}
     \label{fig:sequence_diagram}
 \end{figure}
@@ -319,7 +319,7 @@ In figure \ref{fig:use_case_diagram_example_two} we have modeled the more specif
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_replace}
+    \includegraphics[width=\textwidth]{pictures/sequence_diagram_replace}
      \caption{The sequence diagram for the replacement of a public key on the database.}
     \label{fig:use_case_diagram_example_two}
 \end{figure}
@@ -365,14 +365,13 @@ We have chosen to use Git as our version control solution, this we have pared wi
 
 As earlier agreed upon with our instructor Kasper Passov, we have added him to our Git repository. This will allow him to access our source code.
 
-\urldef{\appendixoneone}\url{https://github.com/Orkeren/DIKU-Keyserver/commit/5e7c7c741fbe6d2e74889e8eaff6173e8c116d46}
-\appendixoneone
+\href{https://github.com/Orkeren/DIKU-Keyserver/commit/5e7c7c741fbe6d2e74889e8eaff6173e8c116d46}{Inital commit on github.}
 
 This is the initial commit with focus on our source code. It is divided into three parts, app, hash, and mail. App.go is the overarching module, which controls the web-application, the function of App.go is to interface with the web-server (nginx) and the other modules.
 
 hash.go is a go module which enables creation of cryptographic hashes, in this iteration of the code, we only printed it to the console.  The file mail.go is another module which the code uses, this is used to send out mails, in this iteration we used it to send out a mail to our dikumail group, to show how far we were.
 
-\url{https://github.com/Orkeren/DIKU-Keyserver/commit/690f4b0b00dc68e9b529035d7e6e6a6005072d63}
+\href{https://github.com/Orkeren/DIKU-Keyserver/commit/690f4b0b00dc68e9b529035d7e6e6a6005072d63}{Using HTML templates commit on github.}
 
 Earlier we used pre-encoded HTML in our app.go, with modification and extensive use of the html/template library. We were able to use html templates rather. This allows us to make changes to the pages which are displayed, without stopping the service.
 
@@ -380,8 +379,8 @@ Earlier we used pre-encoded HTML in our app.go, with modification and extensive 
 
 Since we use Git for our entire project, a timeline of a specific file is possible, so for our report the timeline consists of a link to a history of our document, which our document has been built from. Since we all have individual GitHub accounts, it is possible to see who committed what.
 
-\urldef{\appendixtwo}\url{https://github.com/Orkeren/DIKU-Keyserver/commits/master/docs/delrapport_2/aflevering2.tex}
-\appendixtwo % This is a funky hack, which is used since there is a _ in the url... (NO, you can't just escape it in the url link)
+\href{https://github.com/Orkeren/DIKU-Keyserver/commits/master/docs/delrapport_2/aflevering2.tex}{Aflevering2.tex on github.}
+
 
 \chapter{Timeline}
 \begin{itemize}
