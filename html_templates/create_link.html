@@ -7,7 +7,7 @@
     function check_if_kuid() {
       var kuid  = document.getElementsByName('kuid')[0].value;
       console.log(kuid);
-      var regex = /[A-Z]{3}[\d]{3}$/i;
+      var regex = /^[B-DF-HJ-NP-TV-Z]{3}[\d]{3}$/i;
       var check = kuid.match(regex);
       if (!check) {
         alert("That is not a KUID... Rus... Please re-enter your KUID");
