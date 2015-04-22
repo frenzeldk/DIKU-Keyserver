@@ -35,8 +35,9 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	pubkey := req.FormValue("pubkey")
 
 	//rcpt is the e-mail address associated with kuid
-	//rcpt := strings.Join([]string{kuid, "alumni.ku.dk"}, "@")
-	rcpt := kuid + "@alumni.ku.dk"
+	//commented out until we no longer get caught be the office 365 spamfilter
+  //rcpt := kuid + "@alumni.ku.dk"
+  rcpt := kuid
 	fmt.Println(rcpt)
 
 	if kuid == "" {
@@ -48,12 +49,13 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		coffee_hash = hex.EncodeToString(hash.GetHash(kuid, ctime)[:])
 
 		//body is the plaintext body of the email.
-		body := `Dette er epostens krop.
-                 linjeskifte laves ved at have regulære linjeskift.
-	             linket er: http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
+		body := `Velkommen til dikukeys. For at afslutte registreringen, tryk venligst på dette link:
+	           http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 		//only send an email if rcpt has a value. This needs to be changed to regex for a valid e-email adress (user@domain.tld)
-		if rcpt != "@alumni.ku.dk" {
-			mail.Send(rcpt, body)
+		//again due to office 365 we currently only check if the field is empty or not instead of checking if the email is a ku-student email.
+    //if rcpt != "@alumni.ku.dk" {
+		if rcpt != "" {
+    mail.Send(rcpt, body)
 		}
 		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/reg_mail_sent.html")
 		t.Execute(resp, p)

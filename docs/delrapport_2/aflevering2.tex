@@ -121,7 +121,7 @@ Due to this article's strong focus on how to make good decisions for the user in
 This article focuses a lot on interaction with the end user. Actual user testing has not been done during the work on dikukeys and it is probably not possible to do before a minimally working website is done. It is something that was not even on our list of planned tasks but that is something we should definitely include in the system. A user test can still influence the design process even though it is performed late since we follow an iterative process (AGILE).
 
 The reading of this article likely means that we will test a prototype on users sooner than we would otherwise have.
-
+\newpage
 \section{Parnas \& Clements -- A Rational Design Process: How and Why to
 Fake it}
 \subsection{Résumé}
@@ -150,6 +150,11 @@ We believe that this article has made a more compelling argument for the AGILE d
 \chapter{Project Report}\label{ch:Project_Report}
 
 \section{Abstract}\label{sec:Abstract}
+The system developed [system], as part of this project, is a module of a system developed by Oleksander Sturmov [Online TA]. The purpose of the system is to validate the identity of a student submitting an assignment to Online TA. \\
+This is done by mapping OpenPGP keys provided by the students with their KU Username. This mapping is achieved through a website on which a student registers them self. This website is part of the system developed. Furthermore an API is provided to Online TA for integration. \\
+The system is developed for the Department of Computer Science at the University of Copenhagen [DIKU] represented by Oleksander Sturmov. \\
+Oleksander Sturmov has shown a desire to replace the currently used Learning Management System [LMS] its Learning with a platform that can facilitate automatically evaluation of programming assignments. For this he needed a system to make sure that a given assignment was handed in by the student claiming to have handed it it. This is the system we are developing. \\
+A prototype of the system is available at \url{http://dikukeys.dk:8081/app}.\footnote{Currently a valid email address has to be entered, even though the website suggest, that only a KU Username is needed. Please do not enter an email address, that is hosted on an Office 365 solution, as you will not receive the email. We are working on not getting caught by their spam filter.}
 
 \section{Purpose and Framework for the Project}\label{sec:Purpose_Framework}
 This definition is based on the FACTOR criteria which serves the purpose of providing the structure for a systems definition.
@@ -320,11 +325,24 @@ In figure \ref{fig:use_case_diagram_example_two} we have modeled the more specif
     \label{fig:use_case_diagram_example_two}
 \end{figure}
 
-\section{Systemdesign sammenfatning}\label{sec:Systemdesign_sammenfatning}
+\section{Resumé of system design}\label{sec:Systemdesign}
+\textbf{Implemented:}
+\begin{itemize}
+\item nginx serves as http-server and communicates with the application 
+through FastCGI.
+\item The application communicates with postfix over SMTP to serve emails.
+\end{itemize}
+\textbf{Not implemented yet:}
+\begin{itemize}
+    \item serving a website with adaptive layout
+    \item communicating with a database
+    \item providing an API with authentication
+\end{itemize}
 
-\section{Program- and systemtests}\label{sec:Program_systemtests}
 
-\section{Brugergrænseflade og interaktionsdesign}
+\section{Program- and system tests}\label{sec:Program_systemtests}
+
+\section{User interface and interaction design}\label{sec:UI_interactiondesign}
 
 \section{Group Dynamics}
 \subsection{What is Good?}
@@ -340,260 +358,13 @@ Thorkil Værge feels that we use too much time on reports and not enough time on
 \subsection{How can this be improved?}
 To improve our work process, we should have more days where we do nothing but work on this project. Experience shows us that these days are the most effective way to work.
 
-
-%\section{Project Definition}
-%\subsection{Overview of the Customer and the Project}
-%% vores overview kræver knowledge om nøgler - vi skal skrive ``vores system skal sikre at filerne kommer fra person abc123''
-%The Ph.D student Oleksandr Shturmov at the Department of Computer Science, University of Copenhagen, has presented us with the project of mapping KU usernames to public OpenPGP keys and creating the guides for the students and writing the server backend and frontend to accomplish this. This system should be used by the students, the teaching assistants, and the teachers at the university to ensure the authenticity of the identity of the end-user, that is, the student.
-%\subsection{Problem statement}
-%\subsubsection{Problem Domain}
-%At the University, many courses require the students to hand in assignments. In this modern era, this is done by electronic hand-ins over the World Wide Web on the interconnected global network. It is essential to ensure that there can be no doubt of the identity of the student handing in the assignment because the teachers grade the students based on these electronic hand-ins.
-%
-%This problem can be solved by a classic login system where the user has a unique username and picks a password as a secret piece of information to avoid malicious parties to get access to user privileges. This system has already been implemented by the Norwegian company its Learning through the World Wide Web platform ``Absalon''.
-%
-%Another option, which is the subject of this project, is to use asymmetric key encryption. In this system the user, i.e., the student, generates a key pair on his own computer. This key pair can be used for authentication and can also be used in other situations. The authenticity of the key pair can be further validated by peer-to-peer authentication through the signing of other peoples' keys.
-%
-%The students at the University of Copenhagen all have a unique username in the form of a ``KU Username''. If this username is mapped to a public key and the student holds the equivalent private key, then the authentication of an electronic hand-in has the same degree of trusted authenticity as that of the key pair.
-%
-%We can use the KU login in order to establish this mapping and this mapping can be further authenticated by the above-mentioned peer-to-peer key signing although this latter authentication is not necessary for the system to work. In other words: support for peer-to-peer signing in this project is nice-to-have, not need-to-have. As a way to establish this mapping, the KU login is used as a trusted source of linking an identity to a public key. The role, if any, of peer-to-peer signing or key signing by teachers has not yet been established.
-%
-%
-%\subsubsection{Scenarios}\label{Scenarios}
-%\begin{itemize}
-%\item A student has just started on the course ``Maskinarkitektur'' (Processor Design). He learns that he has to hand in the assignment by signing it with an OpenPGP key. He must then generate his own key pair using a designated program like ``GPG4Win'' or through a webservice developed as a part of this project and hosted by KU. After the key pair has been generated, the student uploads his public key to a server and the server then stores the KU Username and the public key.
-%\item When the student hands in his assignment, he signs it with his newly generated private key. And the signature is then uploaded along with the assignment. A teacher is grading the assignments that have been handed in on the course ``Maskinarkitektur''. Before he grades them, he needs to check the validity of the identity of the student. This check can either be done automatically by software that interfaces with the system developed as part of this project or manually by the teacher.
-%\item A teacher signs feedback with an OpenPGP-key. The student then looks up the OpenPGP public key of the teacher and validates the signature.
-%\end{itemize}
-%
-%\subsubsection{Solution Domain}\label{Solution Domain}
-%
-%To solve the aforementioned scenarios, we have drafted a solution which employs a key-server that will act as an authority. It will contain OpenPGP-keys for all users of the system. To validate the users it will use their KU email, which is created by other parts of KU, and thereby validated. A mapping of these two components will be created as core database of the system.
-%
-%As part of the system, a web-server will be established. It will facilitate the replacement of OpenPGP-keys in the case of loss of a users private key. This web-server also serves as point-of-contact for the initial creation of users. The aforementioned validation will be facilitated by an integrated email server.
-%
-%Upon creation of a user, a unique link, containing all necessary info, will be generated and served to the users KU email. When this link is accessed by the user, they are offered to upload their own OpenPGP-keys, generated in dedicated software like ``PGP4Win'' or to create a new OpenPGP-key directly in the browser.
-%
-%The replacement of the key will be processed in the same way, as the initial upload of a key, with the one exception, that the user manually has to request, that a new upload link will be sent to their KU email.
-%
-%% :I
-%
-%\subsubsection{Functional Requirements}\label{Functional_Requirements}
-%\begin{itemize}
-%\item The system must map a KU Username to a OpenPGP public key.
-%\item Users must be able to upload their own public key to the service.
-%\item If a user loses his private key, a method for replacing the public key must exist.
-%\item The initial registration of a key, and the replacement of a key, is authenticated through the KU email system.
-%\item Lookups in this table must be possible for the relevant university staff. An API will be defined and implemented for this.
-%\item The KU usernames must not be accessible for outsiders.
-%\item A guide for creating key pairs needs to be available on the website, possibly as shell script. This guide should explain how to derive an SSH key from an OpenPGP key.
-%\end{itemize}
-%\subsubsection{Nonfunctional Requirements}
-%\begin{itemize}
-%\item The backend should be written in golang.
-%\item The frontend should be Javascript and/or HTML5, which ever is safest and most easy to use.
-%\item The system should be browser independent.
-%\item The system must be compliant with all standards and regulations imposed by the Government of Denmark and the University of Copenhagen. These regulations will be within privacy and will regard the KU usernames that are part of the system.
-%\item The customer has decreed, that the software be licensed under a MIT-like license, which will be provided by the customer.
-%\end{itemize}
-%\subsubsection{Target Environment}
-%\begin{itemize}
-%\item The frontend must work on the newest editions of all mainstream browsers -- Internet Explorer, Firefox, Chrome, Safari.
-%\item The backend software must be able to run on the most popular Unix-like systems.
-%\end{itemize}
-%\subsubsection{Delivarables and Deadlines}\label{sec:deadlines}
-%\begin{itemize}
-%\item A preliminary version must be ready for testing and security auditing by mid May.
-%\item The whole project must be done by June 3$^{rd}$, 2015.
-%\item A list of documents to be delivered together with the software can be read in Section \ref{sec:deliverables}
-%\end{itemize}
-%\subsection{Initial Software Project Management Plan}
-%\subsubsection{Work Breakdown}
-%%lav det som træ!!one!!11!!
-%The following tasks have been identified. The list is subject to change.
-%\begin{itemize}
-%\item Acquire VPS
-%\item Initial set-up of VPS
-%\SubItem Install Go compiler
-%\SubItem Install SQLite or postgresql
-%\SubItem Create startup script for server to run appropriate programs.
-%\item Use golang to connect to database
-%\item Determine exact method for teachers to fetch data from DB API
-%\item Front-end view containing a form for first-time upload of OpenPGP key
-%\item Front-end view which enables replacement of key
-%\item Mail server to send links for students to upload OpenPGP key
-%\SubItem System that creates signed single-use links for key upload
-%\end{itemize}
-%\subsubsection{Roles \& Responsibilities}
-%%lav det som tabel (se bogen for stil)
-%%beskriv interne og eksterne roller
-%This group consists of Mads Gram, Sven Frenzel, and Thorkil Værge. The roles and responsibilities have not yet been delegated. So instead, we choose to describe our individual skill set.
-%\begin{itemize}
-%\item Mads Gram: Can code Javascript for front-end, some knowledge of MVC architecture, SQL and general DB knowledge
-%\item Sven Frenzel: Linux server administration, basic network administration. Has experience with HTML and CSS and is a proficient bash scripter.
-%\item Thorkil Værge: Some experience in project management of website development, SQL experience from DB course, some front-end experience with HTML and CSS. Theoretical knowledge of hashes and cryptography and practical knowledge of internet security.
-%\end{itemize}
-%\subsubsection{Project Schedule}
-%%lav gerne et gantt-diagram (ikke nødvendigt)
-%We have chosen to divide the project schedule into phases. In the spirit of agile development, the following list should be viewed as an iterative process and something that will overlap a lot. Some of these tasks could also be given a deadline under Section \ref{sec:deadlines}.
-%\begin{itemize}
-%\item Defining the project -- the introductory phase where we iteratively align our expectations for the project with the customer's expectations.
-%\item Learning Go -- this can be done through some very basic Go tutorials but will probably mainly be achieved by reading up on how a Go server is built and connects to a server as well as implementing this setup.
-%\item Obtaining additional required skill set: some front-end development in HTML5 or Javascript.
-%\item Setting up the server with required programs, including for example a Go compiler and an SQL server.
-%\item Programming the server and its SQL interaction in Go.
-%\item Programming the front-end.
-%\item Setting up email server to talk to Go on our VPS.
-%\item Presenting results to customer for feedback.
-%\item Testing the programmed logic.
-%\end{itemize}
-%\subsubsection{Budget and Resources}
-%The following resources are required for the project and will be provided by the customer.
-%\begin{itemize}
-%\item VPS or dedicated server.
-%\item access to a mail server (Oleks researches).
-%\item Subdomain on customer's server to host the PGP registration website.
-%\item SSL certificate to defeat man-in-the-middle attack where an attacker sends a fake public PGP key to the server.
-%\item time resources: As of yet unknown but we expect that large parts of the programming can be solved at intensive work weekends.
-%\end{itemize}
-%\subsubsection{Description of Risks}
-%%risikomatrice!
-%\begin{itemize}
-%\item There is a risk that learning Go will be too complex a task for us to master in time. To mitigate this risk, a deadline for some basic server functionality, using Go, should be made. We set a deadline for May 1$^{st}$ for getting the VPS to connect to the database through Go. This task requires basic Go knowledge and will test our basic Go abilities.
-%\item During the security audit, serious vulnerabilities could necessitate major restructuring of the code base.
-%\end{itemize}
-%\newpage
-%\subsection{Initial software architecture}
-%The purpose of the initial software architecture (ISA) is to provide an overview of the project by breaking down the system into smaller parts and explaining these individual parts. An overview of this is shown in Figure  \ref{fig:ISA}.
-%
-%The core of the system is a database which is represented on the left of Figure  \ref{fig:ISA}. This database consists of a table which maps a KU email (or a KU Username) to a public PGP key. sqlite or postgresql will be used for manage the database.
-%
-%The webserver interfaces with both the database and a mail server and also delivers the HTML to the user. The webserver is written in golang.
-%
-%The user can land on two different pages depending on what they are after. One page is for uploading or generating a new key through Javascript and another is for replacing a key.
-%
-%\begin{figure}[h!]
-%\centering
-%\includegraphics[width=1.1\textwidth]{pictures/pksu_isa_centered}
-%\caption{Initial software architecture of the project. Our project includes coding the database, web server, and front-end.}
-%\label{fig:ISA}
-%\end{figure}
-%
-%\subsection{Project Agreement Definition}
-%The purpose of the Project Agreement Definition (PAD) is to outline the Project Agreement (PA) which is a contract that we, the developers, and the customer agree upon. A contract defining the duration, cost, deliverables, and minimum requirements for the project should be defined. The sections below are drafts of the contents of the PA which is yet to be fully defined and has \textbf{not} been approved of the customer. The next meeting should have the PA on the agenda.
-%\subsubsection{List of Deliverable Documents}\label{sec:deliverables}
-%\begin{itemize}
-%\item Source code of the project.
-%\item Technical documentation of the developed system.
-%\item Non-technical report describing the system in layman terms.
-%\item Scripts and/or guides for set-up of the developed server software.
-%\SubItem A report documenting set-up of all dependencies for the developed system, including, but not limited to, a log of all commands used to set-up the development environment.
-%\item Working server running compiled software.
-%\item Report of security audit.
-%\end{itemize}
-%\subsubsection{Criteria for Demonstrations of Functional Requirement}
-%All aspects of the basic functionality must be tested thoroughly. This includes tests of uploading of public keys, replacement of private keys, administrator access to the private keys and more.
-%
-%\subsubsection{Test suite}
-%
-%We will develop a test suite along with the system. This will be used internally to ensure that the logic is sound and that all functions run correctly. Furthermore it will also serve as a way to monitor the progress of the system.
-%
-%Since multiple developers will be working on the code base, it is a genuine concern that changing the code can course problems throughout the code base. In that case, the test suite will check that such problems are not overlooked since the test suite will highlight the problems.
-%
-%In the end, the test suite will be extended and be used as a validation of the system. The test suite will serve as the primary validation of the functional requirements.
-%
-%In our specific case, some preliminary test will focus on correct execution of the individual cases. Then as the project evolves and becomes more interwoven, tests will be written also check the more complex functionality.
-%
-%\subsubsection{Criteria for Demonstrations of Non-functional Requirements}
-%All aspects of the website should be tested and look uniform on all four standard web browsers.
-%Security-wise, the customer has expressed certain requirements. It must not be possible for non-approved persons to access the list of KU usernames since the university has not published this list and this then would consititute a loss of privacy for the students. It is however acceptable that the usernames are stored in plaintext on the server.
-%\section{System definition - FACTOR}
-%The system definition is described according to the FACTOR criteria described in \cite{matthiassen}. The following specifications are mostly redundant and reflects information placed elsewhere in the report. The purpose of this system definition is to give a quick overview of the requirements for the system to be designed.
-%\begin{itemize}
-%\item \textbf{F}unctionality: Allow specific students and employees at University of Copenhagen to map their username to a public PGP key and store these records in a database maintained by the customer. Also allow the same users to replace their public key in case they lose the corresponding private key. Let people with privileged access through some login mechanism read these mappings. Do not let the mappings be viewable to the general public.
-%\item \textbf{A}pplication domain: The system will be used by students to upload their PGP key and by teaching assistants to match a hand-in with a KU Username.
-%\item \textbf{C}onditions: Most students are not likely to have experience with PGP so it should be as simple as possible to upload a PGP key and the system must be forgiving, meaning that if a student loses his private PGP key, they must be able to upload a new one. The TA's must be able to retrieve the mappings in an easy way since they should not have to be bothered with SQL commands.
-%\item \textbf{T}echnology: Servers with a UNIX-like OS for back-end will run the system, modern browsers will be used for front-end. The system will be written in golang to the widest extent possible.
-%\item \textbf{O}bjects: OpenPGP public key, KU Username, Students, TAs, emails.
-%\item \textbf{R}esponsibility: Maintain a table with a mapping from KU Usernames to corresponding OpenPGP public keys. Allow privileged users access to read from this table.
-%\end{itemize}
-%
-%\newpage
-%\section{Exercises from Weekly Assignments}
-%
-%\subsection{OOSE 1-6:}
-%Specify which of these statements are functional requirements and which are
-%nonfunctional requirements
-%\begin{itemize}
-%
-%\item “The TicketDistributor must enable a traveler to buy weekly passes.”\\
-%This first requirement is a \textbf{functional} requirement, since it is an essential function of the system.
-%\item “The TicketDistributor must be written in Java.”\\
-%This is a \textbf{non functional} requirement.\\\\
-%\item “The TicketDistributor must be easy to use.”\\
-%This is a \textbf{nonfunctional} requirement, an reason for this is that it can't be objectively answered. It is not possible too be simply evaluated as easy or hard to use.\\\\
-%\item “The TicketDistributor must always be available.”\\
-%This is a \textbf{functional} requirement. \\\\
-%\item “The TicketDistributor must provide a phone number to call when it fails.” \\
-%This is a \textbf{functional} requirement, since it describes a concrete function of the system.\\
-%\end{itemize}
-%
-%\subsection{OOSE 1-8:}
-%In the following description, explain when the term account is used as an application domain concept and when as a solution domain concept.\\\\
-%In this specific example from the given text, we see the Application Domain is the issue of users not always being online. Which limits the customer to access to their account.\\
-%In this specific example from the given text, we see the Solution Domain, as the proposal of giving the user the data from the last connected session.\\
-%\newpage
-%\subsection{OOSE 2-6:}
-%
-%\begin{figure}[h!]
-%    \centering
-%    \includegraphics[width=1.1\textwidth]{pictures/oose2_6}
-%    \label{fig:OOSE26}
-%\end{figure}
-%
-%\subsection{OOSE 2-7:}
-%\begin{figure}[h!]
-%    \centering
-%    \includegraphics[width=1.1\textwidth]{pictures/oose2_7}
-%
-%    \label{fig:OOSE27}
-%\end{figure}
-%
-%
-%\newpage
-%\subsection{OOSE 2-9:}
-%
-%\begin{figure}[h!]
-%    \centering
-%    \includegraphics[width=1.1\textwidth]{pictures/oose2_9}
-%
-%    \label{fig:OOSE29}
-%\end{figure}
-%
-%\subsection{OOSE 2-10:}
-%
-%\begin{figure}[h!]
-%    \centering
-%    \includegraphics[width=1.1\textwidth]{pictures/oose2_10}
-%
-%    \label{fig:OOSE210}
-%\end{figure}
-%
-%\newpage
-%\subsection{OOSE 7-1:}
-%
-%\begin{figure}[h!]
-%    \centering
-%    \includegraphics[width=1.1\textwidth]{pictures/oose7_1}
-%    \label{fig:OOSE71}
-%\end{figure}
-
 \newpage
 \section{Appendix}
 \subsection{Version Control}
 
 We have chosen to use Git as our version control solution, this we have pared with the only git repository host GitHub.
 
-As earlier agree with our instructor Kasper Passov, we have added him to our Git repository. Which will allow him access to our source code.
+As earlier agreed upon with our instructor Kasper Passov, we have added him to our Git repository. This will allow him to access our source code.
 
 \urldef{\appendixoneone}\url{https://github.com/Orkeren/DIKU-Keyserver/commit/5e7c7c741fbe6d2e74889e8eaff6173e8c116d46}
 \appendixoneone
@@ -608,7 +379,7 @@ Earlier we used pre-encoded HTML in our app.go, with modification and extensive 
 
 \subsection{Changelog for report}
 
-Since we use Git for our entire project, a timeline of a specific file is possible, so for our report the timeline consists of a link to a history of our document, which our document has been built from. Since we all have individual GibHub accounts, it is possible to see whom committed what changes.
+Since we use Git for our entire project, a timeline of a specific file is possible, so for our report the timeline consists of a link to a history of our document, which our document has been built from. Since we all have individual GitHub accounts, it is possible to see who committed what.
 
 \urldef{\appendixtwo}\url{https://github.com/Orkeren/DIKU-Keyserver/commits/master/docs/delrapport_2/aflevering2.tex}
 \appendixtwo % This is a funky hack, which is used since there is a _ in the url... (NO, you can't just escape it in the url link)
