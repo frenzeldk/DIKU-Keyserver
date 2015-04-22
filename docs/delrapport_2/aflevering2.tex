@@ -27,6 +27,7 @@
 \usepackage{graphicx} % \includegraphics
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{appendix}
 \usepackage{amsfonts,amsmath,amssymb}
 \usepackage[colorinlistoftodos]{todonotes}
 %\usepackage{gauss} % Gauss Matrix
@@ -357,8 +358,8 @@ Thorkil Værge feels that we use too much time on reports and not enough time on
 To improve our work process, we should have more days where we do nothing but work on this project. Experience shows us that these days are the most effective way to work.
 
 \newpage
-\section{Appendix}
-\subsection{Version Control}
+\begin{appendices}
+\chapter{Version Control}
 
 We have chosen to use Git as our version control solution, this we have pared with the only git repository host GitHub.
 
@@ -375,21 +376,22 @@ hash.go is a go module which enables creation of cryptographic hashes, in this i
 
 Earlier we used pre-encoded HTML in our app.go, with modification and extensive use of the html/template library. We were able to use html templates rather. This allows us to make changes to the pages which are displayed, without stopping the service.
 
-\subsection{Changelog for report}
+\chapter{Changelog for report}
 
 Since we use Git for our entire project, a timeline of a specific file is possible, so for our report the timeline consists of a link to a history of our document, which our document has been built from. Since we all have individual GitHub accounts, it is possible to see who committed what.
 
 \urldef{\appendixtwo}\url{https://github.com/Orkeren/DIKU-Keyserver/commits/master/docs/delrapport_2/aflevering2.tex}
 \appendixtwo % This is a funky hack, which is used since there is a _ in the url... (NO, you can't just escape it in the url link)
 
-\subsection{Timeline}
+\chapter{Timeline}
 \begin{itemize}
   \item  March 16th 2015: First meeting with client, initial establishment of project. We agreed upon programming language and choice for authentication Open-PGP keys.
   \item  March 22th 2015: Second meeting with client, here we went into specifics alike API for staff and license
   \item March 29th 2015: Third meeting with client, we agreed upon using nginx as our webserver and some discussion about which database was started, but a final agreement was not reached. Lastly we agreed upon using the Bootstrap framework for the front end design. We setup a test server the same day, and got our first prototype ready.
 \end{itemize}
 
-\subsection{Minutes from March 16th 2015}
+\chapter{Minutes}
+\section{Minutes from March 16th 2015}
 \begin{itemize}
 \item Ønsker: identificer studerende ved aflevering vha gpg-nøgle
 \item Ønsker: grube med gpg-nøgle og ku-mail knyttet sammen (da der stoles på at den studerende har adgang til sin email)
@@ -418,7 +420,7 @@ Since we use Git for our entire project, a timeline of a specific file is possib
 næste møde:
 2015-03-22 kl 11-16
 
-\subsection{Minutes from March 22nd 2015}
+\section{Minutes from March 22nd 2015}
 The meeting was held to align the expectations of the client and the developers in regards to the systems capabilities and design.
 
 \begin{itemize}
@@ -437,6 +439,8 @@ The meeting was held to align the expectations of the client and the developers 
 \end{itemize}
 
 Næste møde er 29/30 marts 2015.
+\end{appendices}
+
 
 \begin{thebibliography}{1}
 
