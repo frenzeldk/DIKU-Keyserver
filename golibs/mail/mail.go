@@ -1,31 +1,13 @@
 package mail
 
 import (
-    "gopkg.in/gomail.v1"
-)
-
-func Send(rcpt, body string) {
-    msg := gomail.NewMessage()
-    msg.SetHeader("From", "noreply@dikukeys.dk")
-    msg.SetHeader("To", rcpt)
-    msg.SetHeader("Subject", "Hello!")
-    msg.SetBody("text/html", "Hello <b>Bob</b>!")
-
-    // Send the email to Bob
-    mailer := gomail.NewMailer("localhost", "dikukeys", "", 25)
-    if err := mailer.Send(msg); err != nil {
-        panic(err)
-    }
-}
-
-/* 
-import (
         "bytes"
         "log"
         "net/smtp"
 )
 
 func Send(rcpt, body string) {
+		bla := "From: DIKU Keys <noreply@dikukeys.dk" + "To: " + rcpt + "Subject: Test" + body
         // Connect to the remote SMTP server.
         c, err := smtp.Dial("dikukeys.dk:25")
         if err != nil {
@@ -41,8 +23,8 @@ func Send(rcpt, body string) {
                 log.Fatal(err)
         }
         defer wc.Close()
-        buf := bytes.NewBufferString(body)
+        buf := bytes.NewBufferString(bla)
         if _, err = buf.WriteTo(wc); err != nil {
                 log.Fatal(err)
         }
-} */
+}
