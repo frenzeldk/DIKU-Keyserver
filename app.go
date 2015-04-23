@@ -36,8 +36,8 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 	//rcpt is the e-mail address associated with kuid
 	//commented out until we no longer get caught be the office 365 spamfilter
-  //rcpt := kuid + "@alumni.ku.dk"
-  rcpt := kuid
+	//rcpt := kuid + "@alumni.ku.dk"
+	rcpt := kuid
 	fmt.Println(rcpt)
 
 	if kuid == "" {
@@ -53,9 +53,9 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	           http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 		//only send an email if rcpt has a value. This needs to be changed to regex for a valid e-email adress (user@domain.tld)
 		//again due to office 365 we currently only check if the field is empty or not instead of checking if the email is a ku-student email.
-    //if rcpt != "@alumni.ku.dk" {
+		//if rcpt != "@alumni.ku.dk" {
 		if rcpt != "" {
-    mail.Send(rcpt, body)
+			mail.Send(rcpt, body)
 		}
 		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/reg_mail_sent.html")
 		t.Execute(resp, p)
@@ -94,6 +94,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 func loadPage(title string) (*Page, error) {
 	filename := title + ".txt"
+	fmt.Println(title)
 	body, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return nil, err
