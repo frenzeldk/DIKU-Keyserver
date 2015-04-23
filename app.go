@@ -40,11 +40,11 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	fmt.Println(rcpt)
 
 	if kuid == "" {
-		t, _ := template.ParseFiles("/home/keys/Orkeren/DIKU-Keyserver/html_templates/create_link.html")
+		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/create_link.html")
 		t.Execute(resp, p)
 	} else if coffee_hash == "" {
 		ctime = strconv.FormatInt(time.Now().Unix(), 10)
-		coffee_hash = hex.EncodeToString(hash.GetHash(kuid, ctime)[:])
+		coffee_hash = hex.EncodeToString(hash.GetHash(kuid + ctime)[:])
 
 		//body is the plaintext body of the email.
 		body := 
@@ -56,7 +56,7 @@ http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffe
 		}
 		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/reg_mail_sent.html")
 		t.Execute(resp, p)
-	} else if hex.EncodeToString(hash.GetHash(kuid, ctime)[:]) == coffee_hash {
+	} else if hex.EncodeToString(hash.GetHash(kuid + ctime)[:]) == coffee_hash {
 		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/public_key.html")
 		t.Execute(resp, p)
 	} else {
