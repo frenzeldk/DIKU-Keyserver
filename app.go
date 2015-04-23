@@ -47,14 +47,15 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		coffee_hash = hex.EncodeToString(hash.GetHash(kuid + ctime)[:])
 
 		//mailbody is the plaintext body of the email.
-		mailbody := `Velkommen til dikukeys. For at afslutte registreringen, tryk venligst på dette link:
+		mailbody := `Velkommen til dikukeys. For at afslutte registreringen, tryk venligst p&#229; dette link:
 http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 		
 		if rcpt != "@alumni.ku.dk" {
 			mail.Send(rcpt, mailbody)
+			t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/reg_mail_sent.html")
+			t.Execute(resp, p)
 		}
-		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/reg_mail_sent.html")
-		t.Execute(resp, p)
+
 	} else if hex.EncodeToString(hash.GetHash(kuid + ctime)[:]) == coffee_hash {
 		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/public_key.html")
 		t.Execute(resp, p)
