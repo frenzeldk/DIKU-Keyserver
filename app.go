@@ -13,6 +13,7 @@ import (
 	"os"
 	"strconv"
 	//"strings"
+	"regexp"
 	"time"
 )
 
@@ -35,6 +36,12 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 	pubkey := req.FormValue("pubkey")
 
+	regpattern := "/^[B-DF-HJ-NP-TV-Z]{3}[\\d]{3}$/i"
+
+	regmatch, _ := regexp.MatchString(regpattern, kuid)
+	if !regmatch && kuid != "" {
+		resp.Write([]byte("<p>Not a valid link!</p>"))
+	}
 	rcpt := kuid + "@alumni.ku.dk"
 
 	fmt.Println(rcpt)
@@ -49,7 +56,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		//mailbody is the plaintext body of the email.
 		mailbody := `Velkommen til dikukeys. For at afslutte registreringen, tryk venligst p&#229; dette link:
 http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
-		
+
 		if rcpt != "@alumni.ku.dk" {
 			mail.Send(rcpt, mailbody)
 			t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/reg_mail_sent.html")
