@@ -13,13 +13,13 @@
 
   <div class="container">
 
-    <form class="form" onsubmit="return check_if_kuid();">
+    <form class="form" id="form-kuid" onsubmit="return check_if_kuid();">
       <h2 class="form-heading">Please enter KU-ID</h2>
       @alumni.ku.dk<br>
       <label for="kuid" class="sr-only">KU-ID</label>
       <input class="form-control" type='text' id="kuid" name='kuid' placeholder="KU-ID" required autofocus>
       </br> <!-- ugly hack, I will soon fix -->
-      <button class="btn btn-lg btn-primary btn-block" type='submit'> Submit </button>
+      <button form="form-kuid" class="btn btn-lg btn-primary btn-block" type='submit'> Submit </button>
     </form>
   </div>
 </body>
