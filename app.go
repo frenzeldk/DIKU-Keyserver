@@ -39,6 +39,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	regpattern := "/^[B-DF-HJ-NP-TV-Z]{3}[\\d]{3}$/i"
 
 	regmatch, _ := regexp.MatchString(regpattern, kuid)
+	fmt.Println(regmatch)
 	if !regmatch && kuid != "" {
 		resp.Write([]byte("<p>Not a valid link!</p>"))
 	}
