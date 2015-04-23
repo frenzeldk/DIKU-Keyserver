@@ -1,16 +1,20 @@
 <html>
+<head>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
-
+    <link href="css/signin.css" rel="stylesheet">
+</head>
 <body>
+
   <div class="container">
+
     <form onsubmit="return check_if_kuid();"><br>
+
       <h2 class="form-heading">Please enter KU-ID</h2>
       <label for="kuid" class="sr-only">KU-ID</label>
-      <input type='text' id="kuid"  name='kuid'>@alumni.ku.dk<br>
+      <input type='text' id="kuid"  name='kuid' placeholder="KU-ID" required autofocus>@alumni.ku.dk<br>
       <input type='submit' value='Send'>
     </form>
   </div>
