@@ -1,12 +1,25 @@
 <html>
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
-    <form>
-        public key :
-        <br><input type='text' name ='pubkey'>
-        <br><input type='submit' value='Send'>
-    </form>
+      <!-- Custom styles for this template -->
+      <link href="html_templates/css/signin.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+
+      <form class="form" id="form-pubkey">
+          <h2 class="form-heading"> Public Key </h2>
+          <label for="pubkey" class="sr-only">Pubkey</label>
+          <input class="form-control" type='text' name ='pubkey' id="pubkey" placeholder="Public Key" required
+          autofocus>
+          <br> </br>
+          <button form="form-pubkey" class="btn btn-lg btn-primary btn-block" type='submit'> Submit </button>
+      </form>
+    </div>
+  </body>
 </html>
