@@ -40,6 +40,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 	regmatch, _ := regexp.MatchString(regpattern, kuid)
 	fmt.Println(regmatch)
+	fmt.Println(kuid)
 	if !regmatch && kuid != "" {
 		resp.Write([]byte("<p>Not a valid link!</p>"))
 	}
