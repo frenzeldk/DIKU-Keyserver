@@ -4,7 +4,7 @@ import (
     "gopkg.in/gomail.v1"
 )
 
-func send(rcpt, body string) {
+func Send(rcpt, body string) {
     msg := gomail.NewMessage()
     msg.SetHeader("From", "noreply@dikukeys.dk")
     msg.SetHeader("To", rcpt)
