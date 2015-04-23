@@ -1,6 +1,25 @@
 package mail
 
 import (
+    "gopkg.in/gomail.v1"
+)
+
+func send(rcpt, body string) {
+    msg := gomail.NewMessage()
+    msg.SetHeader("From", "noreply@dikukeys.dk")
+    msg.SetHeader("To", rcpt)
+    msg.SetHeader("Subject", "Hello!")
+    msg.SetBody("text/html", "Hello <b>Bob</b>!")
+
+    // Send the email to Bob
+    mailer := gomail.NewMailer("localhost", "dikukeys", "", 25)
+    if err := mailer.Send(msg); err != nil {
+        panic(err)
+    }
+}
+
+/* 
+import (
         "bytes"
         "log"
         "net/smtp"
@@ -26,4 +45,4 @@ func Send(rcpt, body string) {
         if _, err = buf.WriteTo(wc); err != nil {
                 log.Fatal(err)
         }
-}
+} */
