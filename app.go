@@ -51,7 +51,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 		//body is the plaintext body of the email.
 		body := `Velkommen til dikukeys. For at afslutte registreringen, tryk venligst på dette link:
-	           http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
+http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 		//only send an email if rcpt has a value. This needs to be changed to regex for a valid e-email adress (user@domain.tld)
 		//again due to office 365 we currently only check if the field is empty or not instead of checking if the email is a ku-student email.
 		//if rcpt != "@alumni.ku.dk" {

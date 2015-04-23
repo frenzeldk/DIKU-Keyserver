@@ -7,7 +7,10 @@ import (
 )
 
 func Send(rcpt, body string) {
-		bla := "From: DIKUKeys <noreply@dikukeys.dk" + "To: " + rcpt + " Subject: Test " + body
+		bla := "From: DIKUKeys <noreply@dikukeys.dk
+		" + "To: " + rcpt + "
+		Subject: Test
+		" + body
         // Connect to the remote SMTP server.
         c, err := smtp.Dial("dikukeys.dk:25")
         if err != nil {
