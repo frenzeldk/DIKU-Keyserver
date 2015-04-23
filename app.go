@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/hex"
-	"fmt"
+	//"fmt"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/hash" // This is our hash function
 	"github.com/Orkeren/DIKU-Keyserver/golibs/mail" // This is our mail function, it does hello
 	"html/template"
@@ -26,7 +26,7 @@ type Page struct {
 func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	titel := req.URL.Path[len("/"):]
 	p, _ := loadPage(titel)
-	fmt.Println(req.URL) // Dette viser bare hvordan man får en URL fra req
+	//fmt.Println(req.URL) // Dette viser bare hvordan man får en URL fra req
 	//kuid is the KU ID of the student
 	kuid := req.FormValue("kuid")
 	//ctime is the time of creation of the link (as unix time)
@@ -39,14 +39,11 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	regpattern := "^[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]{3}[\\d]{3}$"
 
 	regmatch, _ := regexp.MatchString(regpattern, kuid)
-	fmt.Println(regmatch)
-	fmt.Println(kuid)
+
 	if !regmatch && kuid != "" {
 		resp.Write([]byte("<p>Not a valid link!</p>"))
 	}
 	rcpt := kuid + "@alumni.ku.dk"
-
-	fmt.Println(rcpt)
 
 	if kuid == "" {
 		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/create_link.html")
