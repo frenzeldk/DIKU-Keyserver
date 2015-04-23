@@ -36,7 +36,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 	pubkey := req.FormValue("pubkey")
 
-	regpattern := "/^[B-DF-HJ-NP-TV-Z]{3}[\\d]{3}$/i"
+	regpattern := "^[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]{3}[\\d]{3}$"
 
 	regmatch, _ := regexp.MatchString(regpattern, kuid)
 	fmt.Println(regmatch)
