@@ -94,7 +94,6 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 func loadPage(title string) (*Page, error) {
 	filename := title + ".txt"
-	fmt.Println(Page)
 	body, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return nil, err
