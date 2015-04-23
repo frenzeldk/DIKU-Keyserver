@@ -7,11 +7,11 @@ import (
 )
 
 func Send(rcpt, body string) {
-		From := `From: DIKUKeys <noreply@dikukeys.dk
+		From := `From: DIKU Keys <noreply@dikukeys.dk>
 `
 		To := "To: " + rcpt + `
 `
-		Subject := `Subject: Test
+		Subject := `Subject: Velkommen til DIKU Keys
 `
 		epost := From + To + Subject + body
         // Connect to the remote SMTP server.
