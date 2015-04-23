@@ -25,6 +25,7 @@ type Page struct {
 func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	titel := req.URL.Path[len("/"):]
 	p, _ := loadPage(titel)
+	fmt.Println(req.URL)
 	//kuid is the KU ID of the student
 	kuid := req.FormValue("kuid")
 	//ctime is the time of creation of the link (as unix time)
