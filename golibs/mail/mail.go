@@ -7,10 +7,13 @@ import (
 )
 
 func Send(rcpt, body string) {
-		bla := 'From: DIKUKeys <noreply@dikukeys.dk
-		' + "To: " + rcpt + '
-		Subject: Test
-		' + body
+		From := `From: DIKUKeys <noreply@dikukeys.dk
+`
+		To := "To: " + rcpt + `
+`
+		Subject := `Subject: Test
+`
+		epost := From + To + Subject + body
         // Connect to the remote SMTP server.
         c, err := smtp.Dial("dikukeys.dk:25")
         if err != nil {
@@ -26,7 +29,7 @@ func Send(rcpt, body string) {
                 log.Fatal(err)
         }
         defer wc.Close()
-        buf := bytes.NewBufferString(bla)
+        buf := bytes.NewBufferString(epost)
         if _, err = buf.WriteTo(wc); err != nil {
                 log.Fatal(err)
         }
