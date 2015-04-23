@@ -1,21 +1,25 @@
 <html>
-<head>
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Bootstrap core CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-    <!-- Custom styles for this template -->
-    <link href="html_templates/css/signin.css" rel="stylesheet">
-</head>
+      <!-- Custom styles for this template -->
+      <link href="html_templates/css/signin.css" rel="stylesheet">
+  </head>
 <body>
 
   <div class="container">
 
-    <form class="form" onsubmit="return check_if_kuid();"><br>
-
+    <form class="form" onsubmit="return check_if_kuid();">
       <h2 class="form-heading">Please enter KU-ID</h2>
+      @alumni.ku.dk<br>
       <label for="kuid" class="sr-only">KU-ID</label>
-      <input class="form-control" type='text' id="kuid"  name='kuid' placeholder="KU-ID" required autofocus> @alumni.ku.dk<br>
-      <input type='submit' value='Send'>
+      <br> <!-- ugly hack, I will soon fix -->
+      <input class="form-control" type='text' id="kuid" name='kuid' placeholder="KU-ID" required autofocus>
+      <button class="btn btn-lg btn-primary btn-block" type='submit'> Submit </button>
     </form>
   </div>
 </body>

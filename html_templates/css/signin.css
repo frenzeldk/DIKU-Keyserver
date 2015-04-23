@@ -4,20 +4,21 @@ body {
   background-color: #eee;
 }
 
+.form .form-control{
+  margin-bottom: 10px;
+}
 .form {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
 }
-.form .form-heading,
-.form .checkbox {
-  margin-bottom: 10px;
-}
+
 .form .checkbox {
   font-weight: normal;
 }
 .form .form-control {
   position: relative;
+  margin-bottom: 10px;
   height: auto;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -26,15 +27,6 @@ body {
   font-size: 16px;
 }
 .form .form-control:focus {
+    margin-bottom: 10px;
   z-index: 2;
-}
-.form input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
