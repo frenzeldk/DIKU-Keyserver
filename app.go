@@ -78,7 +78,6 @@ http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffe
 			cuser := User{kuid, pubkey}
 			t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/pub_key_succesful.html")
 			t.Execute(resp, p)
-			}
 		}
 	}
 }
