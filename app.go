@@ -22,6 +22,10 @@ type Page struct {
 	Title string
 	Body  []byte
 }
+type User struct {
+	KUID   string
+	PUBKEY string
+}
 
 func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	titel := req.URL.Path[len("/"):]
@@ -69,20 +73,11 @@ http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffe
 		resp.Write([]byte("<p>Not a valid link!</p>"))
 	}
 
-	type User struct {
-		KUID   string
-		PUBKEY string
-	}
 	if kuid != "" {
 		if pubkey != "" {
 			cuser := User{kuid, pubkey}
-			tmpl, err := template.New("test").Parse("{{.KUID}} has submitted the public key {{.PUBKEY}}")
-			if err != nil {
-				panic(err)
-			}
-			err = tmpl.Execute(os.Stdout, cuser)
-			if err != nil {
-				panic(err)
+			t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/pub_key_succesful.html")
+			t.Execute(resp, p)
 			}
 		}
 	}
