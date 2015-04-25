@@ -49,7 +49,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	}
 	rcpt := kuid + "@alumni.ku.dk"
 
-	if kuid == "" {
+	if kuid == "" && pubkey == "" {
 		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/create_link.html")
 		t.Execute(resp, p)
 	} else if coffee_hash == "" {
@@ -73,12 +73,10 @@ http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffe
 		resp.Write([]byte("<p>Not a valid link!</p>"))
 	}
 
-	if kuid != "" {
-		if pubkey != "" {
-			//cuser := User{kuid, pubkey}
-			t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/pub_key_succesful.html")
-			t.Execute(resp, p)
-		}
+	if kuid == "" && pubkey != "" {
+		//cuser := User{kuid, pubkey}
+		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/pub_key_succesful.html")
+		t.Execute(resp, p)
 	}
 }
 
