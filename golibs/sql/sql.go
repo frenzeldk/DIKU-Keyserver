@@ -1,6 +1,9 @@
 package sql
 
+
 import (
+	"database/sql"
+    "fmt"
 	"github.com/mattn/go-sqlite3" //sqlite3 support
 )
 
