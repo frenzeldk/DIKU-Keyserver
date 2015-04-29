@@ -26,4 +26,4 @@ Minutes from meetings with clients missing?
 
 Bibliography missing?
 
-Quite a lot of mistakes in the written text, inconsistencies etc. Check PDF with comments.
+Quite a lot of mistakes in the written text, inconsistencies, missing parts, etc. Check PDF with comments.
