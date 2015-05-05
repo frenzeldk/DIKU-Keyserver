@@ -21,7 +21,6 @@ import (
 type FastCGIServer struct{}
 type Page struct {
 	Title string
-	Body  []byte
 }
 type User struct {
 	KUID   string
@@ -88,12 +87,7 @@ http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffe
 }
 
 func loadPage(title string) (*Page, error) {
-	//filename := title + ".txt"
-	body, err := ioutil.ReadFile("dennefindesnokikke")
-	if err != nil {
-		return nil, err
-	}
-	return &Page{Title: title, Body: body}, nil
+	return &Page{Title: title}, nil
 }
 
 func main() {
