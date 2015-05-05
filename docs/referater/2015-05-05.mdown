@@ -1,0 +1,14 @@
+* Oleks wants information on the landing page.
+* Edit the ku-id check 
+* After posting a ku-id, the page should return the posted ku-id
+* JS regex needs to be updated
+* Fix "å" in email.
+* e-mail in english after the danish paragraph
+* More content in the e-mail. Standard "you cannot reply. if this wasn't you."
+* Shorter hash in link
+* More description on pgp-submit page.
+* Check if content submitted is an OpenPGP public key.
+* Make sure link can be used only once
+* Bootstrap change a bit layout
+* Streamline language
+
