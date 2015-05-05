@@ -59,8 +59,16 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		coffee_hash = hex.EncodeToString(hash.GetHash(kuid + ctime)[:])
 
 		//mailbody is the plaintext body of the email.
-		mailbody := `Velkommen til dikukeys. For at afslutte registreringen, tryk venligst p&#229; dette link:
-http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
+		mailbody := `English below
+
+Velkommen til dikukeys. For at afslutte registreringen, tryk venligst p&#229; dette link:
+http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + '
+
+' + 
+		`Welcome to DIKU Keys. To register in the DIKU Keys system please follow this link:
+http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + '\r\n\r\n'
+
+
 
 		if rcpt != "@alumni.ku.dk" {
 			mail.Send(rcpt, mailbody)
