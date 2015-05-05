@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/hash" // This is our hash function
 	"github.com/Orkeren/DIKU-Keyserver/golibs/mail" // This is our mail function, it does hello
-//	"github.com/Orkeren/DIKU-Keyserver/golibs/dbs" // This is our sqlite function
+	//	"github.com/Orkeren/DIKU-Keyserver/golibs/dbs" // This is our sqlite function
 	"html/template"
 	"io/ioutil"
 	"net"
@@ -67,8 +67,6 @@ http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffe
 Welcome to DIKU Keys. To register in the DIKU Keys system please follow this link:
 http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 
-
-
 		if rcpt != "@alumni.ku.dk" {
 			mail.Send(rcpt, mailbody)
 			t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/reg_mail_sent.html")
@@ -90,10 +88,8 @@ http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffe
 }
 
 func loadPage(title string) (*Page, error) {
-	filename := title + ".txt"
-	//body, err := ioutil.ReadFile(filename)
-	body := []byte
-	err := nil
+	//filename := title + ".txt"
+	body, err := ioutil.ReadFile("dennefindesnokikke")
 	if err != nil {
 		return nil, err
 	}
