@@ -2,10 +2,10 @@ package main
 
 import (
 	"encoding/hex"
-	//"fmt"
+	"fmt"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/hash" // This is our hash function
 	"github.com/Orkeren/DIKU-Keyserver/golibs/mail" // This is our mail function, it does hello
-	"github.com/Orkeren/DIKU-Keyserver/golibs/dbs" // This is our sqlite function
+//	"github.com/Orkeren/DIKU-Keyserver/golibs/dbs" // This is our sqlite function
 	"html/template"
 	"io/ioutil"
 	"net"
@@ -31,6 +31,7 @@ type User struct {
 func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	titel := req.URL.Path[len("/"):]
 	p, _ := loadPage(titel)
+	fmt.println(titel)
 	//fmt.Println(req.URL) // Dette viser bare hvordan man får en URL fra req
 	//kuid is the KU ID of the student
 	kuid := req.FormValue("kuid")
