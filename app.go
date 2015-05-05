@@ -61,10 +61,10 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		mailbody := `English below
 
 Velkommen til dikukeys. For at afslutte registreringen, tryk venligst p&#229; dette link:
-http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + `
+http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + `
 
 Welcome to DIKU Keys. To register in the DIKU Keys system please follow this link:
-http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
+http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 
 		if rcpt != "@alumni.ku.dk" {
 			mail.Send(rcpt, mailbody)
