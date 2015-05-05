@@ -93,7 +93,9 @@ http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffe
 
 func loadPage(title string) (*Page, error) {
 	filename := title + ".txt"
-	body, err := ioutil.ReadFile(filename)
+	//body, err := ioutil.ReadFile(filename)
+	body := []byte
+	err := nil
 	if err != nil {
 		return nil, err
 	}
