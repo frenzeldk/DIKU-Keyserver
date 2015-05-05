@@ -7,7 +7,7 @@ import (
 	"github.com/Orkeren/DIKU-Keyserver/golibs/mail" // This is our mail function, it does hello
 	//	"github.com/Orkeren/DIKU-Keyserver/golibs/dbs" // This is our sqlite function
 	"html/template"
-	"io/ioutil"
+	//"io/ioutil"
 	"net"
 	"net/http"
 	"net/http/fcgi"
