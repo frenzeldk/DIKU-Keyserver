@@ -2,10 +2,10 @@ package main
 
 import (
 	"encoding/hex"
-	//"fmt"
+	"fmt"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/hash" // This is our hash function
 	"github.com/Orkeren/DIKU-Keyserver/golibs/mail" // This is our mail function, it does hello
-	"github.com/Orkeren/DIKU-Keyserver/golibs/sql" // This is our sqlite function
+//	"github.com/Orkeren/DIKU-Keyserver/golibs/dbs" // This is our sqlite function
 	"html/template"
 	"io/ioutil"
 	"net"
@@ -31,6 +31,7 @@ type User struct {
 func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	titel := req.URL.Path[len("/"):]
 	p, _ := loadPage(titel)
+	fmt.Println(titel)
 	//fmt.Println(req.URL) // Dette viser bare hvordan man får en URL fra req
 	//kuid is the KU ID of the student
 	kuid := req.FormValue("kuid")
@@ -58,8 +59,16 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		coffee_hash = hex.EncodeToString(hash.GetHash(kuid + ctime)[:])
 
 		//mailbody is the plaintext body of the email.
-		mailbody := `Velkommen til dikukeys. For at afslutte registreringen, tryk venligst p&#229; dette link:
-http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
+		mailbody := `English below
+
+Velkommen til dikukeys. For at afslutte registreringen, tryk venligst p&#229; dette link:
+http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + '
+
+' + 
+		`Welcome to DIKU Keys. To register in the DIKU Keys system please follow this link:
+http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + '\r\n\r\n'
+
+
 
 		if rcpt != "@alumni.ku.dk" {
 			mail.Send(rcpt, mailbody)
