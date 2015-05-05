@@ -65,7 +65,7 @@ Velkommen til dikukeys. For at afslutte registreringen, tryk venligst p&#229; de
 http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + `
 
 Welcome to DIKU Keys. To register in the DIKU Keys system please follow this link:
-http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + '\r\n\r\n'
+http://dikukeys.dk:8081/app?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 
 
 
