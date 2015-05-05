@@ -1,13 +1,13 @@
 package hash
 
 import (
-	"crypto/sha224"
+	"crypto/sha256"
 	"io"
 )
 
 func GetHash(str string) (hash []byte) {
-	h224 := sha224.New()
+	h256 := sha256.New()
 	secret := "this is our muuch secret string"
-	io.WriteString(h224, str + secret)
-	return h224.Sum(nil)
+	io.WriteString(h256, str + secret)
+	return h256.Sum(nil)
 }
