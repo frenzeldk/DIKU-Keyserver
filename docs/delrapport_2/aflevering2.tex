@@ -298,17 +298,20 @@ Here, three different use cases for the system is showed by listing the actions 
 \end{tabular}
 
 \subsection{Class Diagram of Solution Domain}\label{subsec:class_diagram}
-A class diagram, where five different classes have been identified, has been made. The classes which are contained constitute different parts of software as well as the server on which the system is hosted. The classes have been identified according to the BCE model. The BCE analysis is especially relevant for the sequence diagram since it shows which classes can interact with the user. Only the boundary (B) classes can do that. And only interactions with the entity classes can change the state of the system through a user input.
+The class diagram describes the interacting classes in the solution domain of the system. The classes of the solution domain have been identified as grading by a TA, course, assignment, student, OpenPGP keys, and KU IDs. These categories describe the classes that the users encounter and do thus not describe the system itself. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{pictures/class_diagram_genaflevering}
-    \caption{Class diagram of solution domain. The dikuserver solution consists of the classes which normally consitute a web solution: the HTTP handler (web server), the logic which creates the HTML code, the database which can permanently record user input, and an email server which is an alternative way of communicating with the user and whose purpose it is to validate the identity of the user.}     -    \label{fig:class_diagram}
+    \caption{Class diagram of solution domain. The DIKU Keys system interacts with grading, courses, assignments, students, public keys, and KU IDs. A few other classes such as course director could also have been added but in this drawing course directors should be viewed as part of the TAs or part of the course. Each student is assumed to have exactly one OpenPGP Key and one KU ID.}
+    \label{fig:class_diagram}
 \end{figure}
-\subsection*{}
+\subsection*{BCE Model}
+The BCE model is shown in Figure \ref{fig:bce_model}. The BCE model is the \nth{1} attempt to describe the actual system (AKA application) domain since the previous class diagram was of the solution domain. The entitiy classes hold the data stored in the system, the control classes describe the logic of the system, and the boundary classes describe the part of the system that interacts with the end-users: the website and the email system. TA API could also be included here. Two models for the control classes have been described as a final choice has not been made yet.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{pictures/bce_genaflevering}
-    \caption{BCE}
+    \caption{The BCE model is the \nth{1} part of the systems design. A final choice for the control classes has not been made yet.}
+    \label{fig:bce_model}
 \end{figure}
 \subsection{Sequence Diagrams of Use Case}\label{subsec:Sequence_diagram_Use_case_model}
 Figure \ref{fig:sequence_diagram} shows the logical flow between the logical classes identified in the class diagram above. Only the boundary classes can interact directly with the user.
