@@ -1,0 +1,11 @@
+Mødet vil hovedsageligt omhandle figurerne, siger Passov
+
+- high level use case diagram er ok
+- Passov vil gerne se noget om det større system, hvori DIKU Keys indgår.
+- Passov spørger ind til flow diagram for uploading a key. Han siger, at den figur nok skal fjernes. Den er ikke intuitiv og tilføjer ikke information.
+- I klassediagrammet bør "TA grading" splittes op for at forklare, hvordan TA giver karakterer og bruger systemet. 
+- Passov kan godt lide Jennys klassediagram. Han anbefaler at vi bruger kategorier (f.eks. TA) til at opdele klasserne i klassediagrammet.
+- BCE-modellen skal beskrive systemet. Passov siger, at vi ikke behøver (ikke skal have) en figur til BCE-modellen. Vi kan i stedet blot nævne klasserne.
+- Passov siger, at begge vores bud på control-klasserne på BCE giver fin mening. Vi bestemmer, hvilket vi vil bruge og, hvor abstrakt, vi vil gøre det.
+- Sekvensdiagrammet skal laves om, så den bruger klasserne fra BCE-opdelingen.
+- Dokumentation om vores møde med Oleks, hvor han betragtede vores side og kode kritisk kan smides under spørgsmål 5.
