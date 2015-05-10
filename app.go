@@ -30,8 +30,7 @@ type User struct {
 func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	titel := req.URL.Path[len("/"):]
 	p, _ := loadPage(titel)
-	fmt.Println(titel)
-	//fmt.Println(req.URL) // Dette viser bare hvordan man får en URL fra req
+
 	//kuid is the KU ID of the student
 	kuid := req.FormValue("kuid")
 	//ctime is the time of creation of the link (as unix time)
@@ -40,6 +39,15 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	coffee_hash := req.FormValue("hash")
 
 	pubkey := req.FormValue("pubkey")
+
+	//mailbody is the plaintext body of the email.
+	mailbody := `English below
+
+Velkommen til dikukeys. For at afslutte registreringen, tryk venligst p&#229; dette link:
+http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + `
+
+Welcome to DIKU Keys. To register in the DIKU Keys system please follow this link:
+http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 
 	if !validKUID(kuid) && kuid != "" {
 		resp.Write([]byte("<p>Not a valid link!</p>"))
@@ -52,15 +60,6 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	} else if coffee_hash == "" {
 		ctime = strconv.FormatInt(time.Now().Unix(), 10)
 		coffee_hash = hex.EncodeToString(hash.GetHash(kuid + ctime)[:])
-
-		//mailbody is the plaintext body of the email.
-		mailbody := `English below
-
-Velkommen til dikukeys. For at afslutte registreringen, tryk venligst p&#229; dette link:
-http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + `
-
-Welcome to DIKU Keys. To register in the DIKU Keys system please follow this link:
-http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 
 		if rcpt != "@alumni.ku.dk" {
 			mail.Send(rcpt, mailbody)
