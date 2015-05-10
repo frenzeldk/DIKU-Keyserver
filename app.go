@@ -47,7 +47,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	rcpt := kuid + "@alumni.ku.dk"
 
 	if kuid == "" && pubkey == "" {
-		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/create_link.html")
+		t, _ := template.ParseFiles("/html_templates/create_link.html")
 		t.Execute(resp, p)
 	} else if coffee_hash == "" {
 		ctime = strconv.FormatInt(time.Now().Unix(), 10)
