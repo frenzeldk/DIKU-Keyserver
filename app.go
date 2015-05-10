@@ -41,11 +41,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 	pubkey := req.FormValue("pubkey")
 
-	regpattern := "(?i)^[b-df-hj-np-tv-z]{3}\\d{3}$"
-
-	regmatch, _ := regexp.MatchString(regpattern, kuid)
-
-	if !regmatch && kuid != "" {
+	if !validKUID {
 		resp.Write([]byte("<p>Not a valid link!</p>"))
 	}
 	rcpt := kuid + "@alumni.ku.dk"
@@ -84,6 +80,12 @@ http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 		t, _ := template.ParseFiles("/home/dikukeys/Orkeren/DIKU-Keyserver/html_templates/pub_key_succesful.html")
 		t.Execute(resp, p)
 	}
+}
+
+func validKUID(kuid string) (result bool) {
+	regpatternKUID := "(?i)^[b-df-hj-np-tv-z]{3}\\d{3}$"
+	regmatch, _ := regexp.MatchString(regpatternKUID, kuid)
+	return regmatch
 }
 
 func loadPage(title string) (*Page, error) {
