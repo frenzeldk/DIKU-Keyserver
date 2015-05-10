@@ -54,8 +54,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		coffee_hash = hex.EncodeToString(hash.GetHash(kuid + ctime)[:])
 
 		//mailbody is the plaintext body of the email.
-		mailbody := `English below
-
+		mailbody := `English below \n
 Velkommen til dikukeys. For at afslutte registreringen, tryk venligst på; dette link:
 http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + `
 

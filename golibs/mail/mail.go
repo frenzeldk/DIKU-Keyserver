@@ -11,7 +11,7 @@ func Send(rcpt, body string) {
 	from := `From: DIKU Keys <noreply@dikukeys.dk>`
 	to := "To: " + rcpt + ``
 	subject := `Subject: Velkommen til DIKU Keys`
-	mime := "MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
+	mime := "MIME-version: 1.0;\nContent-Type: text/plain; charset=\"UTF-8\";\n\n"
 
 	epost := from + to + subject + mime + body
 	// Connect to the remote SMTP server.
