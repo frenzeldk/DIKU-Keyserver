@@ -47,7 +47,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	rcpt := kuid + "@alumni.ku.dk"
 
 	if kuid == "" && pubkey == "" {
-		t, _ := template.ParseFiles("$GOPATH/src/github.com/Orkeren/html_templates/create_link.html")
+		t, _ := template.ParseFiles("$GOPATH/src/github.com/Orkeren/DIKU-Keyserver/html_templates/create_link.html")
 		t.Execute(resp, p)
 	} else if coffee_hash == "" {
 		ctime = strconv.FormatInt(time.Now().Unix(), 10)
@@ -63,12 +63,12 @@ http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 
 		if rcpt != "@alumni.ku.dk" {
 			mail.Send(rcpt, mailbody)
-			t, _ := template.ParseFiles("$GOPATH/src/github.com/Orkeren/html_templates/reg_mail_sent.html")
+			t, _ := template.ParseFiles("$GOPATH/src/github.com/Orkeren/DIKU-Keyserver/html_templates/reg_mail_sent.html")
 			t.Execute(resp, p)
 		}
 
 	} else if hex.EncodeToString(hash.GetHash(kuid + ctime)[:]) == coffee_hash {
-		t, _ := template.ParseFiles("$GOPATH/src/github.com/Orkeren/html_templates/public_key.html")
+		t, _ := template.ParseFiles("$GOPATH/src/github.com/Orkeren/DIKU-Keyserver/html_templates/public_key.html")
 		t.Execute(resp, p)
 	} else {
 		resp.Write([]byte("<p>Not a valid link!</p>"))
@@ -76,7 +76,7 @@ http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 
 	if kuid == "" && pubkey != "" {
 		//cuser := User{kuid, pubkey}
-		t, _ := template.ParseFiles("$GOPATH/src/github.com/Orkeren/html_templates/pub_key_succesful.html")
+		t, _ := template.ParseFiles("$GOPATH/src/github.com/Orkeren/DIKU-Keyserver/html_templates/pub_key_succesful.html")
 		t.Execute(resp, p)
 	}
 }
