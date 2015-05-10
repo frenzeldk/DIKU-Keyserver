@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/hex"
-	"fmt"
+	//"fmt"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/hash" // This is our hash function
 	"github.com/Orkeren/DIKU-Keyserver/golibs/mail" // This is our mail function, it does hello
 	//	"github.com/Orkeren/DIKU-Keyserver/golibs/dbs" // This is our sqlite function
