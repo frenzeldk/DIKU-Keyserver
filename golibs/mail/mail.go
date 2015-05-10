@@ -8,10 +8,15 @@ import (
 
 func Send(rcpt, body string) {
 	stmp_server := "dikukeys.dk:25"
-	from := `From: DIKU Keys <noreply@dikukeys.dk>`
-	to := "To: " + rcpt + ``
-	subject := `Subject: Velkommen til DIKU Keys\n`
-	mime := `MIME-version: 1.0;\nContent-Type: text/plain; charset=\"UTF-8\";\n\n`
+	from := `From: DIKU Keys <noreply@dikukeys.dk>
+`
+	to := "To: " + rcpt + `
+`
+	subject := `Subject: Velkommen til DIKU Keys
+`
+	mime := `MIME-version: 1.0;
+Content-Type: text/plain; charset="UTF-8";
+`
 
 	epost := from + to + subject + mime + body
 	// Connect to the remote SMTP server.
