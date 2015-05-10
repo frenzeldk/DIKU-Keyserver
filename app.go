@@ -40,6 +40,10 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 	pubkey := req.FormValue("pubkey")
 
+	ctime = strconv.FormatInt(time.Now().Unix(), 10)
+
+	coffee_hash = hex.EncodeToString(hash.GetHash(kuid + ctime)[:])
+
 	//mailbody is the plaintext body of the email.
 	mailbody := `English below
 
@@ -57,9 +61,7 @@ http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 	if kuid == "" && pubkey == "" {
 		t, _ := template.ParseFiles("html_templates/create_link.html")
 		t.Execute(resp, p)
-	} else if coffee_hash == "" {
-		ctime = strconv.FormatInt(time.Now().Unix(), 10)
-		coffee_hash = hex.EncodeToString(hash.GetHash(kuid + ctime)[:])
+	} else {
 
 		if rcpt != "@alumni.ku.dk" {
 			mail.Send(rcpt, mailbody)
