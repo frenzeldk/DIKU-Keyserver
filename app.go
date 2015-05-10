@@ -41,7 +41,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 	pubkey := req.FormValue("pubkey")
 
-	if !validKUID() {
+	if !validKUID(kuid) {
 		resp.Write([]byte("<p>Not a valid link!</p>"))
 	}
 	rcpt := kuid + "@alumni.ku.dk"
