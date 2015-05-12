@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<string>
+	<id>101</id>
+	<name>emailbody</name>
+	<content>Welcome to DIKU Keys. To register in the DIKU Keys system please follow this link:</content>
+</string>
+<string>
+	<id>102</id>
+	<name>registrationlink</name>
+	<content>http://dikukeys.dk/?kuid=</content>
+</string>
+<string>
+	<id>103</id>
+	<name></name>
+	<content></content>
+</string>
+<string>
+	<id>104</id>
+	<name></name>
+	<content></content>
+</string>
+<string>
+	<id>105</id>
+	<name></name>
+	<content></content>
+</string>
+<string>
+	<id>106</id>
+	<name></name>
+	<content></content>
+</string>
+<string>
+	<id>107</id>
+	<name></name>
+	<content></content>
+</string>
+<string>
+	<id>108</id>
+	<name></name>
+	<content></content>
+</string>

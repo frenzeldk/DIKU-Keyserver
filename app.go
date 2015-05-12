@@ -2,12 +2,13 @@ package main
 
 import (
 	"encoding/hex"
+	"encoding/xml"
 	"fmt"
 	"github.com/Orkeren/DIKU-Keyserver/golibs/hash" // This is our hash function
 	"github.com/Orkeren/DIKU-Keyserver/golibs/mail" // This is our mail function, it does hello
 	//	"github.com/Orkeren/DIKU-Keyserver/golibs/dbs" // This is our sqlite function
 	"html/template"
-	//"io/ioutil"
+	"io/ioutil"
 	"net"
 	"net/http"
 	"net/http/fcgi"
@@ -18,6 +19,26 @@ import (
 	"time"
 )
 
+/* type Strings struct {
+	XMLName xml.Name `xml:"string"`
+	ID int `xml:"id"`
+	content string `xml:"content"`
+	name string `xml:"name"`
+}
+func language(lang){
+	xmlFile, err := os.Open("strings/en_us.xml")
+		if err != nil {
+				fmt.Println("Error opening file:", err)
+                return
+         }
+         defer xmlFile.Close()
+
+         XMLdata, _ := ioutil.ReadAll(xmlFile)
+		 var s Strings
+} */
+
+		 
+		 
 type FastCGIServer struct{}
 type Page struct {
 	Title string
@@ -54,12 +75,9 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		coffee_hash = hex.EncodeToString(hash.GetHash(kuid + ctime)[:])
 
 		//mailbody is the plaintext body of the email.
-		mailbody := `English below
-Velkommen til dikukeys. For at afslutte registreringen, tryk venligst på dette link:
-http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + `
-
-Welcome to DIKU Keys. To register in the DIKU Keys system please follow this link:
-http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
+		mailbody := `Welcome to DIKU Keys. To register in the DIKU Keys system please follow this link:
+` + `http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
+		//mailbody := s.101 + s.102 + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash
 
 		if rcpt != "@alumni.ku.dk" {
 			mail.Send(rcpt, mailbody)
