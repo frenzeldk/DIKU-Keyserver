@@ -55,7 +55,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 		//mailbody is the plaintext body of the email.
 		mailbody := `English below
-Velkommen til dikukeys. For at afslutte registreringen, tryk venligst på; dette link:
+Velkommen til dikukeys. For at afslutte registreringen, tryk venligst på dette link:
 http://dikukeys.dk/?kuid=` + kuid + "&ctime=" + ctime + "&hash=" + coffee_hash + `
 
 Welcome to DIKU Keys. To register in the DIKU Keys system please follow this link:
