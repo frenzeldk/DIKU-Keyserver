@@ -159,7 +159,8 @@ Non-functional requirements are system requirements which do not describe the ac
 \item The front-end should be Javascript and HTML5.
 \item The system must be browser independent\footnote{This includes recent versions of Internet Explorer, Chrome, Safari and Firefox.}.
 \item The system must be compliant with all standards and regulations imposed by the Government of Denmark and the University of Copenhagen. These regulations concern privacy and restriction of access to the KU IDs that are part of the system. Specifically, the KU IDs in the system must not be accessible to non-privileged users\footnote{The priveliged users are system administrators, university professors, and TAs.}.
-\item The customer has decreed that the software be licensed under an MIT-like license which will be provided by the customer\footnote{A preliminary version of this license is available at \href{https://github.com/oleks/sandstone/blob/master/LICENSE}{https://github.com/oleks/sandstone/blob/master/LICENSE}.}.
+\item The customer has decreed that the software be licensed under an MIT-like license which will be provided by the customer
+\footnote{A preliminary version of this license is available on \href{https://github.com/oleks/sandstone/blob/master/LICENSE}{github}.}.
 \item The system should be able to decode the different .csv-formats (comma, semicolon, tab) for student lists.
 \item The front-end must be responsive in its layout. This is achieved by using Bootstrap\footnote{Bootstrap can be found on \href{http://getbootstrap.com/}{http://getbootstrap.com/}}.
 \end{itemize}
@@ -180,7 +181,7 @@ A student can upload and replace their public key and the TA can read the mappin
 \subsection{Specific Use Case Models}\label{subsec:Specific_Use_case_model}
 Here, three different use cases for the system is shown by listing the actions of the relevant actors. The use cases for uploading a key, replacing a key, and sending out an invitation for joining the system are listed.
 \subsubsection{Use Case: Upload Key}
-\begin{tabular}{l p{0.8\textwidth}}
+\begin{tabular}{l p{0.77\textwidth}}
     \toprule
     \textit{Use case name} & Upload Key \\
     \midrule
@@ -206,7 +207,7 @@ Here, three different use cases for the system is shown by listing the actions o
 \end{tabular}
 
 \subsubsection{Use Case: Replace Key}
-\begin{tabular}{l p{0.8\textwidth}}
+\begin{tabular}{l p{0.77\textwidth}}
     \toprule
     \textit{Use case name} & Replace Key \\
     \midrule
@@ -231,7 +232,7 @@ Here, three different use cases for the system is shown by listing the actions o
 \end{tabular}
 
 \subsubsection{Use Case: Invite Group of Students}
-\begin{tabular}{l p{0.8\textwidth}}
+\begin{tabular}{l p{0.77\textwidth}}
     \toprule
     \textit{Use case name} & Invite Group of Students\\
     \midrule
@@ -312,7 +313,7 @@ through FastCGI.
 \newpage
 \section{User interface and interaction design}\label{sec:UI_interactiondesign}
 \begin{enumerate}[label=(\alph*)]
-\item Screenshots
+\item[(ab)] Screenshots and Flow/Dynamics 
 The Figure \ref{fig:ss_kuid} shows the initial view a user is met with. It has a fairly simple interface with a form for inputting the user's KU ID and a submit button which should be clicked on to get to the next view. \\
 \begin{figure}[H]
 \centering
@@ -331,14 +332,14 @@ The link in the email leads to Figure \ref{fig:ss_pubkey}.\\
 Figure \ref{fig:ss_pubkey} shows the interface for submitting a public key. There is a large input field for inserting the users public key and a submit button which will trigger the registration of the user in the system when clicked.
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{pictures/screenshots/publickey}
+\includegraphics[width=0.9\textwidth]{pictures/screenshots/publickey}
 \caption{Page where the user submits their public key. This link is sent in the email above.}
 \label{fig:ss_pubkey}
 \end{figure}
-\item Flow / Dynamics
-\item Audio/Visual presentation
+\item[(c)] Audio/Visual presentation
 A screen cast of the system in use will be created and uploaded to a video-service. A link to the video together with a description will then be available in this section.
-\item Think out loud user test
+\item[(d)] Think out loud user test
+Such tests have not been commenced, but are planned to be done before May 19th.
 \end{enumerate}
 
 \section{Group Dynamics}
