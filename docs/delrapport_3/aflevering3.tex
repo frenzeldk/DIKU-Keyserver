@@ -40,6 +40,7 @@
 \usepackage{listings} % code parsing.
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 \lstset{language=bash} % Set bash syntax.
+
 \newcommand{\code}[1]{\texttt{#1}}
 
 \newlist{SubItemList}{itemize}{1}
@@ -70,16 +71,6 @@
   \hspace{-\arraycolsep}%
 }
 
-\newcommand*\combine[1][2]{%
-    \refstepcounter{enumi}
-    \setcounter{tmp@cnt}{\value{enumi}}
-    \addtocounter{enumi}{#1-1}
-    \item[\thetmp@cnt--\theenumi\@labelpunc]}
-% command to set the label format and punctuation
-% \labeltype[<punc>]{<format>} where default punctuation is none; <format> is 
-% \alph \Alph \roman \Roman etc.  Not needed for default enumerations
-%
-\newcommand*\labeltype[2][]{\gdef\@labelpunc{#1}\renewcommand\thetmp@cnt{#2{tmp@cnt}}}
 
 \author{\Large{Sven Frenzel (\href{mailto:sven@frenzel.dk}{sven@frenzel.dk}) - 130793 - cdn769}\\
 \Large{Mads Gram (\href{mailto:mgmadsgram@gmail.com}{mgmadsgram@gmail.com})  - 081293 - wtc324}\\
@@ -325,7 +316,7 @@ through FastCGI.
 The Figure \ref{fig:ss_kuid} shows the initial view a user is met with. It has a fairly simple interface with a form for inputting the user's KU ID and a submit button which should be clicked on to get to the next view. \\
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{pictures/screenshots/kuid}
+\includegraphics[width=0.9\textwidth]{pictures/screenshots/kuid}
 \caption{Landing page on dikukeys.dk. This is where the user enters their KU ID.}
 \label{fig:ss_kuid}
 \end{figure}
@@ -333,11 +324,11 @@ The Figure \ref{fig:ss_email} shows the interface for KU's webmail. The interest
 The link in the email leads to Figure \ref{fig:ss_pubkey}.\\
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{pictures/screenshots/email}
+\includegraphics[width=0.9\textwidth]{pictures/screenshots/email}
 \caption{The webmail interface of KU. The registration email has been received by the user.}
 \label{fig:ss_email}
 \end{figure}
-
+Figure \ref{fig:ss_pubkey} shows the interface for submitting a public key. There is a large input field for inserting the users public key and a submit button which will trigger the registration of the user in the system when clicked.
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{pictures/screenshots/publickey}
@@ -345,7 +336,8 @@ The link in the email leads to Figure \ref{fig:ss_pubkey}.\\
 \label{fig:ss_pubkey}
 \end{figure}
 \item Flow / Dynamics
-\item YouTitty video
+\item Audio/Visual presentation
+A screen cast of the system in use will be created and uploaded to a video-service. A link to the video together with a description will then be available in this section.
 \item Think out loud user test
 \end{enumerate}
 
