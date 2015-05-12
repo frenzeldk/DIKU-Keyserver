@@ -70,6 +70,17 @@
   \hspace{-\arraycolsep}%
 }
 
+\newcommand*\combine[1][2]{%
+    \refstepcounter{enumi}
+    \setcounter{tmp@cnt}{\value{enumi}}
+    \addtocounter{enumi}{#1-1}
+    \item[\thetmp@cnt--\theenumi\@labelpunc]}
+% command to set the label format and punctuation
+% \labeltype[<punc>]{<format>} where default punctuation is none; <format> is 
+% \alph \Alph \roman \Roman etc.  Not needed for default enumerations
+%
+\newcommand*\labeltype[2][]{\gdef\@labelpunc{#1}\renewcommand\thetmp@cnt{#2{tmp@cnt}}}
+
 \author{\Large{Sven Frenzel (\href{mailto:sven@frenzel.dk}{sven@frenzel.dk}) - 130793 - cdn769}\\
 \Large{Mads Gram (\href{mailto:mgmadsgram@gmail.com}{mgmadsgram@gmail.com})  - 081293 - wtc324}\\
 \Large{Thorkil Værge (\href{mailto:thorkilk@gmail.com}{thorkilk@gmail.com}) - 150287 - wng750} \\ \\
@@ -307,23 +318,26 @@ through FastCGI.
 
 
 \section{Program- and system tests}\label{sec:Program_systemtests}
-
+\newpage
 \section{User interface and interaction design}\label{sec:UI_interactiondesign}
 \begin{enumerate}[label=(\alph*)]
 \item Screenshots
-The Figure \ref{fig:ss_kuid} shows the initial view a user is met with. It has a fairly simple interface with a form for inputting the user's KU ID and a submit button which should be clicked on to get to the next view.
+The Figure \ref{fig:ss_kuid} shows the initial view a user is met with. It has a fairly simple interface with a form for inputting the user's KU ID and a submit button which should be clicked on to get to the next view. \\
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{pictures/screenshots/kuid}
 \caption{Landing page on dikukeys.dk. This is where the user enters their KU ID.}
 \label{fig:ss_kuid}
 \end{figure}
+The Figure \ref{fig:ss_email} shows the interface for KU's webmail. The interesting part here is the focused email which is generated when the user clicks on the submit button in Figure \ref{fig:ss_kuid}. \\
+The link in the email leads to Figure \ref{fig:ss_pubkey}.\\
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{pictures/screenshots/email}
 \caption{The webmail interface of KU. The registration email has been received by the user.}
 \label{fig:ss_email}
 \end{figure}
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{pictures/screenshots/publickey}
