@@ -102,52 +102,18 @@
 
 \chapter{Literature Review}\label{ch:Literature_Review}
 
-\section{Gould \& Lewis -- Designing for Usability: key principles and what
-designers think}
+\section{Brooks, F. P. (1986) No silver bullet}
 \subsection{Résumé}
-This article from 1985 can be divided into two different parts: Actual recommendations for systems design and a survey to estimate how often this process is followed. The principles for good software design are outlined as follows:
-\begin{itemize}
-\item Early focus on users: designers must understand who the users will be, and this understanding is preferably obtained through actual interaction between the developer and end user.
-\item Empirical measurements: Also known as user testing. Early in the process intended users should use simulations and prototypes to carry out real work and their performance should influence the system through $\rightarrow$
-\item Iterative design: Problems during for example testing and user testing should influence design decisions which logically, in the design process, are done ``before'' testing. Iterative design breaks down the strict connection betwen time and logic.
-\end{itemize}
-The survey finds that most programmers do not mention these three points and when they do, they often misunderstand or misrepresent the actual meaning of the points. They may think that they are following the recommendations but they are not. Several reasons that the recommendations are not followed is listed and among these are that the programmers sometimes do not take responsibility for the entire project but only for the modules that are assigned to them. The article also emphasises the limitations of reason and stresses the need for empirical data in design decisions. This is illustrated by some good but counterintuitive interface design decisions from the design of a voice mail system from IBM called ``ADS''.
-
-Behavioral goals should be developed for the end user and these goals should be testable. A goal could for example be that 80 \% of the users should be able to solve some task within a given amount of time without help or other instructions than what is given through the interaction with the system. In the design process, modularization of the program is also recommended.
 \subsection{Analysis and Perspective}
-This article differs from other litterature that we have read in that it focuses on the limitations of reason and the need for empirical observations when making design decisions. It stresses that the optimal design choice can in some situations not be deducted but must be found through interaction with end users. On page 306 the article makes a very bold prediction that ease of use will become important when selling computer devices. The fulfillment of that prophecy has, among others, been achived by Apple with their iPod and iPhone.
-
-Due to this article's strong focus on how to make good decisions for the user interface, it reads as much like a guide in human–computer interaction (HCI) as a guide in systems design.
 \subsection{Perspectivation to Work on dikukeys}
-This article focuses a lot on interaction with the end user. Actual user testing has not been done during the work on dikukeys and it is probably not possible to do before a minimally working website is done. It is something that was not even on our list of planned tasks but that is something we should definitely include in the system. A user test can still influence the design process even though it is performed late since we follow an iterative process (AGILE).
 
-The reading of this article likely means that we will test a prototype on users sooner than we would otherwise have.
 \newpage
-\section{Parnas \& Clements -- A Rational Design Process: How and Why to
-Fake it}
+\section{Christensen et.al. (1998) The M.A.D. Experience: Multiperspective Application Development in evolutionary prototyping.}
 \subsection{Résumé}
-The article explains that a perfectly rational design process would be preferable so that a computer program or service could be derived rationally in the same sense that theorems are derived from axioms in mathematics. But for several reasons, this process cannot be followed perfectly: customers do not know their exact requirements before some of the functionality is presented, during the programming new discoveries are made which invalidate previous beliefs so we must backtrack, the complexity is too overwhelming to include all elements before programming and testing is initiated, and unpredictable external changes may occur.
-
-Nonetheless, there are still many reasons for attempting to follow a rational design process. Some of the reasons which are mentioned in the article are: simply attempting, makes us come closer to the rational design process and reduces backtracking; standardization of the design process makes it easier for employees to join an ongoing project.
-
-The rational design process which should be followed is defined by the work products:
-\begin{itemize}
-\item A requirements document: a place to record the desired behavior of the program.
-\item A module structure: A division of the program and work programming into logical subentities. For large systems, it is preferably made as a tree structure.
-\item Module interfaces: Formalized description of how the modules interact, an interface specification. Like an API for each module.
-\item Uses hierarchy: A binary matrix which lists all the dependencies of the individual modules. Especially useful during post-release maintenance.
-\item Internal module structure: Documentation of design decisions for each module that has been defined in module structure.
-\item The actual program: The source code of the program for delivery. Should not contain redundant comments which have already been described in the documentation mentioned above.
-\end{itemize}
-If any changes during the design phase, programming phase, or post-delivery phase invalidate a design document, then all the documentation should be ``faked'' to look as if the change had been the original design. This design documentation is similar to a mathematical proof where the logical design and not the temporal development is the guiding force. Repetitions should be avoided in the documentation by asking: ``what questions should this specific document answer'', before it is written.
 \subsection{Analysis and Perspective}
-If this design process is followed then the documentation will follow the logical structure outlined above. Decisions made whilst coding or testing can feed into changes in the requirements document so the design process becomes iterative. This document thus encompasses many important elements of the Agile Manifesto\cite{beck} written 15 years later. For some of the group members of dikukeys, a temporal process in the documentation instead of a logical guiding force seems more intuitive but this article makes a very convincing case why the logical structure is preferable both during the programming phase and especially during the maintenance phase.
 \subsection{Perspectivation to Work on dikukeys}
-Due to the very rigid and comprehensive structure of these partial assignments, not all recommendations in this article can be followed: Many of the sections we are asked to write forces us to repeat ourselves which should be avoided according to this article. The repetition for instance occurred in the ``FACTOR analysis'' of partial assignment number 1. To follow the recommendation in this article, the repetitions should be avoided in the final report.
 
-When this has been said, a positive effect of the many, sometimes redundant, questions we are asked to answer, is that we become familiar with many different concepts and work methods which we would not have been taught if we had followed the recipe outlined in this article. After reading this article, we were motivated to follow this design process rigorously but it is not certain that the requirements set forth by the teachers will allow us to do that in the final report.
 
-We believe that this article has made a more compelling argument for the AGILE design process than any argument that we have read previously.
 \chapter{Project Report}\label{ch:Project_Report}
 
 \section{Abstract}\label{sec:Abstract}
@@ -349,6 +315,12 @@ through FastCGI.
 \section{Program- and system tests}\label{sec:Program_systemtests}
 
 \section{User interface and interaction design}\label{sec:UI_interactiondesign}
+\begin{enumerate}[label=(\alph*)]
+\item Screenshots
+\item Flow / Dynamics
+\item YouTitty video
+\item Think out loud user test
+\end{enumerate}
 
 \section{Group Dynamics}
 \subsection{What is Good?}
