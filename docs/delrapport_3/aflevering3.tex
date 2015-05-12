@@ -79,7 +79,7 @@
 
 \title{
 \vspace{3cm}
-\Large{Second Partial Assignment - ProjDat}
+\Large{Third Partial Assignment - ProjDat}
 }
 
 \begin{document}
@@ -261,36 +261,37 @@ Here, three different use cases for the system is shown by listing the actions o
 \end{tabular}
 
 \subsection{Class Diagram of Solution Domain}\label{subsec:class_diagram}
-The class diagram describes the interacting classes in the solution domain of the system. The classes of the solution domain have been identified as grading by a TA, course, assignment, student, OpenPGP keys, and KU IDs. These categories describe the classes that the users encounter and do thus not describe the system itself. 
+The class diagram describes the interacting classes in the solution domain of the system. The classes of the solution domain have been identified as grading by a TA, course, assignment, student, OpenPGP keys, and KU IDs. These categories describe the classes that the users encounter and do thus not describe the system itself.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{pictures/class_diagram_genaflevering}
+    \includegraphics[width=\textwidth]{pictures/class_diagram_v3}
     \caption{Class diagram of solution domain. The DIKU Keys system interacts with grading, courses, assignments, students, public keys, and KU IDs. A few other classes such as course director could also have been added but in this drawing course directors should be viewed as part of the TAs or part of the course. Each student is assumed to have exactly one OpenPGP Key and one KU ID.}
-    \label{fig:class_diagram}
+    \label{fig:class_diagram_v3}
 \end{figure}
-\subsection*{BCE Model}
-The BCE model is shown in Figure \ref{fig:bce_model}. The BCE model is the \nth{1} attempt to describe the actual system (AKA application) domain since the previous class diagram was of the solution domain. The entitiy classes hold the data stored in the system, the control classes describe the logic of the system, and the boundary classes describe the part of the system that interacts with the end-users: the website and the email system. TA API could also be included here. Two models for the control classes have been described as a final choice has not been made yet.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{pictures/bce_genaflevering}
-    \caption{The BCE model is the \nth{1} part of the systems design. A final choice for the control classes has not been made yet.}
-    \label{fig:bce_model}
-\end{figure}
+\subsection{BCE Classes}\label{subsec:BCE}
+Classes for the system design are defined according to the BCE scheme. This divides the classes into Boundary, Control, and Entity classes. The Boundary classes are the parts of the system with which the end-user interacts, the control classes define the logical operations of the system, and the entity store the persistent states of the system. The boundary classes are identified as the HTML serving which occurs through the webserver and the email server, the control classes are different forms of logic: hash generation generated from KU ID, timestamp, and padding; validation of the uploaded public key; and URL handling which verifies that the GET request contains a valid hash. The entity classes are the mappings which the end-users store: KU ID and public keys.
+
+%The BCE model is shown in Figure \ref{fig:bce_model}. The BCE model is the \nth{1} attempt to describe the actual system (AKA application) domain since the previous class diagram was of the solution domain. The entitiy classes hold the data stored in the system, the control classes describe the logic of the system, and the boundary classes describe the part of the system that interacts with the end-users: the website and the email system. TA API could also be included here. Two models for the control classes have been described as a final choice has not been made yet.
+
+
+
 \subsection{Sequence Diagrams of Use Case}\label{subsec:Sequence_diagram_Use_case_model}
-Figure \ref{fig:sequence_diagram} shows the logical flow between the logical classes identified in the class diagram above. Only the boundary classes can interact directly with the user.
+Figure \ref{fig:sequence_diagram} shows the logical flow between the classes identified in the BCE analysis in Section \ref{subsec:BCE}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{pictures/sequence_diagram_upload}
+    \includegraphics[width=\textwidth]{pictures/sequence_diagram_upload_new}
     \caption{The sequence diagram for the uploading of a public key to the database. Only the boundary classes interact with the user and only the entity class (the database) can permanently change the state of the system.}
     \label{fig:sequence_diagram}
 \end{figure}
 
-In figure \ref{fig:use_case_diagram_example_two} we have modeled the more specific use case for uploading a key.
+The sequence diagram for the replacement of a key is practically similar to that of the uploading of a key. Only one function is different: send\_mail() has been replaced by send\_replace\_mail(). Nonetheless, the sequence diagram of that process is presented below.
+
+%In figure \ref{fig:use_case_diagram_example_two} we have modeled the more specific use case for uploading a key.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{pictures/sequence_diagram_replace}
-     \caption{The sequence diagram for the replacement of a public key on the database.}
+    \includegraphics[width=\textwidth]{pictures/sequence_diagram_replace_new}
+     \caption{The sequence diagram for the replacement of a public key on the database. Similar to upload of a key but send\_mail() has been replaced by send\_replace\_mail().}
     \label{fig:use_case_diagram_example_two}
 \end{figure}
 
@@ -473,7 +474,5 @@ Næste møde er 29/30 marts 2015.
 %Learning in Early-Modern Japan} 1986: Harvard University Press.
 
 \end{thebibliography}
-
-
 
 \end{document}
