@@ -118,7 +118,7 @@
 
 \section{Abstract}\label{sec:Abstract}
 The system developed [system], as part of this project, is a module of a system developed by Oleksander Shturmov [Online TA]. The purpose of the system is to validate the identity of a student submitting an assignment to Online TA. \\
-This is done by mapping OpenPGP keys provided by the students with their KU Username. This mapping is achieved through a website on which a student registers themselves. The website is part of the system developed. Furthermore an API is provided to Online TA for integration. The system is developed for the Department of Computer Science at the University of Copenhagen [DIKU] represented by Oleksander Shturmov. Oleksander Shturmov has shown a desire to replace the currently used Learning Management System [LMS] \textit{its Learning} with a platform that can facilitate automatically evaluation of programming assignments. For this he requires a system to make sure that a given assignment has been handed in by the student claiming to have handed it in. This is the system we are developing.
+This is done by mapping OpenPGP keys provided by the students with their KU ID. This mapping is achieved through a website on which a student registers themselves. The website is part of the system developed. Furthermore an API is provided to Online TA for integration. The system is developed for the Department of Computer Science at the University of Copenhagen [DIKU] represented by Oleksander Shturmov. Oleksander Shturmov has shown a desire to replace the currently used Learning Management System [LMS] \textit{its Learning} with a platform that can facilitate automatically evaluation of programming assignments. For this he requires a system to make sure that a given assignment has been handed in by the student claiming to have handed it in. This is the system we are developing.
 A prototype of the system is available at \url{http://dikukeys.dk}.
 
 \section{Purpose and Framework for the Project}\label{sec:Purpose_Framework}
@@ -126,11 +126,11 @@ This definition is based on the FACTOR criteria which serves the purpose of prov
 \begin{itemize}
 \item \textbf{F}unctionality: The purpose of the system is to allow specific students and employees\footnote{Everyone with valid KU ID in the form of xyz123 - 'svensk nummberplade'.} at the University of Copenhagen to map their username to a public PGP key and store these records in a database maintained by the customer. The system must also allow the same users to replace their public key in case they lose the corresponding private key. The mappings should be readable by specific users with privileged access through some login mechanism.
 There should also exist an automatic way for other systems to access the mappings in a structured manner.
-\item \textbf{A}pplication domain: The system will be used by students to upload their OpenPGP key and by teaching assistants to match hand-ins that have been signed by a student's OpenPGP key with a KU Username. It is used when TAs receive hand-ins by the students and before the grading commences.
+\item \textbf{A}pplication domain: The system will be used by students to upload their OpenPGP key and by teaching assistants to match hand-ins that have been signed by a student's OpenPGP key with a KU ID. It is used when TAs receive hand-ins by the students and before the grading commences.
 \item \textbf{C}onditions: Most students are not likely to have experience with OpenPGP so it should be as simple as possible to upload a key and the system must be forgiving, meaning that if a student loses their private PGP key, they must be able to upload a new public key. Instructions to guide the students through the various tasks of creating and uploading a key must be available. The system must allow other software to access the mappings.
 \item \textbf{T}echnology: Servers with a UNIX-like OS will run the system, and modern browsers will be used to display the front-end. The system will be written in golang to the widest extent possible but will also utilize SQL, HTML, CSS, and JS. It will also use existing software in the form of nginx for the http-server and existing golang libraries for example sqlite3.
 \item \textbf{O}bjects: The primary objects in the problem domain are students, TAs, their KU ID, and public OpenPGP keys.
-\item \textbf{R}esponsibility: The system's main responsiblity is to maintain a table with a mapping from KU Usernames to corresponding OpenPGP public keys. It must also allow other privileged software and privileged users to read from this table.
+\item \textbf{R}esponsibility: The system's main responsiblity is to maintain a table with a mapping from KU IDs to corresponding OpenPGP public keys. It must also allow other privileged software and privileged users to read from this table.
 \end{itemize}
 
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
@@ -139,13 +139,13 @@ There should also exist an automatic way for other systems to access the mapping
 \subsubsection{Functional Requirements}\label{subsubsec:Functional_Req}
 The functional requirements describe features which are essential to the success of the project and describe actual functionality for the end-user or system administrator.
 \begin{itemize}
-\item The system must map a KU Username to an OpenPGP public key.
+\item The system must map a KU ID to an OpenPGP public key.
 \item Users must be able to upload their own public key to the service.
 \item If a user loses their private key, a method for replacing the public key must exist.
 \item The initial registration of a key, and the replacement of a key, is authenticated through the KU email system.
 \item The data has to be accessible to privileged software through a defined API.
 \item The mappings have to be available to privileged users through some means.
-\item The KU usernames registered in this system must \textbf{not} be accessible for non-privileged users and software.
+\item The KU IDs registered in this system must \textbf{not} be accessible for non-privileged users and software.
 \item A guide for creating key pairs needs to be available on the website, possibly as shell script. This guide should also explain how to use an OpenPGP key for SSH authentication.
 \item A way for an administrator to send email invitations for joining the system to a list of students must exist.
 \end{itemize}
@@ -156,7 +156,7 @@ Non-functional requirements are system requirements which do not describe the ac
 \item The back-end should be written in golang.
 \item The front-end should be Javascript and HTML5.
 \item The system must be browser independent\footnote{This includes recent versions of Internet Explorer, Chrome, Safari and Firefox.}.
-\item The system must be compliant with all standards and regulations imposed by the Government of Denmark and the University of Copenhagen. These regulations concern privacy and restriction of access to the KU usernames that are part of the system. Specifically, the KU usernames in the system must not be accessible to non-privileged users\footnote{The priveliged users are system administrators, university professors, and TAs.}.
+\item The system must be compliant with all standards and regulations imposed by the Government of Denmark and the University of Copenhagen. These regulations concern privacy and restriction of access to the KU IDs that are part of the system. Specifically, the KU IDs in the system must not be accessible to non-privileged users\footnote{The priveliged users are system administrators, university professors, and TAs.}.
 \item The customer has decreed that the software be licensed under an MIT-like license which will be provided by the customer\footnote{A preliminary version of this license is available at \href{https://github.com/oleks/sandstone/blob/master/LICENSE}{https://github.com/oleks/sandstone/blob/master/LICENSE}.}.
 \item The system should be able to decode the different .csv-formats (comma, semicolon, tab) for student lists.
 \item The front-end must be responsive in its layout. This is achieved by using Bootstrap\footnote{Bootstrap can be found on \href{http://getbootstrap.com/}{http://getbootstrap.com/}}.
@@ -165,20 +165,18 @@ Non-functional requirements are system requirements which do not describe the ac
 \subsection{Use Case Overview Model}\label{subsec:Use_case_model}
 
 Figure \ref{fig:use_case_diagram_high_level} represents a high-level model which shows which actions are available for the different users: students and teachers.
-
-% Think about moving text and diagram under the specific use case, rather than here!
-In Figure \ref{fig:use_case_diagram_example} the use case for uploading a key is defined by listing which actions the student must perform to have his key stored on the dikukeys server.
+A student can upload and replace their public key and the TA can read the mappings.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_high}
+\includegraphics[width=0.5\textwidth]{pictures/use_case_pksu_del2_b_high}
 \caption{High-level use case diagram. Students can upload or replace a public key, and teachers (TAs, professors, and system administrators) can pull data from the lists.}
 \label{fig:use_case_diagram_high_level}
 \end{figure}
 
 
 \subsection{Specific Use Case Models}\label{subsec:Specific_Use_case_model}
-Here, three different use cases for the system is showed by listing the actions of the relevant actors. The use cases for uploading a key, replacing a key, and sending out an invitation for joining the system are listed.
+Here, three different use cases for the system is shown by listing the actions of the relevant actors. The use cases for uploading a key, replacing a key, and sending out an invitation for joining the system are listed.
 \subsubsection{Use Case: Upload Key}
 \begin{tabular}{l p{0.8\textwidth}}
     \toprule
@@ -189,10 +187,10 @@ Here, three different use cases for the system is showed by listing the actions 
     \midrule
     \textit{Flow of events} &
     \vspace{-6.7mm} \begin{enumerate}
-        \item Student follows link to dikukeys in invitation email OR student goes to dikukeys directly.
-        \item Student enters their KU Username into a form.
-        \item Server sends activation email to student's KU-email address.
-        \item Student follows link in key activation email.
+        \item Student follows link to dikukeys.dk in invitation email OR student goes to dikukeys.dk directly.
+        \item Student enters their KU ID into a form.
+        \item Server sends activation email to student's KU email address.
+        \item Student follows link in activation email.
         \item Student posts their public key into a form or generates a key pair in the browser.
         \item Server sends email which confirms that a key has been uploaded.
     \end{enumerate}
@@ -204,13 +202,6 @@ Here, three different use cases for the system is showed by listing the actions 
     \textit{Exit conditions} & User is registered in the system with a public key. \\
     \bottomrule
 \end{tabular}
--
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{pictures/use_case_pksu_del2_b_example}
-    \caption{Flow diagram for uploading a key.}
-    \label{fig:use_case_diagram_example}
-\end{figure}
 
 \subsubsection{Use Case: Replace Key}
 \begin{tabular}{l p{0.8\textwidth}}
@@ -222,8 +213,8 @@ Here, three different use cases for the system is showed by listing the actions 
     \midrule
     \textit{Flow of events} &
     \vspace{-6.7mm} \begin{enumerate}
-        \item Student goes to dikukeys.
-        \item Student enters their KU Username into a form.
+        \item Student goes to dikukeys.dk.
+        \item Student enters their KU ID into a form.
         \item Server sends key replacement email to student's KU email address.
         \item Student follows link in key replacement email.
         \item Student posts their new public key into a form or generates a new key pair in the browser.
@@ -231,9 +222,9 @@ Here, three different use cases for the system is showed by listing the actions 
     \end{enumerate}
     \\
     \midrule
-    \textit{Entry condition} & Student is already a registered user in the system but with an invalid public key. \\
+    \textit{Entry condition} & Student is already a registered user in the system without the private key corresponding to the listed public key. \\
     \midrule
-    \textit{Exit conditions} & A new public key has been registered to the student. \\
+    \textit{Exit conditions} & User is registered in the system with a new public key. \\
     \bottomrule
 \end{tabular}
 
@@ -248,7 +239,7 @@ Here, three different use cases for the system is showed by listing the actions 
     \textit{Flow of events} &
     \vspace{-6.7mm} \begin{enumerate}
         \item Course director sends a list of students and information about course to system administrator.
-        \item System administator submits list of students course-information to the server via ssh.
+        \item System administator submits the list of students and the course information to the server via ssh.
         \item Server checks if students already are in the system. Depending on the answer one of the following two happens:
         \item
         \begin{enumerate}
@@ -390,7 +381,7 @@ Since we use Git for our entire project, a timeline of a specific file is possib
 \begin{itemize}
 \item registrering gennem webformular og/eller kommandelinje
 \item skal kunne genregistrering
-\item anmodning kodkendes igennem ku-email
+\item anmodning kodkendes igennem KU email
 \item kunne vælge om den offentlige nøgle offentliggøres
 \SubItem private by default
 \item private API: få offentlig nøgle og returner brugernavn (kun adgang til DIKU-ansatte)
