@@ -279,7 +279,7 @@ Classes for the system design are defined according to the BCE scheme. This divi
 Figure \ref{fig:sequence_diagram} shows the logical flow between the classes identified in the BCE analysis in Section \ref{subsec:BCE}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{pictures/sequence_diagram_upload_new}
+    \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_upload_key_test}
     \caption{The sequence diagram for the uploading of a public key to the database. Only the boundary classes interact with the user and only the entity class (the database) can permanently change the state of the system.}
     \label{fig:sequence_diagram}
 \end{figure}
@@ -290,7 +290,7 @@ The sequence diagram for the replacement of a key is practically similar to that
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{pictures/sequence_diagram_replace_new}
+    \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_replace_new}
      \caption{The sequence diagram for the replacement of a public key on the database. Similar to upload of a key but send\_mail() has been replaced by send\_replace\_mail().}
     \label{fig:use_case_diagram_example_two}
 \end{figure}
@@ -314,7 +314,7 @@ through FastCGI.
 \newpage
 \section{User interface and interaction design}\label{sec:UI_interactiondesign}
 \begin{enumerate}[label=(\alph*)]
-\item[(ab)] Screenshots and Flow/Dynamics 
+\item[(ab)] Screenshots and Flow/Dynamics
 The Figure \ref{fig:ss_kuid} shows the initial view a user is met with. It has a fairly simple interface with a form for inputting the user's KU ID and a submit button which should be clicked on to get to the next view. \\
 \begin{figure}[H]
 \centering
@@ -352,7 +352,7 @@ Since the talents of the group are varied we are able to approach the subject fr
 The company and social dynamics in the group are pleasant. We work very well when we are brainstorming and dividing up the work amongst ourselves.
 
 \subsection{What is Bad?}
-Sven can have a difficulty staying focused and have been absent a bit too much. When we work in the canteen of DIKU, he is easily distracted by other students. Thorkil should spend a bit more time on the code since Mads and Sven have spent more time on this than he has. His golang skills are quite good, though. 
+Sven can have a difficulty staying focused and have been absent a bit too much. When we work in the canteen of DIKU, he is easily distracted by other students. Thorkil should spend a bit more time on the code since Mads and Sven have spent more time on this than he has. His golang skills are quite good, though.
 
 The work process on the \nth{2} report has not been as good as the process for the \nth{1} report since the group has not met and worked together more than one whole day. The rest of the work has been done individually or in groups of two. A better report would have been made if we had dedicated one more day to this report.
 
@@ -371,15 +371,28 @@ We have chosen to use Git as our version control solution, this we have pared wi
 
 As earlier agreed upon with our instructor Kasper Passov, we have added him to our Git repository. This will allow him to access our source code.
 
-\href{https://github.com/Orkeren/DIKU-Keyserver/commit/5e7c7c741fbe6d2e74889e8eaff6173e8c116d46}{Inital commit on github.}
+\href{https://github.com/Orkeren/DIKU-Keyserver/commit/5e7c7c741fbe6d2e74889e8eaff6173e8c116d46}{\textbf{Inital commit on github.}}
 
 This is the initial commit with focus on our source code. It is divided into three parts, app, hash, and mail. App.go is the overarching module, which controls the web-application, the function of App.go is to interface with the web-server (nginx) and the other modules.
 
 hash.go is a go module which enables creation of cryptographic hashes, in this iteration of the code, we only printed it to the console.  The file mail.go is another module which the code uses, this is used to send out mails, in this iteration we used it to send out a mail to our dikumail group, to show how far we were.
 
-\href{https://github.com/Orkeren/DIKU-Keyserver/commit/690f4b0b00dc68e9b529035d7e6e6a6005072d63}{Using HTML templates commit on github.}
+\href{https://github.com/Orkeren/DIKU-Keyserver/commit/690f4b0b00dc68e9b529035d7e6e6a6005072d63}{\textbf{Using HTML templates commit on github.}}
 
 Earlier we used pre-encoded HTML in our app.go, with modification and extensive use of the html/template library. We were able to use html templates rather. This allows us to make changes to the pages which are displayed, without stopping the service.
+
+
+\href{https://github.com/Orkeren/DIKU-Keyserver/commit/78fd1efa312d4022ecb66a13c0614069a4ff094c}{\textbf{Add from and subject to mail}}
+
+In this commit, we added a subject field and a from field in the emails sent by the system. This ensured that our mails were no longer caught by Office 365's spam filter. This spam filter caught all mails sent to KU users since the KU uses Microsoft's email system.
+
+\href{https://github.com/Orkeren/DIKU-Keyserver/commit/09610ad45946dddbcf73c5db870eae36a591e0ef}{\textbf{Added regular expression}}
+
+Added regular expression checks on the backend so the users can only send valid KU IDs to the server (three consonants and three decimal digits). This check also exists on the front-end in the form of a Javascript.
+
+\href{https://github.com/Orkeren/DIKU-Keyserver/commit/a75d93cb59f7c662260f76104f2bb739c9390fce}{\textbf{Changed hash length after meeting with client}}
+
+The client thought that the validation hash links sent in the emails were too long. So the hashing algorithm was changed from SHA512 to SHA256.
 
 \chapter{Changelog for report}
 
@@ -443,7 +456,29 @@ The meeting was held to align the expectations of the client and the developers 
 \item Thorkil foreslår at møder optages auditivt.
 \end{itemize}
 
-Næste møde er 29/30 marts 2015.
+
+\section{Minutes from May \nth{5} 2015}
+
+\textbf{Present: Oleksander Shturmov (Client), Sven Frenzel, Mads Gram, and Thorkil Værge }
+
+\begin{itemize}
+\item Oleks wants information on the landing page.\\
+\item Edit the ku-id check\\
+\item After posting a ku-id, the page should return the posted ku-id\\
+\item JS regex needs to be updated\\
+\item Fix ``å'' in email.\\
+\item e-mail in english after the danish paragraph\\
+\item More content in the e-mail. Standard ``you cannot reply. if this wasn't you.''\\
+\item Shorter hash in link\\
+\item More description on pgp-submit page.\\
+\item Check if content submitted is an OpenPGP public key.\\
+\item Make sure link can be used only once\\
+\item Bootstrap change a bit layout\\
+\item Streamline language\\
+\end{itemize}
+
+
+
 \end{appendices}
 
 
