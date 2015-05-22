@@ -37,8 +37,6 @@ func language(lang){
 		 var s Strings
 } */
 
-		 
-		 
 type FastCGIServer struct{}
 type Page struct {
 	Title string
