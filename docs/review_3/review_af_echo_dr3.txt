@@ -1,0 +1,14 @@
+29/5 - 2015. Review af Echo.
+
+Tilstede: Thorkil Værge, Sven Frenzel, Patrick Sørensen
+
+- Man kan teste PHP på sin egen datamat ved at installere WAMP/WAMPP.
+- Retskrivning. Er der nogen, der kan læse korrektur på rapporten? God idé inden DR4. Lav prioritet på denne rettelse.
+- A i FACTOR skal beskrive problemdomæne.
+- Gerne flere detaljer i T i FACTOR: PHP/WAMPP/hvilken database etc.
+- "Manage database" er en MEGET overordnet beskrivelse. Kan I være mere specifikke? (Og i jeres beskrivelse af use cases).
+- Referer til jeres figur i jeres Latex-code. Det gør vha. kommandoen \ref{labelnavn}.
+- Bør jeres klassediagram være over systemdomænet? Vi mener, det bør være over problemdomænet.
+- Bør BCE-modellen ikke være en figur? Overskrifterne i modellen må gerne være i fed skrift. Ellers fin beskrivelse!
+- Mht. CSS: Brug Bootstrap.
+- Systemdesign bør beskrive, hvilke teknologier I bruger, og hvordan de taler sammen. En meget overordnet beskrivelse er OK.
