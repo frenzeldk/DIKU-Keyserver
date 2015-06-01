@@ -109,7 +109,7 @@
 
 \section{Brooks, F. P. (1986) No silver bullet}
 \subsection{Résumé}
-The essay describes common tasks and difficulties in software development. It discusses possible solutions to these difficulties and argues for why there is no silver bullet, a one size solution, in software development. Difficulties are split up Aristotelean in \textit{accidence} and \textit{essence}. Accidents are difficulties that are at the present without being inherent to software while the difficulties that are essence are inherent. 
+The essay describes common tasks and difficulties in software development. It discusses possible solutions to these difficulties and argues for why there is no silver bullet, a one size solution, in software development. Difficulties are split up Aristotelean in \textit{accidence} and \textit{essence}. Accidents are difficulties that are at the present without being inherent to software while the difficulties that are essence are inherent.
 The following quote from page 182 captures the concept of essence quite well:
 \begin{quotation}
     \textit{I believe the hard part of building software to be the specification, design, and testing of this conceptual construct, not the labor of representing it and testing the fidelity of the representation.}
@@ -140,7 +140,7 @@ Other constrains, like limitations in programming languages we aren't affected b
 \newpage
 \section{Christensen et.al. (1998) The M.A.D. Experience: Multiperspective Application Development in evolutionary prototyping.}
 \subsection{Résumé}
-This paper describes the development of a prototype for a global shipping company. The system handles global customer service and shipping management. The paper describes requirement elicitation, an interdisciplinary project group, and the design of work-flow. The interdisciplinary work is achieved by creating a common frame of reference, the understanding of the work-flow in a global shipping company, amongst the group members. The work-flow in the shipping company was analyzed from the three different perspectives in the group: the ethnographic, the cooperative design, and the object oriented perspective. 
+This paper describes the development of a prototype for a global shipping company. The system handles global customer service and shipping management. The paper describes requirement elicitation, an interdisciplinary project group, and the design of work-flow. The interdisciplinary work is achieved by creating a common frame of reference, the understanding of the work-flow in a global shipping company, amongst the group members. The work-flow in the shipping company was analyzed from the three different perspectives in the group: the ethnographic, the cooperative design, and the object oriented perspective.
 \subsubsection{The Ethnographic Perspective}
 The ethnographer starts with the premise that systems design is work design thus vastly expanding the focus and ambition of the work: In order to design a good system, the work-flow must be analyzed and understood such that deficiencies in the actual work-flow can be solved through systems design. The barrier between systems design and business management is thus completely broken down!
 
@@ -149,11 +149,11 @@ To understand the work-flow, the ethnographer must elicit tacit knowledge and th
 \subsubsection{The Cooperative Design Perspective}
 Cooperative design is the involvement of actual future users in the design process. In the design phase it was hard to involve a representative set of users since the company has thousands of employees in offices all over the world. The design group chose to travel to foreign offices, present their solution, observe the work at the offices, receive feedback, and reach the next iteration of the design. Along with these visits, they also had workshop, presentations, and usability studies. One of the outcomes was a more advanced tree structure model of the problem of goods rerouting. This more advanced system could show both the destination port and the origin port as the root of the tree and show both tree simultaneously.
 
-The cooperative design takes the Agile software development to its extreme since all the aspects of the system are worked on simultaneously. In this project there is no temporal order to match the logical order of the design of the software. Feedback from a user testing the software can for example change the functional requirements of the system. Requirements elicitation, design, programming, and testing is done simultaneously affecting changes in the other parts. 
+The cooperative design takes the Agile software development to its extreme since all the aspects of the system are worked on simultaneously. In this project there is no temporal order to match the logical order of the design of the software. Feedback from a user testing the software can for example change the functional requirements of the system. Requirements elicitation, design, programming, and testing is done simultaneously affecting changes in the other parts.
 \subsection{Analysis and Perspective}
 The task taken upon the developers breaks down the barrier between systems design and the highest level of business management: work flow design and business organisation. To do this productively requires knowledge of the business that the system is designed for. This puts an interesting perspective on the concept of requirements elicitation since the barrier between requirement elicitation and business organisation becomes fuzzy.
 
-If this model was the philosopher's stone in every situation, computer scientists and not business majors would manage companies\footnote{It is known from a basic understanding of macro economics that a free market (defined as the absence of government intervention and the absence of violations of private property) ensures that the business organisations and business practices that are the most effective in terms of productivity also are the ones which prevail.}. This is to some degree true for the IT sector but is not a general truth. 
+If this model was the philosopher's stone in every situation, computer scientists and not business majors would manage companies\footnote{It is known from a basic understanding of macro economics that a free market (defined as the absence of government intervention and the absence of violations of private property) ensures that the business organisations and business practices that are the most effective in terms of productivity also are the ones which prevail.}. This is to some degree true for the IT sector but is not a general truth.
 \subsection{Perspectivation to Work on dikukeys}
 The systems design presented made us consider that we may have been too humble and narrowly focused in our work with the customer. The concept that systems design is work design beckons the thought that we should make an effort to analyze the entire Online TA system instead of the corner of that system that has been delegated to us. It is, however, also worth considering that we are three \nth{1} year student working part-time while the authors of this paper consists of ten university faculty members (academic staff) working full time in cooperation with a global multi-billion dollar shipping company.
 
@@ -321,7 +321,7 @@ Classes for the system design are defined according to the BCE scheme. This divi
 Figure \ref{fig:sequence_diagram} shows the logical flow between the classes identified in the BCE analysis in Section \ref{subsec:BCE}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_upload_key_test}
+    \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_upload_key}
     \caption{The sequence diagram for the uploading of a public key to the database. Only the boundary classes interact with the user and only the entity class (the database) can permanently change the state of the system.}
     \label{fig:sequence_diagram}
 \end{figure}
@@ -332,7 +332,7 @@ The sequence diagram for the replacement of a key is practically similar to that
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_replace_new}
+    \includegraphics[width=1.2\textwidth]{pictures/sequence_diagram_replace_key}
      \caption{The sequence diagram for the replacement of a public key on the database. Similar to upload of a key but send\_mail() has been replaced by send\_replace\_mail().}
     \label{fig:use_case_diagram_example_two}
 \end{figure}
@@ -368,8 +368,6 @@ We plan on writing unit tests for all functions in our code, but at the moment t
 
 \subsection{System testing}
 We will unfortunately not be able to perform system tests since our section will be the first part of the system to be created.
-
-\subsection{}
 
 \newpage
 \section{User Interface and Interaction Design}\label{sec:UI_interactiondesign}
