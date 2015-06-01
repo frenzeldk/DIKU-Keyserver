@@ -82,7 +82,7 @@
 
 \title{
 \vspace{3cm}
-\Large{\nth{3} Partial Assignment - ProjDat}
+\Large{\nth{3} Partial Assignment -- ProjDat -- Resubmission}
 }
 
 \begin{document}
@@ -109,11 +109,33 @@
 
 \section{Brooks, F. P. (1986) No silver bullet}
 \subsection{Résumé}
-Missing.
+The essay describes common tasks and difficulties in software development. It discusses possible solutions to these difficulties and argues for why there is no silver bullet, a one size solution, in software development. Difficulties are split up Aristotelean in \textit{accidence} and \textit{essence}. Accidents are difficulties that are at the present without being inherent to software while the difficulties that are essence are inherent. 
+The following quote from page 182 captures the concept of essence quite well:
+\begin{quotation}
+    \textit{I believe the hard part of building software to be the specification, design, and testing of this conceptual construct, not the labor of representing it and testing the fidelity of the representation.}
+\end{quotation}
+
+\textbf{Inherent Difficulties}
+
+Assuming this quote to be true, which the essay does, then software development will always be difficult. There will never be a silver bullet. The following are properties of software systems that are essential: complexity, conformity, changeability, and invisibility.
+
+Due to the nature of reusing code as much as possible no two parts of a system will be the same. This is a defining trait of software and it makes software complex. The complexity also grows with the next issues. When software is shipped it is rarely \textbf{not} updated. Compared to cars, buildings or computers software is fairly easy to update as no hardware has to be moved or changed. This changeability obviously adds further to the complexity of software. Software also has to conform to other software it is communicating with, possibly even multiple different systems, that to the same tasks, but communicate in different ways. Conformity thus makes software even more complex. Last but not least software is inherently invisible and difficult to visualize. Different methods of visualizing software exist, but they all have flaws or deficits.
+
+\textbf{Past Breakthroughs and Potential Silver Bullets}
+
+The author argues that past breakthroughs all have solved accidental difficulties, such as high-level languages, time-sharing, and unified programming environments.
+
+The essay ends in an analysis of technologies and ideas that have been proposed as potential silver bullets. Among these are advances high-level languages, object-oriented programming and artificial intelligence, AI.
+
+
 \subsection{Analysis and Perspective}
-Missing.
+The idea of splitting difficulties in software development into essential, inherent and accidental difficulties makes sense to this day, as the essential once pointed out by the author hold true to this day.
+Despite advancements in fields like programming languages, ever more powerful hardware and development of algorithms that some argue are close to being AI, now, 30 years later, none of the proposed ideas for a silver bullet have actually achieved what was hoped from them. Ada was a flop and even though "expert-systems", like IBM's Watson exist, they are not truly general purpose and no silver bullet. The articles assumptions and assertions hold true to this day. There is no silver bullet in software development.
+
 \subsection{Perspectivation to Work on dikukeys}
-Missing.
+In our work on dikukeys we can clearly identify the inherent issues to software development as stated in "No Silver Bullet". This is seen in the way we develop with prototyping, customer testing, and iterative product specification. We try to address complexity and invisibility by creating different types of schematics that visualize different perspectives of our system. The process of creating these schematics has shown us, how complex our relatively small system is and how difficult it is to visualize abstract concepts.
+
+Other constrains, like limitations in programming languages we aren't affected by that much, as we have selected a language which has been designed for tasks just like ours.
 
 \newpage
 \section{Christensen et.al. (1998) The M.A.D. Experience: Multiperspective Application Development in evolutionary prototyping.}
