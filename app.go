@@ -55,11 +55,11 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	var kuid, ctime, coffee_hash string
 	
 	session, _ := store.Get(req, "session-name")
-		session.Options = &sessions.Options{
+/*		session.Options = &sessions.Options{
 		Path:     "/",
 		MaxAge:   300,
 		HttpOnly: true,
-		}
+		} */
 		
 	//kuid is the KU ID of the student
 	if kuid == "" {kuid = req.FormValue("kuid")}
