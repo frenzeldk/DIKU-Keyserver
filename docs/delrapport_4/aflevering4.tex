@@ -162,7 +162,7 @@ This is done by mapping OpenPGP keys provided by the students with their KU ID. 
 A prototype of the system is available at \url{http://dikukeys.dk}.
 
 \section{Purpose and Framework for the Project}\label{sec:Purpose_Framework}
-This definition is based on the FACTOR criteria which serves the purpose of providing the structure for a systems definition.
+This definition is based on the FACTOR criteria\cite{book:factor} which serves the purpose of providing the structure for a systems definition.
 \begin{itemize}
 \item \textbf{F}unctionality: The purpose of the system is to allow specific students and employees\footnote{Everyone with valid KU ID in the form of xyz123 - 'svensk nummberplade'.} at the University of Copenhagen to map their username to a public PGP key and store these records in a database maintained by the customer. The system must also allow the same users to replace their public key in case they lose the corresponding private key. The mappings should be readable by specific users with privileged access through some login mechanism.
 There should also exist an automatic way for other systems to access the mappings in a structured manner.
@@ -205,8 +205,9 @@ Non-functional requirements are system requirements which do not describe the ac
 
 \subsection{Use Case Overview Model}\label{subsec:Use_case_model}
 
-Figure \ref{fig:use_case_diagram_high_level} represents a high-level model which shows which actions are available for the different users: students and teachers.
-A student can upload and replace their public key and the TA can read the mappings.
+Figure \ref{fig:use_case_diagram_high_level} represents a high-level model which shows which actions are available for the different users: students and teachers. A student can upload and replace their public key and the TA can read the mappings. These are all the use cases that we have identified. They are the primary interactions between users and the system.
+
+An API access to the system database has also been discussed but no clear specifications for this have been provided. Therefore that use case is not presented here.
 
 \begin{figure}[H]
 \centering
