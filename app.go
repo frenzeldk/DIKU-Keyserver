@@ -62,11 +62,11 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		}
 		
 	//kuid is the KU ID of the student
-	if kuid == "" {kuid := req.FormValue("kuid")}
+	if kuid == "" {kuid = req.FormValue("kuid")}
 	//ctime is the time of creation of the link (as unix time)
-	if ctime == "" {ctime := req.FormValue("ctime")}
+	if ctime == "" {ctime = req.FormValue("ctime")}
 	//hash is the padded sha3-512 hash of kuid & ctime)
-	if coffee_hash == "" {coffee_hash := req.FormValue("hash")}
+	if coffee_hash == "" {coffee_hash = req.FormValue("hash")}
 	pubkey := req.FormValue("pubkey")
 	
 	if !validKUID(kuid) && kuid != "" {
