@@ -8,6 +8,12 @@
 
       <!-- Custom styles for this template -->
       <link href="html_templates/css/signin.css" rel="stylesheet">
+	  <script>
+        var getValue = function(id) {
+        var content = CKEDITOR.instances.id.getData();
+        alert(content);
+        };
+	  </script>
   </head>
   <body>
     <div class="container">
@@ -17,7 +23,8 @@
           <label for="pubkey" class="sr-only">Pubkey</label>
             <textarea class="form-control" rows="20" id="pubkey" name="pubkey" placeholder="Public Key" required autofocus></textarea>
           <br> </br>
-          <button form="form-pubkey" class="btn btn-lg btn-primary btn-block" type='submit'> Submit </button>
+          <input type="button" value="submit" onClick="getValue('pubkey')" />
+		  <!-- <button form="form-pubkey" class="btn btn-lg btn-primary btn-block" type='submit'> Submit </button> -->
       </form>
     </div>
   </body>
