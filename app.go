@@ -57,14 +57,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	ctime := req.FormValue("ctime")
 	//hash is the padded sha3-512 hash of kuid & ctime)
 	coffee_hash := req.FormValue("hash")
-	
-	session.Options = &sessions.Options{
-		Path:     "/",
-		MaxAge:   300,
-		HttpOnly: true,
-	}
-	
-	
+		
 	pubkey := req.FormValue("pubkey")
 
 	if !validKUID(kuid) && kuid != "" {
@@ -94,6 +87,11 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		t, _ := template.ParseFiles("html_templates/public_key.html")
 		t.Execute(resp, titel)
 		session, _ := store.Get(req, "session-name")
+		session.Options = &sessions.Options{
+		Path:     "/",
+		MaxAge:   300,
+		HttpOnly: true,
+		}
 		session.Values["kuid"] = kuid
 		session.Values["ctime"] = ctime
 		session.Values["coffee_hash"] = coffee_hash
@@ -104,6 +102,11 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 	if kuid == "" && pubkey != "" {
 		session, _ := store.Get(req, "session-name")
+		session.Options = &sessions.Options{
+		Path:     "/",
+		MaxAge:   300,
+		HttpOnly: true,
+		}
 		cuser := User{kuid, pubkey}
 		t, _ := template.ParseFiles("html_templates/pub_key_succesful.html")
 		t.Execute(resp, titel)
