@@ -51,15 +51,20 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	titel := req.URL.Path[len("/"):]
 	fmt.Println(titel)
 	//fmt.Println(req.URL) // Dette viser bare hvordan man får en URL fra req
+	session, _ := store.Get(req, "session-name")
+		session.Options = &sessions.Options{
+		Path:     "/",
+		MaxAge:   300,
+		HttpOnly: true,
+		}
 	//kuid is the KU ID of the student
-	kuid := req.FormValue("kuid")
+	if kuid == "" {kuid := req.FormValue("kuid")}
 	//ctime is the time of creation of the link (as unix time)
-	ctime := req.FormValue("ctime")
+	if ctime == "" {ctime := req.FormValue("ctime")}
 	//hash is the padded sha3-512 hash of kuid & ctime)
-	coffee_hash := req.FormValue("hash")
-		
+	if coffee_hash == "" {coffee_hash := req.FormValue("hash")}
 	pubkey := req.FormValue("pubkey")
-
+	
 	if !validKUID(kuid) && kuid != "" {
 		resp.Write([]byte("<p>Not a valid link!</p>"))
 	}
@@ -86,12 +91,6 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	} else if hex.EncodeToString(hash.GetHash(kuid + ctime)[:]) == coffee_hash {
 		t, _ := template.ParseFiles("html_templates/public_key.html")
 		t.Execute(resp, titel)
-		session, _ := store.Get(req, "session-name")
-		session.Options = &sessions.Options{
-		Path:     "/",
-		MaxAge:   300,
-		HttpOnly: true,
-		}
 		session.Values["kuid"] = kuid
 		session.Values["ctime"] = ctime
 		session.Values["coffee_hash"] = coffee_hash
@@ -101,12 +100,6 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	}
 
 	if kuid == "" && pubkey != "" {
-		session, _ := store.Get(req, "session-name")
-		session.Options = &sessions.Options{
-		Path:     "/",
-		MaxAge:   300,
-		HttpOnly: true,
-		}
 		cuser := User{kuid, pubkey}
 		fmt.Println(cuser)
 		t, _ := template.ParseFiles("html_templates/pub_key_succesful.html")
