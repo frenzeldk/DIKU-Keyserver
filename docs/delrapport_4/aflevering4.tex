@@ -107,7 +107,7 @@
 
 \chapter{Literature Review}\label{ch:Literature_Review}
 
-<<<<<<< HEAD
+
 \section{Highsmith J. - Extreme Programming}
 \subsection{Résumé}
 
@@ -130,55 +130,28 @@ The idea of continuously having to adapt to a marked that is poised to change al
 
 \subsection{Perspectivation to Work on dikukeys}
 
-
-
-
-
-\section{Brooks, F. P. (1986) No silver bullet}
-=======
 \section{Nauer, P. (1985) Programming as Theory Building}
->>>>>>> d312a566079786f6f572706cc36efb50c3aa5f46
 \subsection{Résumé}
 Programming as Theory Building presents a paradigm to understand the process of software engineering in which the main process of the programming task is not the production of documents and code but the acquirement of knowledge and theoretical understanding of a system. A system is here considered both the real world objects which the system maps and the actual server/computer and software running the service. The paper is a presentation of the theory and not a full endorsement.
 
 Programming as Theory Building is contrasted to a production view where programmers are looked as as a kind of factory workers who follow formalized rules and can easily be exchanged. The theory paradigm can, unlike the production paradigm, explain why it is so hard to modify or maintain a given system if it is done by programmers without prior knowledge of the system. As an example of the importance of theoretical understanding of the system a programmer works on, Naur presents two cases where some programmers have modified a programming language (the lexers, parsers, etc.) invented by some other people. The documentation of the code was provided to both groups but the support and guidance was only provided to one group. In the case where the new developers had access to the original developers, the modification relied heavily on the knowledge of the original (language inventors) group. In the case where the original developers did not provide support or help, the result was not aligned with the spirit of the original language; it was a clumsy implementation. This further suggest that the theory that is acquired by the programmers is not only essential for the production of good software but also tacit -- which means that it cannot be fully captured in words but must be learned through experience. Naur suggests that the experience of general programming models can be taught by model problems and solutions which extend the theoretical knowledge of the programmer.
 
-The role of rules and models in programming is discussed and it is stated that intuition and experience take primacy over rules since experience and intuition determines which rules and programming models that should be followed. 
+The role of rules and models in programming is discussed and it is stated that intuition and experience take primacy over rules since experience and intuition determines which rules and programming models that should be followed.
 
 The importance of theoretical knowledge of a system leads to the categorization of programs into three states: ``Alive'', where the theoretical knowledge of the program is present in developers; ``dead'' -- the theory is gone; and revived where the knowledge is being reinvented. But Naur actually sugggest that a program cannot be revived but can only be reinvented since the original theory cannot be acquired without the help of the original programmers. If the theory of a program is gone, the program should be remade and not revived.
 
-Nauer draws two further conclusions: 
+Nauer draws two further conclusions:
 \begin{itemize}
 \item The theory view of the programming task should raise the status of the programmers in companies from one of production workers to that of lawyers or managers
 \item The theory view necessitates that computer science students should learn to acquire knowledge of systems and the real-world objects that it maps. Whether this is possible, is an open question but should be attempted through project courses in computer systems design, where the students are under the competent guidance of wise and benevolent teachers ...
 \end{itemize}
 \subsection{Analysis and Perspective}
-The quality differences in the cases where a programming language is extended, are not proved. So the quality differences that Naur describes could be attributable to subjective valuations and not objective facts and the paper would have made a stronger case in this regard if it had been able to back up this claim. 
+The quality differences in the cases where a programming language is extended, are not proved. So the quality differences that Naur describes could be attributable to subjective valuations and not objective facts and the paper would have made a stronger case in this regard if it had been able to back up this claim.
 
-In our opinion, the article presents a false dichotomy between the production view and the theory view. The production paradigm articles that we have encountered did in no way rule out that the main motivation behind the production of various models was to acquire theoretical knowledge of the program. This means that the main benefit of designing a system according to the rational design model\cite{art:parnas} might very well be the acquirement of theory amongst the programmers but that the best way to acquire this theory is to follow the rational design process. So the paradigms might have different foci but are not necessarily mutually exclusive in the actual work process. 
+In our opinion, the article presents a false dichotomy between the production view and the theory view. The production paradigm articles that we have encountered did in no way rule out that the main motivation behind the production of various models was to acquire theoretical knowledge of the program. This means that the main benefit of designing a system according to the rational design model\cite{art:parnas} might very well be the acquirement of theory amongst the programmers but that the best way to acquire this theory is to follow the rational design process. So the paradigms might have different foci but are not necessarily mutually exclusive in the actual work process.
 
 The theory paradigm does however excel in explaining why system maintenance should be done by the original programmers and is a very hard, or impossible task, if the theory is not present in the new programming group.
 \subsection{Perspectivation to Work on dikukeys}
-
-\newpage
-\section{Christensen et.al. (1998) The M.A.D. Experience: Multiperspective Application Development in evolutionary prototyping.}
-\subsection{Résumé}
-This paper describes the development of a prototype for a global shipping company. The system handles global customer service and shipping management. The paper describes requirement elicitation, an interdisciplinary project group, and the design of work-flow. The interdisciplinary work is achieved by creating a common frame of reference, the understanding of the work-flow in a global shipping company, amongst the group members. The work-flow in the shipping company was analyzed from the three different perspectives in the group: the ethnographic, the cooperative design, and the object oriented perspective.
-\subsubsection{The Ethnographic Perspective}
-The ethnographer starts with the premise that systems design is work design thus vastly expanding the focus and ambition of the work: In order to design a good system, the work-flow must be analyzed and understood such that deficiencies in the actual work-flow can be solved through systems design. The barrier between systems design and business management is thus completely broken down!
-
-To understand the work-flow, the ethnographer must elicit tacit knowledge and this knowledge must then be made available to designers. The tacit knowledge elicitation is inferred through a process called grammar mapping which is illustrated by the concrete example of managing the rerouting of shipping containers. The current method is criticized as not being sufficiently automated and a new design and work flow is devised. The new design is based on a tree structure that shows the rerouting options for a container where the nodes represent means of transportation: ships, trains, and trucks.
-
-\subsubsection{The Cooperative Design Perspective}
-Cooperative design is the involvement of actual future users in the design process. In the design phase it was hard to involve a representative set of users since the company has thousands of employees in offices all over the world. The design group chose to travel to foreign offices, present their solution, observe the work at the offices, receive feedback, and reach the next iteration of the design. Along with these visits, they also had workshop, presentations, and usability studies. One of the outcomes was a more advanced tree structure model of the problem of goods rerouting. This more advanced system could show both the destination port and the origin port as the root of the tree and show both tree simultaneously.
-
-The cooperative design takes the Agile software development to its extreme since all the aspects of the system are worked on simultaneously. In this project there is no temporal order to match the logical order of the design of the software. Feedback from a user testing the software can for example change the functional requirements of the system. Requirements elicitation, design, programming, and testing is done simultaneously affecting changes in the other parts.
-\subsection{Analysis and Perspective}
-The task taken upon the developers breaks down the barrier between systems design and the highest level of business management: work flow design and business organisation. To do this productively requires knowledge of the business that the system is designed for. This puts an interesting perspective on the concept of requirements elicitation since the barrier between requirement elicitation and business organisation becomes fuzzy.
-
-If this model was the philosopher's stone in every situation, computer scientists and not business majors would manage companies\footnote{It is known from a basic understanding of macro economics that a free market (defined as the absence of government intervention and the absence of violations of private property) ensures that the business organisations and business practices that are the most effective in terms of productivity also are the ones which prevail.}. This is to some degree true for the IT sector but is not a general truth.
-\subsection{Perspectivation to Work on dikukeys}
-The systems design presented made us consider that we may have been too humble and narrowly focused in our work with the customer. The concept that systems design is work design beckons the thought that we should make an effort to analyze the entire Online TA system instead of the corner of that system that has been delegated to us. It is, however, also worth considering that we are three \nth{1} year student working part-time while the authors of this paper consists of ten university faculty members (academic staff) working full time in cooperation with a global multi-billion dollar shipping company.
 
 
 \chapter{Project Report}\label{ch:Project_Report}
