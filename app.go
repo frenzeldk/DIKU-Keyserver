@@ -40,12 +40,6 @@ func language(lang){
 
 var store = sessions.NewCookieStore([]byte("something-very-secret"))
 
-session.Options = &sessions.Options{
-    Path:     "/",
-    MaxAge:   300,
-    HttpOnly: true,
-}
-
 type FastCGIServer struct{}
 
 type User struct {
@@ -63,7 +57,14 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	ctime := req.FormValue("ctime")
 	//hash is the padded sha3-512 hash of kuid & ctime)
 	coffee_hash := req.FormValue("hash")
-
+	
+	session.Options = &sessions.Options{
+		Path:     "/",
+		MaxAge:   300,
+		HttpOnly: true,
+	}
+	
+	
 	pubkey := req.FormValue("pubkey")
 
 	if !validKUID(kuid) && kuid != "" {
