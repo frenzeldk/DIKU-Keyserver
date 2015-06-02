@@ -17,6 +17,7 @@ import (
 	//"strings"
 	"regexp"
 	"time"
+	"github.com/gorilla/sessions"
 )
 
 /* type Strings struct {
@@ -36,6 +37,14 @@ func language(lang){
          XMLdata, _ := ioutil.ReadAll(xmlFile)
 		 var s Strings
 } */
+
+var store = sessions.NewCookieStore([]byte("something-very-secret"))
+
+session.Options = &sessions.Options{
+    Path:     "/",
+    MaxAge:   300,
+    HttpOnly: true,
+}
 
 type FastCGIServer struct{}
 
@@ -83,12 +92,18 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	} else if hex.EncodeToString(hash.GetHash(kuid + ctime)[:]) == coffee_hash {
 		t, _ := template.ParseFiles("html_templates/public_key.html")
 		t.Execute(resp, titel)
+		session, _ := store.Get(req, "session-name")
+		session.Values["kuid"] = kuid
+		session.Values["ctime"] = ctime
+		session.Values["coffee_hash"] = coffee_hash
+		session.Save(req, resp)
 	} else {
 		resp.Write([]byte("<p>Not a valid link!</p>"))
 	}
 
 	if kuid == "" && pubkey != "" {
-		//cuser := User{kuid, pubkey}
+		session, _ := store.Get(req, "session-name")
+		cuser := User{kuid, pubkey}
 		t, _ := template.ParseFiles("html_templates/pub_key_succesful.html")
 		t.Execute(resp, titel)
 	}
