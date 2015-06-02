@@ -108,6 +108,7 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		HttpOnly: true,
 		}
 		cuser := User{kuid, pubkey}
+		fmt.Println(cuser)
 		t, _ := template.ParseFiles("html_templates/pub_key_succesful.html")
 		t.Execute(resp, titel)
 	}
