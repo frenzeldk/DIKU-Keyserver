@@ -383,7 +383,7 @@ To avoid typical pitfalls and errors due to oversight or coding style our code i
 The hacker group pwnies\footnote{\href{https://pwnies.dk/}{pwnies.dk/}} has been added to our git repository. This will allow them to follow our project and assess vulnerabilities as  we implement the rest of the system. Before reaching release phase, pwnies will perform penetration testing on the system.\cite{wiki:sectest}
 
 \subsection{Usability testing}
-We are in the very fortunate position that we work at the same place of our target group, this allows us to do Hallway testing exceptionally easy. These tests have already aided in the interface design process. % Om folk forstod at skrive sin KU-ID korrekt ind.
+We are in the very fortunate position that we work at the same place of our target group, this allows us to do Hallway testing exceptionally easy. These tests have already aided in the interface design process. See Section \ref{sec:UI_interactiondesign} (d).% Om folk forstod at skrive sin KU-ID korrekt ind.
 
 \subsection{Unit Testing}
 We plan on writing unit tests for all functions in our code, but at the moment this is out of the scope of our time resources. In other words, this is planned to be done some time after the course ProjDat has been concluded.
@@ -395,6 +395,7 @@ We will unfortunately not be able to perform system tests since our section will
 \section{User Interface and Interaction Design}\label{sec:UI_interactiondesign}
 \begin{enumerate}[label=(\alph*)]
 \item[(ab)] Screenshots and Flow/Dynamics
+
 The Figure \ref{fig:ss_kuid} shows the initial view a user is met with. It has a fairly simple interface with a form for inputting the user's KU ID and a submit button which should be clicked on to get to the next view. \\
 \begin{figure}[H]
 \centering
@@ -418,22 +419,21 @@ Figure \ref{fig:ss_pubkey} shows the interface for submitting a public key. Ther
 \label{fig:ss_pubkey}
 \end{figure}
 \item[(c)] Audio/Visual presentation
-A screen cast of the system in use will be created and uploaded to a video-service. A link to the video together with a description will then be available in this section.
-\item[(d)] Think out loud user test
-Such tests have not been commenced, but are planned to be done before May 19th.
-\end{enumerate}
 
-\subsection{Think Aloud User Test}
+A screen cast of Sven Frenzel using the system is available at \href{https://youtu.be/lKnijMJSObA}{https://youtu.be/lKnijMJSObA}. It walks through all the necessary steps to register with DIKU Keys, but omits the process of creating an OpenPGP key pair.
+\item[(d)] Think Aloud User Test
+
 A think aloud test was performed on a person that had heard about the system but not used it before. A short introduction was given to the user and he was asked to access the website and follow the steps.
 
 The user managed to enter his KU ID, receive the mail, press the link in the mail, and enter a public key. Some guidance was given to help him upload a public key since he was not familiar with the operating system's (Windows 8) key handling. He provided the following feedback.
 \begin{itemize}
-\item The splash screen contained too little information. A short explanation was requested.
-\item He would like to have a green light/green text -- implementable through JavaScript -- indicating that a correct public key was entered.
-\item A short text in the email saying that this email can be ignored if the KU user has not asked to be registered in the system.
-\item It would be easier to upload a public key if an option was given to upload an entire text file. Right now, you have to paste the text into a text field in the website.
+    \item The splash screen contained too little information. A short explanation was requested.
+    \item He would like to have a green light/green text -- implementable through JavaScript -- indicating that a correct public key was entered.
+    \item A short text in the email saying that this email can be ignored if the KU user has not asked to be registered in the system.
+    \item It would be easier to upload a public key if an option was given to upload an entire text file. Right now, you have to paste the text into a text field in the website.
 \end{itemize}
 We did not find time to implement these changes but they are provided for reference to future work.
+\end{enumerate}
 
 \section{Group Dynamics}
 \subsection{What is Good?}
