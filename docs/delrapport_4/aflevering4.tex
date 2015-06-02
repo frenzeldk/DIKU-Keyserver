@@ -311,6 +311,21 @@ The class diagram describes the interacting classes in the solution domain of th
 \subsection{BCE Classes}\label{subsec:BCE}
 Classes for the system design are defined according to the BCE scheme. This divides the classes into Boundary, Control, and Entity classes. The Boundary classes are the parts of the system with which the end-user interacts, the control classes define the logical operations of the system, and the entity store the persistent states of the system. The boundary classes are identified as the HTML serving which occurs through the webserver and the email server, the control classes are different forms of logic: hash generation generated from KU ID, timestamp, and padding; validation of the uploaded public key; and URL handling which verifies that the GET request contains a valid hash. The entity classes are the mappings which the end-users store: KU ID and public keys.
 
+
+\begin{center}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Boundary}     & \textbf{Control}                  & \textbf{Entity}     \\ \hline
+Web server   & Hash generation          & KU ID      \\
+Email server & Validation of public key & Public key \\
+             & URL parsing              &            \\ \hline
+\end{tabular}
+\caption{Boundary, control and entity classes for the system.}
+\end{table}
+\end{center}
+
 %The BCE model is shown in Figure \ref{fig:bce_model}. The BCE model is the \nth{1} attempt to describe the actual system (AKA application) domain since the previous class diagram was of the solution domain. The entitiy classes hold the data stored in the system, the control classes describe the logic of the system, and the boundary classes describe the part of the system that interacts with the end-users: the website and the email system. TA API could also be included here. Two models for the control classes have been described as a final choice has not been made yet.
 
 
