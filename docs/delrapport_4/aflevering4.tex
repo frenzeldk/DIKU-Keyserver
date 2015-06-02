@@ -205,7 +205,7 @@ Non-functional requirements are system requirements which do not describe the ac
 \item The back-end should be written in golang.
 \item The front-end should be Javascript and HTML5.
 \item The system must be browser independent\footnote{This includes recent versions of Internet Explorer, Chrome, Safari and Firefox.}.
-\item The system must be compliant with all standards and regulations imposed by the Government of Denmark and the University of Copenhagen. These regulations concern privacy and restriction of access to the KU IDs that are part of the system. Specifically, the KU IDs in the system must not be accessible to non-privileged users\footnote{The priveliged users are system administrators, university professors, and TAs.}.
+\item The system must be compliant with all standards and regulations imposed by the Government of Denmark and the University of Copenhagen. These regulations concern privacy and restriction of access to the KU IDs that are part of the system. Specifically, the KU IDs in the system must not be accessible to non-privileged users\footnote{The privileged users are system administrators, university professors, and TAs.}.
 \item The customer has decreed that the software be licensed under an MIT-like license which will be provided by the customer
 \footnote{A preliminary version of this license is available on \href{https://github.com/oleks/sandstone/blob/master/LICENSE}{GitHub}.}.
 \item The system should be able to decode the different .csv-formats (comma, semicolon, tab) for student lists.
@@ -396,6 +396,14 @@ We will unfortunately not be able to perform system tests since our section will
 \begin{enumerate}[label=(\alph*)]
 \item[(ab)] Screenshots and Flow/Dynamics
 The Figure \ref{fig:ss_kuid} shows the initial view a user is met with. It has a fairly simple interface with a form for inputting the user's KU ID and a submit button which should be clicked on to get to the next view. \\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.2\textwidth]{pictures/flow_diagram}
+    \caption{The flow of interfaces shown to an end-user.}
+    \label{fig:flow_diagram}
+\end{figure}
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{pictures/screenshots/kuid}
