@@ -51,12 +51,16 @@ func (s FastCGIServer) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	titel := req.URL.Path[len("/"):]
 	fmt.Println(titel)
 	//fmt.Println(req.URL) // Dette viser bare hvordan man får en URL fra req
+	
+	var kuid, ctime, coffee_hash string
+	
 	session, _ := store.Get(req, "session-name")
 		session.Options = &sessions.Options{
 		Path:     "/",
 		MaxAge:   300,
 		HttpOnly: true,
 		}
+		
 	//kuid is the KU ID of the student
 	if kuid == "" {kuid := req.FormValue("kuid")}
 	//ctime is the time of creation of the link (as unix time)
