@@ -111,38 +111,44 @@
 \section{Highsmith J. - Extreme Programming}
 \subsection{Résumé}
 
-The article touches upon the challenges of old methodologies used in software development. It disregards older more rigorous methodologies, while promoting more minimal methodologies; these take basis in the assertion that the cost of the lifecycle has changed into a more uniform cost. The change in cost of maintenance will warrant a shift in the balance of design and refactoring, reducing the focus from creating large systems, in which system architects try to anticipate the inevitable changes. Rather these methodologies enable rapid changes to the system, allowing refactoring to add features to the system, without altering the entire system.
+The article points out that the price tag of the development of a program through its life cycle is skewed towards the back end, meaning that the majority of resources (money) is spent on maintenance. It thus criticizes older methodologies while promoting a more minimal design strategy. This, more minimal design strategy seeks to unskew the cost of the life cycle such that it becomes more uniform. The change in cost of maintenance will warrant a shift in the balance of design and refactoring, reducing the focus from creating large systems, in which system architects try to anticipate the inevitable changes. These new methodologies will enable rapid changes to the system, allowing refactoring such that features can be added to the system, without the need of a total remodeling of the entire system.
+
 Extreme Programming is mentioned as the main contender to solve the problem in question, but other Lean development methodologies are also mentioned and compared.
 
 \subsection{Extreme Programming (XP)}
 
-To face these challenges of a contemporary marked, where continuous change is a reality, Highsmith introduces the methodology of Extreme Programming (XP).
-For XP to solve the problems of continuous change XP employs a set of practices, these serve as guidelines for the development team. Rather than demanding all practices be followed, a focus on choosing practices that aid the development, this part is not to be disregarded since they enforce each other. A few examples of these practices are: pair programming, simple design and refactoring. When the practices of XP are employed together, the process of system development aligns towards the core values of XP.
-XP is represented as a methodology that primarily is applicable to small teams.
+To face the challenges of a contemporary market, where continuous change is a reality, Highsmith introduces the methodology of Extreme Programming (XP).
+For XP to solve the problems of continuous change, XP employs a set of practices. These serve as guidelines for the development team. Rather than demanding all practices to be followed, a focus on choosing practices that aid the development is emphasized. But some guidelines are interdependent so they cannot be chosen arbitrarily. A few examples of these practices are: pair programming, simple design and refactoring. When the practices of XP are employed together, the process of system development aligns towards the core values of XP. XP is represented as a methodology that primarily is applicable to small teams.
 
 
 \subsection{Refactoring}
-Throughout the article, one of the main elements is both represented as an idea and a practice for the mentioned methodologies. Refactoring is introduced as an aspect which both built in new functionally into a system, but also mends or improves the current internal structure of the code base.
+Throughout the article, one of the main elements is both represented as an idea and a practice for the mentioned methodologies. Refactoring is introduced as an aspect which both builds new functionally into a system, but also mends or improves the current internal structure of the code base.
 
 \subsection{Analysis and Perspective}
-In the contemporary world we often see new services appearing, not all of these produce a new landscape, but sporadically a new service arise which reshapes the marked. Services as Facebook has altered social media, and forced many services to adapt.
-The idea of continuously having to adapt to a marked that is poised to change aligns perfectly with the methodology of Extreme Programming.
+In the contemporary world we often see new services appearing. Not all of these are successful, but sometimes a new service that reshapes a market arises. Services such as Facebook have altered social media, and forced many services to adapt: For example, log ins to post a comment on a news site can often be done through Facebook.
 
-\subsection{Perspectivation to Work on dikukeys}
+The idea of continuously having to adapt to a market that is poised to change, aligns perfectly with the methodology of Extreme Programming.
 
-\section{Nauer, P. (1985) Programming as Theory Building}
+\subsection{Perspectivation to Work on DIKU Keys}
+We have, to some degree, utilized pair programming when the web application was set up to communicate with the email server. This was a good way of working since both users were new to Golang and it was nice to have some moral and practical support.
+
+The relevant theory from this paper that we can extract regarding DIKU Keys is that the code should be easily maintainable such that it can respond to changing needs. However, a university computer system does not live in a very competitive environment since there is virtually no competition. The computer systems are chosen through centralized decision making and not by its end-users.
+
+\section{Naur, P. (1985) Programming as Theory Building}
 \subsection{Résumé}
-Programming as Theory Building presents a paradigm to understand the process of software engineering in which the main process of the programming task is not the production of documents and code but the acquirement of knowledge and theoretical understanding of a system. A system is here considered both the real world objects which the system maps and the actual server/computer and software running the service. The paper is a presentation of the theory and not a full endorsement.
+Programming as Theory Building presents a paradigm to understand the process of software engineering in which the main process of the programming task is not the production of documents and code but the acquirement of knowledge and theoretical understanding of a system. A system is here considered both the real world objects which the system maps and the actual server/computer and software running the service. The paper is a presentation of the theory and not a full endorsement in the sense that Naur explains what the theory suggests and criticizes some of its conclusions while supporting other.
 
-Programming as Theory Building is contrasted to a production view where programmers are looked as as a kind of factory workers who follow formalized rules and can easily be exchanged. The theory paradigm can, unlike the production paradigm, explain why it is so hard to modify or maintain a given system if it is done by programmers without prior knowledge of the system. As an example of the importance of theoretical understanding of the system a programmer works on, Naur presents two cases where some programmers have modified a programming language (the lexers, parsers, etc.) invented by some other people. The documentation of the code was provided to both groups but the support and guidance was only provided to one group. In the case where the new developers had access to the original developers, the modification relied heavily on the knowledge of the original (language inventors) group. In the case where the original developers did not provide support or help, the result was not aligned with the spirit of the original language; it was a clumsy implementation. This further suggest that the theory that is acquired by the programmers is not only essential for the production of good software but also tacit -- which means that it cannot be fully captured in words but must be learned through experience. Naur suggests that the experience of general programming models can be taught by model problems and solutions which extend the theoretical knowledge of the programmer.
+Programming as Theory Building is contrasted to a production view where programmers are viewed as a kind of factory worker who follow formalized rules and can easily be exchanged. The theory paradigm can, unlike the production paradigm, explain why it is so hard to modify or maintain a given system if it is done by programmers without prior knowledge of the system. As an example of the importance of theoretical understanding of the system that a programmer works on, Naur presents two cases where some programmers have modified a programming language (the lexers, parsers, etc.) invented by some other people. The documentation of the code was provided to both groups but the support and guidance was only provided to one group. In the case where the new developers had access to the original developers, the modification relied heavily on the knowledge of the original (language inventors) group. In the case where the original developers did not provide support or help, the result was not aligned with the spirit of the original language; it was a clumsy implementation. This further suggest that the theory that is acquired by the programmers is not only essential for the production of good software but also tacit -- which means that it cannot be fully captured in words but must be learned through experience.
+
+Naur suggests that the experience of general programming models can be taught by model problems and solutions which extend the tacit knowledge of the programmer.
 
 The role of rules and models in programming is discussed and it is stated that intuition and experience take primacy over rules since experience and intuition determines which rules and programming models that should be followed.
 
-The importance of theoretical knowledge of a system leads to the categorization of programs into three states: ``Alive'', where the theoretical knowledge of the program is present in developers; ``dead'' -- the theory is gone; and revived where the knowledge is being reinvented. But Naur actually sugggest that a program cannot be revived but can only be reinvented since the original theory cannot be acquired without the help of the original programmers. If the theory of a program is gone, the program should be remade and not revived.
+The importance of theoretical knowledge of a system leads to the categorization of programs into three states: ``Alive'', where the theoretical knowledge of the program is present in developers; ``dead'', the theory is gone; and revived, the knowledge is being reinvented. But Naur actually suggests that a program cannot be revived but can only be reinvented/rewritten/remade since the original theory cannot be acquired without the help of the original programmers. If the theory of a program is gone, the program should be remade and not revived.
 
-Nauer draws two further conclusions:
+Naur draws two further conclusions:
 \begin{itemize}
-\item The theory view of the programming task should raise the status of the programmers in companies from one of production workers to that of lawyers or managers
+\item The theory view of the programming task should raise the status of the programmers in companies from one of production workers to that of lawyers or managers.
 \item The theory view necessitates that computer science students should learn to acquire knowledge of systems and the real-world objects that it maps. Whether this is possible, is an open question but should be attempted through project courses in computer systems design, where the students are under the competent guidance of wise and benevolent teachers ...
 \end{itemize}
 \subsection{Analysis and Perspective}
@@ -151,7 +157,10 @@ The quality differences in the cases where a programming language is extended, a
 In our opinion, the article presents a false dichotomy between the production view and the theory view. The production paradigm articles that we have encountered did in no way rule out that the main motivation behind the production of various models was to acquire theoretical knowledge of the program. This means that the main benefit of designing a system according to the rational design model\cite{art:parnas} might very well be the acquirement of theory amongst the programmers but that the best way to acquire this theory is to follow the rational design process. So the paradigms might have different foci but are not necessarily mutually exclusive in the actual work process.
 
 The theory paradigm does however excel in explaining why system maintenance should be done by the original programmers and is a very hard, or impossible task, if the theory is not present in the new programming group.
-\subsection{Perspectivation to Work on dikukeys}
+\subsection{Perspectivation to Work on DIKU Keys}
+The work on DIKU Keys has to a large extent been about producing material such as class diagrams, sequence diagrams, initial software architecture, and BCE models. A prerequisite for the production of this material was to understand the content and the theory of for example a class diagram. So the production requirements are directly responsible for the acquirement of theoretical understanding. This supports the idea that there is no dichotomy between the production requirements (or production focus) and the Theory Building.
+
+This means that this article is theoretically interesting and may explain some things and warn against for example the destruction of knowledge in companies, but in the actual programming and design phase it is irrelevant since a focus on the production requirements automatically builds the required theory.
 
 
 \chapter{Project Report}\label{ch:Project_Report}
@@ -413,6 +422,18 @@ A screen cast of the system in use will be created and uploaded to a video-servi
 \item[(d)] Think out loud user test
 Such tests have not been commenced, but are planned to be done before May 19th.
 \end{enumerate}
+
+\subsection{Think Aloud User Test}
+A think aloud test was performed on a person that had heard about the system but not used it before. A short introduction was given to the user and he was asked to access the website and follow the steps.
+
+The user managed to enter his KU ID, receive the mail, press the link in the mail, and enter a public key. Some guidance was given to help him upload a public key since he was not familiar with the operating system's (Windows 8) key handling. He provided the following feedback.
+\begin{itemize}
+\item The splash screen contained too little information. A short explanation was requested.
+\item He would like to have a green light/green text -- implementable through JavaScript -- indicating that a correct public key was entered.
+\item A short text in the email saying that this email can be ignored if the KU user has not asked to be registered in the system.
+\item It would be easier to upload a public key if an option was given to upload an entire text file. Right now, you have to paste the text into a text field in the website.
+\end{itemize}
+We did not find time to implement these changes but they are provided for reference to future work.
 
 \section{Group Dynamics}
 \subsection{What is Good?}
