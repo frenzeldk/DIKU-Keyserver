@@ -8,16 +8,9 @@
 
       <!-- Custom styles for this template -->
       <link href="html_templates/css/signin.css" rel="stylesheet">
-	  <script>
-        var getValue = function(id) {
-        var content = CKEDITOR.instances.id.getData();
-        alert(content);
-        };
-	  </script>
   </head>
   <body>
     <div class="container">
-
       <form class="form" id="form-pubkey">
           <h2 class="form-heading"> Public Key </h2>
           <label for="pubkey" class="sr-only">Pubkey</label>
@@ -28,4 +21,10 @@
       </form>
     </div>
   </body>
+  	  <script>
+        var getValue = function(id) {
+        var content = CKEDITOR.instances[id].getData();
+        alert(content);
+        };
+	  </script>
 </html>
